@@ -1,0 +1,65 @@
+\documentclass{include/protokollclass}
+% Main File - Based on protokollclass.cls
+% DIES IST EINE REDUZIERTE VERSION DER VORLAGE, FÜR EIN LEERES DECKBLATT
+% ------------------------------------------------------------------------------
+% Further files in folder :
+%  - include/cmds.tex (for macros and additional commands)
+%  - include/kitlogo.pdf (for titlepage)
+%  - lit.bib (bibtex bibliography database)
+%  - include/titlepage.tex (for layout of titelpage)
+% ------------------------------------------------------------------------------
+
+
+
+
+
+%% ---------------------------------------------
+%% |    Informationen über dieses Protokoll    |
+%% ---------------------------------------------
+\newcommand{\praktikum}{}
+\newcommand{\semester}{}
+
+\newcommand{\wochentag}{}
+\newcommand{\gruppennr}{}
+
+\newcommand{\nachnamea}{}
+\newcommand{\vornamea}{}
+\newcommand{\nachnameb}{}
+\newcommand{\vornameb}{}
+
+\newcommand{\emailadressen}{}
+
+\newcommand{\versuch}{}
+\newcommand{\versuchsnr}{}
+
+\newcommand{\betreuer}{}
+\newcommand{\durchgefuehrt}{}
+
+
+
+
+
+\setboolean{forminput}{true}
+\setboolean{showannotations}{true}
+\setboolean{emptytextfields}{true}
+\SelectLanguage{ngerman}
+
+
+
+
+
+%% ------------------------
+%% |    Main Document     |
+%% ------------------------
+\begin{document}
+    % PDF setup
+    \hypersetup
+    {
+        pdfauthor={Fakultät für Physik, KIT},
+        pdftitle={Deckblatt zum Fortgeschrittenenpraktikum},
+        pdfsubject={Deckblatt für Versuchsprotokolle der physikalischen Fortgeschrittenenpraktika der Fakultät für Physik, KIT.},
+        pdfkeywords={kit,physik,praktikum,protokoll}
+    }
+    
+    \input{include/titlepage}
+\end{document}

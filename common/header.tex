@@ -1,0 +1,30 @@
+\newcommand{\praktikum}{P4}
+\newcommand{\semester}{WS18/19}
+
+\newcommand{\wochentag}{Mo}
+\newcommand{\gruppennr}{XX}
+
+\newcommand{\nachnamea}{Elicabuk}
+\newcommand{\vornamea}{Umut}
+\newcommand{\nachnameb}{Pittermann}
+\newcommand{\vornameb}{Martin}
+
+\input{../common/emails.tex}
+
+\newcommand{\maketitlepage}
+{
+	\begingroup \let\clearpage\relax
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\endgroup
+}
+
+\newcommand{\configureappendix}
+{
+	\chapter*{\appendixname} \addcontentsline{toc}{chapter}{\appendixname}
+}
+
+\newcommand{\s}[1]{\ensuremath{_\text{#1}}}
+
+\DeclareSIUnit{\samples}{S}
