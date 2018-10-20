@@ -8,13 +8,13 @@ ifeq ($(VERBOSE), 1)
 	BUILD := $(BUILDV)
 endif
 
-.PHONY: all show upload share clean data build
+.PHONY: all show upload share clean data build hooks
 
-all: | $(FILE).pdf show
+all: | $(FILE).pdf show hooks
 
-build: $(FILE).pdf
+build: $(FILE).pdf hooks
 
-data:
+data: hooks
 	make -C data -j 6
 
 $(FILE).pdf: data $(FILE).tex ../common/emails.tex bibliography.ag.tex titlepage.ag.tex $(svgimtargets) preamble.fmt
@@ -23,7 +23,7 @@ $(FILE).pdf: data $(FILE).tex ../common/emails.tex bibliography.ag.tex titlepage
 preamble.fmt: preamble.tex
 	pdflatex -ini -jobname="preamble" "&pdflatex preamble.tex\dump"
 
-show:
+show: hooks
 	xdg-open $(FILE).pdf > /dev/null 2>&1 &
 
 share: build
@@ -48,3 +48,8 @@ clean:
 
 setup:
 	../common/setup.sh "$(FILE).tex"
+
+hooks: ../.git/hooks/commit-msg
+
+../.git/hooks/commit-msg: ../common/hooks/commit-msg
+	cp $< $@

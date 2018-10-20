@@ -1,0 +1,18 @@
+#!/usr/bin/python
+import re
+import sys
+
+
+def main():
+	with open(sys.argv[1]) as f:
+		commit_msg = f.read()
+	if not re.match('^(\d\d|all) - ', commit_msg):
+		print("not accepted")
+		print("commit title must start with the current experiment number")
+		print("or 'all', followed by ' - '")
+		print("regex used: /^(\\d\\d|all) - /")
+		exit(1)
+
+
+if __name__ == "__main__":
+	main()
