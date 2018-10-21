@@ -5,7 +5,7 @@
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{./img/bandstructure-GaAs.pdf}
-	\caption[Band structure of AlGaAs-GaAs heterostructure]{\textbf{Band structure of AlGaAs-GaAs heterostructure} The different chemical potentials create a bend in the band edges of the heterostructure, forming a thin, triangular quantum well below the Fermi level}
+	\caption[Band structure of AlGaAs-GaAs heterostructure]{\textbf{Band structure of AlGaAs-GaAs heterostructure} The different chemical potentials create a bend in the band edges of the heterostructure, forming a thin, triangular quantum well below the Fermi level\par Source: \url{https://www.nano.physik.uni-muenchen.de/nanophotonics/_assets/pdf/f1/K1_QHE_Anleitung_deutsch.pdf}}
 	\label{fig:bandstructure_GaAs}
 \end{figure}
 In a two dimensional electron gas, the movement of electrons is confined to a plane, thus leading to quantized levels of motion in the third direction.
@@ -18,20 +18,20 @@ However, the electron still is free to move in a direction parallel to the junct
 
 The dispersion relation of a 2DEG is
 \begin{equation}\label{eq:subband}
-	E_{k_\text{x}, k_\text{y}} = E_0 + \frac{\hbar^2}{2m_\text{eff}}\left(k_\text{x}^2 + k_\text{y}^2\right),
+	E_{k_\text{x}, k_\text{y}} = E_\text{s} + \frac{\hbar^2}{2m_\text{eff}}\left(k_\text{x}^2 + k_\text{y}^2\right),
 \end{equation}
-where $E_0=E_\text{c} + E_\text{s}$ is the sum of the energy of the conduction band and the energy of the quantum well sub-band.
+where $E_\text{s}$ is the ground state energy of the quantum well.
 
 The density of states is calculated by counting the states in k-space
 \begin{equation*}
 	N(\epsilon) = \underbrace{2}_{\text{spin degeneracy}}\cdot\frac{\pi k^2\cdot S}{4\pi^2} = S\frac{2m_\text{eff}\cdot\epsilon}{2\pi\hbar^2} = S\frac{m_\text{eff}\cdot\epsilon}{\pi\hbar^2}.
 \end{equation*}
 and differentiating with respect to energy
-\begin{equation*}
+\begin{equation}\label{eq:dos}
 	\nu(\epsilon) = \frac{1}{S}\cdot\diff[N(\epsilon)]{\epsilon}\theta(\epsilon-E_0) = \frac{m_\text{eff}}{\pi\hbar^2} = \text{const.}.
-\end{equation*}
+\end{equation}
 
-\section{2DEG In a Magnetic Field}
+\section{2DEG In a Magnetic Field}\label{sec:mag_2deg}
 We want to solve the stationary Schrödinger Equation
 \begin{equation*}
 	\frac{1}{2m_\text{eff}}\left(\vec{p}-e\vec{A}\right)^2\psi = E\psi.
@@ -43,6 +43,51 @@ Solving the eigenequation for $\phi(x,y)$ yields the \textit{Landau levels}
 	\epsilon_n = \hbar\omega_\text{c}\left(n+\frac{1}{2}\right)\qquad{n\in\mathbb{N}_0},
 \end{equation*}
 where $\omega_\text{c} = \frac{eB}{m}$ is called the cyclotron frequency.
+
+Additionally, as a result of the electron spin, there is a twofold Zeeman splitting
+\begin{equation*}
+	E = \epsilon_n + \underbrace{\frac{1}{2}}_\text{electron spin}\cdot g_\text{eff}\mu_\text{B}\cdot B,
+\end{equation*}
+where $g_\text{eff}$ is the effective Landé factor and $\mu_\text{B}$ the Bohr magneton.
+
+Using \autoref{eq:dos}, the number of electrons occupying a Landau level per unit area is
+\begin{equation*}
+	N = \hbar\omega_\text{c}\nu(\epsilon) = \frac{2eB}{h}.
+\end{equation*}
+Calculating the clasically expected Hall voltage $U_\text{H}$, it follows
+\begin{align*}
+	U_\text{H} = \frac{B}{n_\text{s}\cdot e}\cdot I.
+\end{align*}
+Now, if all $n=1,\dots,\lambda$ energy levels are fully occupied (thus $n_\text{s}=\lambda N$), the Hall resistance reads
+\begin{equation*}
+	R_\text{H} = \frac{B}{\lambda N\cdot e} = \frac{h}{\lambda\cdot e^2}\qquad \lambda\in\mathbb{N}.
+\end{equation*}
+However, the instruments used in this experiment do not allow for a high enough resolution to observe the Zeeman splitting.
+Hence, only even-numbered levels can be seen.
+
+\section{Shubnikov-De Haas Effect}
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{./img/on-edge.pdf}
+	\caption[Edge channels of the 2DEG]{\textbf{Edge channels of the 2DEG} As described in \autoref{sec:mag_2deg}, the energy levels are described by Landau levels, bending upwards at the edges of the sample.\par Source: Wikipedia, Shubnikov-de Hass effect}
+	\label{fig:on_edge}
+\end{figure}
+
+The SdH effect describes an oscillation in the conductivity of a material in the presence of a strong magnetic field at low temperatures.
+
+\autoref{fig:on_edge} depicts the situation, where the Fermi level $E_\text{F}$ is located in between two Landau levels.
+Since electrons now only scatter at the edges of the sample, where the Fermi level and the work function intersect, the corresponding states are called \textit{edge channels}.
+However, since the conductivity is quantized and a voltage measurement should ideally involve no flowing current, it follows
+\begin{equation*}
+	I = \frac{\lambda\cdot 2e}{h}(\mu_\text{R} - \mu_\text{L}) \stackrel{!}{=} 0.
+\end{equation*}
+Therefore, the chemical potentials at the edges must be the same, leading to a vanishing resistance in the edge states.
+
+Letting a Landau level correspond to an edge channel of the sample, at a constant electron density it follows
+\begin{equation*}
+	B_\lambda = \frac{nh}{2e\lambda}\Rightarrow \Delta\left(\frac{1}{B}\right) = \frac{2e}{nh},
+\end{equation*}
+yielding the periodic behavior in $\frac{1}{B}$.
 
 \section{Experimental Setup}
 The experiment is performed inside a two-stage cryostat.
