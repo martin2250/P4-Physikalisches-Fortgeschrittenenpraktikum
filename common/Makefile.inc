@@ -8,7 +8,7 @@ ifeq ($(VERBOSE), 1)
 	BUILD := $(BUILDV)
 endif
 
-.PHONY: all show upload share clean data build hooks
+.PHONY: all show upload share clean data build hooks img
 
 all: | $(FILE).pdf show hooks
 
@@ -17,7 +17,10 @@ build: $(FILE).pdf hooks
 data: hooks
 	make -C data -j 6
 
-$(FILE).pdf: data $(FILE).tex ../common/emails.tex bibliography.ag.tex titlepage.ag.tex $(svgimtargets) preamble.fmt
+img: $(svgimtargets)
+
+
+$(FILE).pdf: data $(FILE).tex ../common/emails.tex bibliography.ag.tex titlepage.ag.tex img preamble.fmt
 	$(BUILD) $(FILE).tex
 
 preamble.fmt: preamble.tex
