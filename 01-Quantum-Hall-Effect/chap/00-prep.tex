@@ -1,7 +1,7 @@
 %!TEX root = ../01-Quantum-Hall-Effect.tex
 \chapter{Theoretical Preliminaries}
 
-\section{Two Dimensional Electron Gas (2DEG)}
+\section{Two Dimensional Electron Gas (2DEG)} \label{sec:2deg-theory}
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{./img/bandstructure-GaAs.pdf}
@@ -64,6 +64,43 @@ Now, if all $n=1,\dots,\lambda$ energy levels are fully occupied (thus $n_\text{
 \end{equation*}
 However, the instruments used in this experiment do not allow for a high enough resolution to observe the Zeeman splitting.
 Hence, only even-numbered levels can be seen.
+
+\section{Practical Realization of the 2DEG}\label{sec:2deg-irl}
+Two samples are provided, which utilize different techniques to confine electrons in a plane.
+The first sample is a silicon n-channel MOSFET (metal oxide semiconductor field effect transistor).
+The structure, shown in \autoref{fig:2deg-irl:mosfet}, is built on the surface of a p-type doped silicon substrate, with two n-type wells forming the electrical contacts for source and drain.
+The source contact is also connected electrically to the substrate.
+The region between source and drain is covered with an insulating oxide layer  onto which a metal electrode, referred to as the gate, is deposited.
+A voltage applied betweent the gate and source (and therefore the p-type substrate) can attract or repel charge carriers.
+If this voltage is positive at the gate and high enough to push the energy level of the conductance band below the fermi energy, a two-dimensional inversion region with an approximate width of \SI{25}{\angstrom} forms in the substrate at the boundary to the oxide layer.
+Above this threshold voltage, the gate-source voltage can be used to modulate the charge carrier density inside this inversion layer.
+A drawback of this method is that it is yet not possible to create a perfectly planar boundary surface, allowing electrons to scatter on surface irregularities.
+Also being located within the doped substrate, the electrons in the 2DEG can scatter on the defects introduced by the doping, further lowering their mobility to approximately \SI{4}{\meter\squared\per\volt\per\second} at \SI{1}{\kelvin}.
+
+Another method, already mentioned in \autoref{sec:2deg-theory}, is the use of a heterostructure of two materials with highly dissimilar band gaps, such as GaAs and AlGaAs.
+The provided sample uses pure GaAs and n-type AlGaAs.
+The pure GaAs has a narrower band gap than the AlGaAs, leading to the deformation of conductance and valence bands shown in \autoref{fig:bandstructure_GaAs}.
+Electrons from the n-type AlGaAs can migrate into the potential well where they are physically separated from the donor atoms.
+Also this structure can be produced very precisely using molecular epitaxy, nearly eliminating electron scattering at the surface, leading to a mobility which can be greater than \SI{100}{\meter\squared\per\volt\per\second}.
+Another advantage is the slightly lower effective mass inside the GaAs of $m^* \approx \num{0.07} m_\text{e}$ compared to $m^* \approx \num{0.2} m_\text{e}$ in silicon.
+In addition to the two contacts used to inject the external current, there are six contacts distributed on either side of the main channel.
+These contacts are used to measure the hall voltage and longitudinal voltage without interference from the strongly deformed current flow at high magnetic fields.
+
+\autoref{fig:2deg-irl:hetero}
+\begin{figure}
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./img/nfet.pdf}
+		\caption{N-channel MOSFET}\label{fig:2deg-irl:mosfet}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./img/gaas-heterostructure.pdf}
+		\caption{AlGaAs-GaAs heterostructure}\label{fig:2deg-irl:hetero}
+	\end{subfigure}
+	\caption{Schematic illustration of the provided samples}
+\end{figure}
 
 \section{Shubnikov-De Haas Effect}
 \begin{figure}

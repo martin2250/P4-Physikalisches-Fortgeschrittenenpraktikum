@@ -19,7 +19,7 @@
    inkscape:version="0.92.2 2405546, 2018-03-11"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath24"><path
@@ -52,17 +52,17 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="3840"
-     inkscape:window-height="2037"
+     inkscape:window-width="1920"
+     inkscape:window-height="1029"
      id="namedview4"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="4.7572162"
-     inkscape:cx="94.153571"
-     inkscape:cy="35.89827"
+     inkscape:zoom="2.3786081"
+     inkscape:cx="152.12324"
+     inkscape:cy="77.717597"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -100,12 +100,13 @@
                    inkscape:connector-curvature="0" /><g
                    id="g36"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,37.4766,385.614)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text40"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan38">E</tspan></text>
+   transform="matrix(1,0,0,-1,37.4766,385.614)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text40"><tspan
+     x="0"
+     y="0"
+     id="tspan38">E</tspan></text>
+
 </g><path
                    d="M 322.531,2204.13 H 3440.26"
                    style="fill:none;stroke:#231f20;stroke-width:14.17319965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -117,12 +118,13 @@
                    inkscape:connector-curvature="0" /><g
                    id="g46"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,326.675,228.9)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text50"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan48">z</tspan></text>
+   transform="matrix(1,0,0,-1,326.675,228.9)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text50"><tspan
+     x="0"
+     y="0"
+     id="tspan48">z</tspan></text>
+
 </g><path
                    d="M 3397.76,3071.81 H 1866.68"
                    style="fill:none;stroke:#231f20;stroke-width:14.17319965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -162,12 +164,13 @@
                    inkscape:connector-curvature="0" /><g
                    id="g70"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,326.675,12.9004)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text74"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan72">z</tspan></text>
+   transform="matrix(1,0,0,-1,326.675,12.9004)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text74"><tspan
+     x="0"
+     y="0"
+     id="tspan72">z</tspan></text>
+
 </g><path
                    d="M 3397.76,911.813 H 3002.39"
                    style="fill:none;stroke:#231f20;stroke-width:14.17319965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -187,89 +190,101 @@
                    inkscape:connector-curvature="0" /><g
                    id="g84"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,343.589,323.484)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text88"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan86">E</tspan></text>
+   transform="matrix(1,0,0,-1,343.589,323.484)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text88"><tspan
+     x="0"
+     y="0"
+     id="tspan86">E</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,358.2488,318.684)"
-                     style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text92"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan90">F</tspan></text>
+   transform="matrix(1,0,0,-1,358.2488,318.684)"
+   style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text92"><tspan
+     x="0"
+     y="0"
+     id="tspan90">F</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,343.589,345.084)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text96"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan94">E</tspan></text>
+   transform="matrix(1,0,0,-1,343.589,345.084)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text96"><tspan
+     x="0"
+     y="0"
+     id="tspan94">E</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,358.2488,340.284)"
-                     style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text100"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan98">L</tspan></text>
+   transform="matrix(1,0,0,-1,358.2488,340.284)"
+   style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text100"><tspan
+     x="0"
+     y="0"
+     id="tspan98">L</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,343.589,301.884)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text104"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan102">E</tspan></text>
+   transform="matrix(1,0,0,-1,343.589,301.884)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text104"><tspan
+     x="0"
+     y="0"
+     id="tspan102">E</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,358.2488,297.084)"
-                     style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text108"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan106">V</tspan></text>
+   transform="matrix(1,0,0,-1,358.2488,297.084)"
+   style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text108"><tspan
+     x="0"
+     y="0"
+     id="tspan106">V</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,343.589,107.484)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text112"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan110">E</tspan></text>
+   transform="matrix(1,0,0,-1,343.589,107.484)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text112"><tspan
+     x="0"
+     y="0"
+     id="tspan110">E</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,358.2488,102.68439)"
-                     style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text116"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan114">F</tspan></text>
+   transform="matrix(1,0,0,-1,358.2488,102.68439)"
+   style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text116"><tspan
+     x="0"
+     y="0"
+     id="tspan114">F</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,343.589,129.08399)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text120"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan118">E</tspan></text>
+   transform="matrix(1,0,0,-1,343.589,129.08399)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text120"><tspan
+     x="0"
+     y="0"
+     id="tspan118">E</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,358.2488,124.28438)"
-                     style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text124"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan122">L</tspan></text>
+   transform="matrix(1,0,0,-1,358.2488,124.28438)"
+   style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text124"><tspan
+     x="0"
+     y="0"
+     id="tspan122">L</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,343.589,85.88398)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text128"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan126">E</tspan></text>
+   transform="matrix(1,0,0,-1,343.589,85.88398)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text128"><tspan
+     x="0"
+     y="0"
+     id="tspan126">E</tspan></text>
+
 <text
-                     transform="matrix(1,0,0,-1,358.2488,81.08437)"
-                     style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text132"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan130">V</tspan></text>
+   transform="matrix(1,0,0,-1,358.2488,81.08437)"
+   style="font-variant:normal;font-weight:normal;font-size:11.99969959px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text132"><tspan
+     x="0"
+     y="0"
+     id="tspan130">V</tspan></text>
+
 </g><path
                    d="m 1798.91,961.09 c 310.88,401.88 1034.8,382.68 1034.8,382.68 h 168.68 -168.68"
                    style="fill:none;stroke:#231f20;stroke-width:14.17319965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -277,12 +292,13 @@
                    inkscape:connector-curvature="0" /><g
                    id="g136"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,37.4766,169.615)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text140"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan138">E</tspan></text>
+   transform="matrix(1,0,0,-1,37.4766,169.615)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text140"><tspan
+     x="0"
+     y="0"
+     id="tspan138">E</tspan></text>
+
 </g><path
                    d="M 1177.73,191.758 H 322.539"
                    style="fill:none;stroke:#231f20;stroke-width:14.17319965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -310,18 +326,19 @@
                    inkscape:connector-curvature="0" /><g
                    id="g154"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,159.473,119.112)"
-                     style="font-variant:normal;font-weight:normal;font-size:9.99962044px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text162"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan156">+</tspan><tspan
-                       x="5.9457002"
-                       y="-3.1066401"
-                       id="tspan158">+</tspan><tspan
-                       x="11.76758"
-                       y="-7.1015601"
-                       id="tspan160">+</tspan></text>
+   transform="matrix(1,0,0,-1,159.473,119.112)"
+   style="font-variant:normal;font-weight:normal;font-size:9.99962044px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text162"><tspan
+     x="0"
+     y="0"
+     id="tspan156">+</tspan><tspan
+     x="5.9457002"
+     y="-3.1066401"
+     id="tspan158">+</tspan><tspan
+     x="11.76758"
+     y="-7.1015601"
+     id="tspan160">+</tspan></text>
+
 </g><path
                    d="m 1798.91,529.086 c 310.88,401.883 1034.8,382.684 1034.8,382.684 h 168.68 -168.68"
                    style="fill:none;stroke:#231f20;stroke-width:14.17319965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -329,21 +346,22 @@
                    inkscape:connector-curvature="0" /><g
                    id="g166"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,180.715,106.366)"
-                     style="font-variant:normal;font-weight:normal;font-size:15.9989996px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text176"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan168">-</tspan><tspan
-                       x="5.1859398"
-                       y="1.7304699"
-                       id="tspan170">-</tspan><tspan
-                       x="0.16133"
-                       y="3.58359"
-                       id="tspan172">-</tspan><tspan
-                       x="-0.633201"
-                       y="7.0644498"
-                       id="tspan174">-</tspan></text>
+   transform="matrix(1,0,0,-1,180.715,106.366)"
+   style="font-variant:normal;font-weight:normal;font-size:15.9989996px;font-family:Arial;-inkscape-font-specification:ArialMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text176"><tspan
+     x="0"
+     y="0"
+     id="tspan168">-</tspan><tspan
+     x="5.1859398"
+     y="1.7304699"
+     id="tspan170">-</tspan><tspan
+     x="0.16133"
+     y="3.58359"
+     id="tspan172">-</tspan><tspan
+     x="-0.633201"
+     y="7.0644498"
+     id="tspan174">-</tspan></text>
+
 </g><path
                    d="M 2251.97,1774.14 1924.54,1226.43"
                    style="fill:none;stroke:#231f20;stroke-width:14.17319965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -355,13 +373,14 @@
                    inkscape:connector-curvature="0" /><g
                    id="g182"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,228.46,173.498)"
-                     style="font-variant:normal;font-weight:normal;font-size:13.99950027px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text186"><tspan
-                       x="0 6.9997501 17.107389 25.661083"
-                       y="0"
-                       sodipodi:role="line"
-                       id="tspan184">2DEG</tspan></text>
+   transform="matrix(1,0,0,-1,228.46,173.498)"
+   style="font-variant:normal;font-weight:normal;font-size:13.99950027px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text186"><tspan
+     x="0 6.9997501 17.107389 25.661083"
+     y="0"
+     sodipodi:role="line"
+     id="tspan184">2DEG</tspan></text>
+
 </g><path
                    d="M 1866.68,4292.13 H 3410.82 V 5379.47 H 1866.68 Z"
                    style="fill:none;stroke:#231f20;stroke-width:2.16000009;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -401,22 +420,23 @@
                    inkscape:connector-curvature="0" /><g
                    id="g206"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,364.373,440.325)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text216"><tspan
-                       x="0"
-                       y="0"
-                       id="tspan208">z</tspan><tspan
-                       x="-326.897"
-                       y="-146.888"
-                       id="tspan210">x</tspan><tspan
-                       x="-304.57159"
-                       y="-13.576"
-                       id="tspan212">y</tspan><tspan
-                       x="-305.80325 -293.80353 -285.81174 -268.48416 -261.81235 -244.48477 -233.82904 -216.50148 -130.04915 -112.72159 -102.06586 -84.738289"
-                       y="-49.063099"
-                       sodipodi:role="line"
-                       id="tspan214">n-AlGaAsGaAs</tspan></text>
+   transform="matrix(1,0,0,-1,364.373,440.325)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99939919px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text216"><tspan
+     x="0"
+     y="0"
+     id="tspan208">z</tspan><tspan
+     x="-326.897"
+     y="-146.888"
+     id="tspan210">x</tspan><tspan
+     x="-304.57159"
+     y="-13.576"
+     id="tspan212">y</tspan><tspan
+     x="-305.80325 -293.80353 -285.81174 -268.48416 -261.81235 -244.48477 -233.82904 -216.50148 -130.04915 -112.72159 -102.06586 -84.738289"
+     y="-49.063099"
+     sodipodi:role="line"
+     id="tspan214">n-AlGaAsGaAs</tspan></text>
+
 </g><path
                    d="M 1866.68,5379.47 V 4292.13"
                    style="fill:none;stroke:#d3d2d2;stroke-width:28.3465004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:22.92560005;stroke-dasharray:none;stroke-opacity:1"
@@ -436,96 +456,128 @@
                    inkscape:connector-curvature="0" /><g
                    id="g226"
                    transform="scale(10)"><text
-                     transform="matrix(1,0,0,-1,0.288281,600.652)"
-                     style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                     id="text234"><tspan
-                       x="0 10.655867"
-                       y="0"
-                       sodipodi:role="line"
-                       id="tspan228">a)</tspan><tspan
-                       x="0 11.99985"
-                       y="201.60001"
-                       sodipodi:role="line"
-                       id="tspan230">b)</tspan><tspan
-                       x="0 10.655867"
-                       y="424.79999"
-                       sodipodi:role="line"
-                       id="tspan232">c)</tspan></text>
+   transform="matrix(1,0,0,-1,0.288281,600.652)"
+   style="font-variant:normal;font-weight:normal;font-size:23.99970055px;font-family:'Times New Roman';-inkscape-font-specification:TimesNewRomanPSMT;writing-mode:lr-tb;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text234"><tspan
+     x="0 10.655867"
+     y="0"
+     sodipodi:role="line"
+     id="tspan228">a)</tspan><tspan
+     x="0 11.99985"
+     y="201.60001"
+     sodipodi:role="line"
+     id="tspan230">b)</tspan><tspan
+     x="0 10.655867"
+     y="424.79999"
+     sodipodi:role="line"
+     id="tspan232">c)</tspan></text>
+
 </g></g></g></g></g></g><g
          id="g236"
          transform="translate(-182.255,-344.292)"><text
-           transform="matrix(1,0,0,-1,154.908,314.495)"
-           style="font-variant:normal;font-size:10.90909958px;font-family:'Nimbus Roman';-inkscape-font-specification:NimbusRomNo9L-Regu;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text242"><tspan
-             x="0 7.8763704 13.33092 18.785471 21.818199 24.850929 30.305479 35.760029 41.214581 49.396404 54.850956 60.610958 68.487328 73.330971 76.963699 82.418251 86.05098 94.538261 99.381905 102.41463 105.44736 110.90191 119.08373 124.53828 129.38193 135.74193 143.0183 147.86194 153.3165 158.77104 164.22559 169.06923 174.52379 177.55652 185.12743 188.16016 196.34198 201.18562 204.21835 209.6729 214.51654 220.87654 228.75291 233.59656 236.62929 241.47293 245.10565 250.56021 254.80385 257.83658 261.4693 266.92386 272.37842 275.41113 280.86569"
-             y="0"
-             sodipodi:role="line"
-             id="tspan238">Abbildung4:DeformationderBandkanteineinerHeterostruktur</tspan><tspan
-             x="-37.080002 -34.047272 -29.20363 -23.749081 -20.716351 -14.65089 -9.80725 -4.9636097 0.49094039 8.1709471 13.014587 18.469137 22.101868 27.556417 33.010967 36.043697 41.607338 45.24007 53.541893 61.407356 66.861908"
-             y="33.245998"
-             sodipodi:role="line"
-             id="tspan240">taktfächeabrupt.InAbb</tspan></text>
+   transform="matrix(1,0,0,-1,154.908,314.495)"
+   style="font-variant:normal;font-size:10.90909958px;font-family:'Nimbus Roman';-inkscape-font-specification:NimbusRomNo9L-Regu;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text242"><tspan
+     x="0 7.8763704 13.33092 18.785471 21.818199 24.850929 30.305479 35.760029 41.214581 49.396404 54.850956 60.610958 68.487328 73.330971 76.963699 82.418251 86.05098 94.538261 99.381905 102.41463 105.44736 110.90191 119.08373 124.53828 129.38193 135.74193 143.0183 147.86194 153.3165 158.77104 164.22559 169.06923 174.52379 177.55652 185.12743 188.16016 196.34198 201.18562 204.21835 209.6729 214.51654 220.87654 228.75291 233.59656 236.62929 241.47293 245.10565 250.56021 254.80385 257.83658 261.4693 266.92386 272.37842 275.41113 280.86569"
+     y="0"
+     sodipodi:role="line"
+     id="tspan238">Abbildung4:DeformationderBandkanteineinerHeterostruktur</tspan><tspan
+     x="-37.080002 -34.047272 -29.20363 -23.749081 -20.716351 -14.65089 -9.80725 -4.9636097 0.49094039 8.1709471 13.014587 18.469137 22.101868 27.556417 33.010967 36.043697 41.607338 45.24007 53.541893 61.407356 66.861908"
+     y="33.245998"
+     sodipodi:role="line"
+     id="tspan240">taktfächeabrupt.InAbb</tspan></text>
+
 <text
-           transform="matrix(1,0,0,-1,227.23,281.249)"
-           style="font-variant:normal;font-weight:normal;font-size:10.90909958px;font-family:CMMI10;-inkscape-font-specification:CMMI10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text246"><tspan
-             x="0"
-             y="0"
-             id="tspan244">.</tspan></text>
+   transform="matrix(1,0,0,-1,227.23,281.249)"
+   style="font-variant:normal;font-weight:normal;font-size:10.90909958px;font-family:CMMI10;-inkscape-font-specification:CMMI10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text246"><tspan
+     x="0"
+     y="0"
+     id="tspan244">.</tspan></text>
+
 <text
-           transform="matrix(1,0,0,-1,233.098,281.249)"
-           style="font-variant:normal;font-size:10.90909958px;font-family:'Nimbus Roman';-inkscape-font-specification:NimbusRomNo9L-Regu;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text274"><tspan
-             x="0 8.2909164 13.134557 19.603653 27.480022 32.934574 36.567303 42.021854 49.712769 55.16732 58.800049 64.254601 69.709152 72.741882 75.774605 80.618248 84.250977 87.283707 92.12735 99.207352 107.08372 110.11646 117.99283 122.83646 130.71283 137.79285 143.08376 147.9274 151.56012 159.43649 164.28014 169.73468 175.18924 180.03288 183.06561 188.62924 192.26198 200.55289 206.00745 210.85109 222.17473 226.41837 231.87292 234.90565 239.7493"
-             y="0"
-             sodipodi:role="line"
-             id="tspan248">4c)wurden-dotiertesAlGaAsverwendet.Indemskiz-</tspan><tspan
-             x="-115.27 -110.42636 -107.39363 -102.54999 -98.917259 -95.884529 -91.040886 -83.437248 -77.535423 -72.69178 -69.65905 -64.477234 -60.233589 -57.200859 -51.746311 -44.14267 -38.688118 -35.655388 -28.662655 -20.786285 -15.331735 -9.8771849 -5.0335445 -2.0008147 3.4537354 7.0864658 11.930106 14.962836 20.417385 28.893757 35.88649 41.341038 46.795589 55.282871 60.737419 66.191971 71.035606 78.639252 81.671982 92.308357 97.762901 102.60654 106.85018 111.69382 120.18111 123.21384 128.05748 135.66112 143.53749 146.57022 154.44659 159.29022 167.1666 171.41023 175.04297 182.91934 186.55206 189.58479 193.82845 196.86118 201.7048 204.73753 209.91936 215.21028 220.05391 223.68665 226.71938 231.56302 234.59575 237.62848 240.66121"
-             y="13.549"
-             sodipodi:role="line"
-             id="tspan250">ziertenFallsinddieDonatoratomehomogenimgesamtenAlGaAs-Kristallverteilt.</tspan><tspan
-             x="-115.27 -107.39363 -101.93908 -98.306351 -92.851799 -89.21907 -83.764519 -78.309967 -70.389961 -64.93541 -60.091774 -53.993584 -48.539036 -43.084484 -40.051754 -35.208115 -31.575384 -27.331745 -22.488104 -17.033554 -14.000825 -9.1571846 -3.7026343 -0.66990447 2.3628254 7.2064657 12.661016 17.504656 25.424664 30.268303 35.722855 40.566494 49.053772 52.086502 56.330143 61.173782 66.628334 71.471977 79.391983 85.457443 90.911987 93.944717 98.788361 104.24291 107.27564 110.30837 115.15201 118.18474 125.49384 130.94838 135.79202 141.90112 147.35567 152.19931 155.23204 160.6866 165.53023 173.45024 183.14844 187.99207 191.0248 195.86844 199.50117 202.53391 207.37755 210.41028 213.44301 218.28664 226.20665 231.49756 236.3412 239.75575"
-             y="27.099001"
-             sodipodi:role="line"
-             id="tspan252">AufgrundderunterschiedlichenchemischenPotentialederbeidenMaterialienver-</tspan><tspan
-             x="-115.27 -111.02636 -106.18272 -100.72817 -97.695442 -92.851799 -87.397247 -82.553612 -74.862694 -70.619057 -67.586327 -62.742683 -55.051769 -47.175396 -41.720848 -36.266296 -31.422657 -28.389927 -22.935377 -19.302647 -14.459007 -11.426277 -6.5826368 -1.1280867 1.9046431 5.5373735 10.991923 16.446474 21.290113 28.970119 32.00285 39.693764 45.148315 49.991955 57.682873 64.959244 69.802879 73.435616 78.279251 81.311981 86.155624 93.846535 99.301086 104.14473 110.62473 118.50111 123.34474 131.22112 137.69022 143.14476 148.5993 156.29022 161.74478 164.77751 171.85751 179.13388 183.97752 189.43207 194.88663 200.34117 205.18481 210.63936 213.67209 218.51573 226.20665 231.49756 236.3412 239.75575"
-             y="40.647999"
-             sodipodi:role="line"
-             id="tspan254">schiebensichDonatorelektronenindenBereichdesGaAsunddieBandkantenver-</tspan><tspan
-             x="-115.27 -109.81545 -106.78272 -102.10271 -96.648163 -91.804527 -83.208153 -78.964516 -75.931786 -71.088142 -62.491776 -57.648132 -52.193584 -49.160854 -44.917213 -39.462666 -35.829933 -30.986294 -26.142653 -20.688103 -15.844462 -10.389913 -1.7826327 1.2500972 9.846468 15.301018 20.144659 26.919209 34.795578 39.639221 45.093769 53.079231 58.533783 63.377422 70.15197 78.028343 81.661072 86.504715 91.959267 96.802902 102.86836 107.71201 112.55564 118.01019 122.85384 128.73384 135.9993 140.84294 147.0284 152.48296 157.32658 164.10114 168.34479 173.18842 176.22115 181.6757 185.91934 188.95207 194.29753 199.75208 205.20663 209.45027 212.483 216.72664 219.75937 224.60301 230.05756 233.09029 237.93393"
-             y="54.196999"
-             sodipodi:role="line"
-             id="tspan256">biegensichentsprechendinderNähederGrenzfäche.Beiderselbstkonsistenten</tspan><tspan
-             x="-115.27 -108.60454 -103.14999 -98.906349 -93.451797 -87.997253 -79.706337 -74.251785 -71.219055 -66.375412 -62.131775 -57.288132 -50.19722 -44.13176 -40.499027 -35.044479 -29.589928 -26.557199 -21.713558 -13.226278 -6.1462727 -3.1135428 1.130097 7.0101018 11.853743 20.144659 25.599209 30.442848 35.286488 40.130131 45.584679 48.617409 53.461048 58.9156 64.49015 69.944702 74.788338 79.031982 86.111984 93.988358 97.021088 104.89745 109.7411 117.61747 124.69747 129.54111 132.57384 138.0284 145.71931 151.17386 154.80659 160.26114 165.71568 170.55933 174.19206 181.87207 189.14844 193.99208 199.44662 204.90117 207.9339 213.38846 218.2321 223.57756 231.26846 236.11211 239.14484"
-             y="67.746002"
-             sodipodi:role="line"
-             id="tspan258">LösungdiesesProblemsistzubeachten,dassAlGaAseinegrößereBandlückeals</tspan><tspan
-             x="-115.27 -107.39363 -102.54999 -94.673622 -88.106339 -82.651794 -77.808151 -73.564514 -70.531784 -67.499054 -62.655411 -57.299042 -51.844494 -46.389942 -38.600845 -33.146294 -30.113565 -22.946287 -16.880827 -12.037187 -8.4044561 0.082823403 3.1155531 7.9591937 13.413744 18.257383 21.69375 27.1483 30.18103 37.348309 40.381039 48.170135 56.046505 59.068329 66.944695 71.788338 79.664711 86.242897 91.086533 96.541084 100.17381 105.62836 109.26109 114.71564 120.1702 127.94839 133.40294 138.24658 144.20294 149.65749 153.29022 161.1666 166.62114 169.65387 172.6866 177.53024 181.16298 186.61752 192.07207 199.86118 205.31572 210.77028 216.72664 222.18118 227.63574 232.47939 237.93393"
-             y="81.294998"
-             sodipodi:role="line"
-             id="tspan260">GaAsbesitztunddieFermienergieinAlGaAsaufgrunddern-Dotierungnurknapp</tspan><tspan
-             x="-115.27 -109.81545 -104.3609 -101.32817 -96.484528 -92.851799 -87.397247 -82.553612 -79.520882 -70.455414 -65.00087 -60.157227 -52.913586 -46.248123 -41.404484 -38.371754 -35.339024 -29.884474 -24.429924 -18.975374 -14.731734 -9.2771845 -4.4335442 1.021006 6.4755559 11.930106 16.773746 22.228296 25.261026 33.726486 36.759216 39.791946 44.471951 49.926502 52.959232 59.297417 66.573792 71.417427 78.061073 83.515617 88.359261 93.202904 96.235634 101.69018 107.14473 111.98837 115.0211 119.86474 127.10838 134.98476 140.4393 143.47203 146.50476 151.3484 154.98114 160.43568 165.89023 174.9557 180.41025 185.25389 189.49753 192.53026 195.56299 200.40663 207.06117 212.51573 217.35938 225.21391 231.87938 236.72302 239.75575"
-             y="94.845001"
-             sodipodi:role="line"
-             id="tspan262">unterhalbderLeitungsbandkanteliegt.BeigeeigneterDotierungbesitztdasLei-</tspan><tspan
-             x="-115.27 -112.23727 -106.78272 -101.32817 -95.873619 -91.629982 -86.17543 -81.331787 -75.877243 -67.422684 -62.579048 -57.124496 -50.491764 -45.037212 -40.193573 -33.560841 -25.684471 -20.84083 -12.96446 -8.7208204 -5.0880899 0.97736961 5.8210101 8.8537397 11.88647 19.730112 25.184662 30.028303 36.661037 44.155586 49.610138 55.064686 58.097416 62.941059 68.395607 71.428337 77.493797 82.33744 87.181076 92.635628 100.49018 105.33382 108.36655 113.8211 118.66474 127.11929 131.36293 136.20657 141.66112 148.29385 152.53749 157.38113 162.83569 171.32297 176.16661 179.19934 184.04298 192.49753 197.95207 201.58481 206.42845 209.46118 214.30482 219.14847 224.60301 227.63574 233.09029 237.93393"
-             y="108.394"
-             sodipodi:role="line"
-             id="tspan264">tungsbandaufderGaAs-SeitederKontaktfächeeinensehrschmalendreieckigen</tspan><tspan
-             x="-115.27 -109.20454 -103.74999 -100.71726 -95.873619 -90.419067 -87.386337 -84.353607 -79.509972 -76.477242 -73.444511 -67.98996 -62.535412 -58.902679 -52.848129 -47.393581 -42.549938 -38.306301 -34.06266 -29.219019 -20.426285 -10.728095 -7.695365 -2.2408149 0.79191488 9.2791948 14.733745 26.5483 32.00285 37.457401 40.490131 45.333771 48.966499 54.421051 59.26469 62.297421 71.079247 76.533798 81.377434 88.348351 94.413811 99.257454 102.89018 111.37746 114.39928 119.24292 124.69747 129.54111 132.97748 138.43202 141.46475 149.64659 152.67932 155.71205 160.39204 165.8466 168.87933 174.93388 182.81024 185.84297 194.0139 199.46844 204.31209 209.76663 214.61028 220.06482 228.24664 234.91211 239.75575"
-             y="121.943"
-             sodipodi:role="line"
-             id="tspan266">Potentialtopf,dessenMinimumunterhalbderFermienergieliegt.DiegenaueLa-</tspan><tspan
-             x="-115.27 -109.81545 -102.28817 -96.833618 -91.989983 -85.062698 -78.997246 -73.542694 -70.509964 -65.666321 -60.211773 -57.179043 -54.146313 -49.302673 -46.269943 -43.237213 -37.782661 -32.328114 -28.695383 -23.851742 -16.935373 -9.0590029 -6.0262728 -2.3935423 5.7446461 11.199196 16.042837 21.497387 26.341026 32.057396 37.293762 42.748314 50.886501 56.341053 61.184692 67.49015 75.366524 80.821075 85.064713 90.519264 95.3629 100.81745 106.272 111.72655 117.18111 125.31929 130.77383 135.61748 141.93385 149.81023 153.44295 156.47568 160.71931 168.59569 173.43933 176.47206 179.50479 184.34843 189.80298 193.43571 198.89026 204.34482 209.79936 212.83209 215.86482 221.31937 229.45757 234.91211 239.75575"
-             y="135.492"
-             sodipodi:role="line"
-             id="tspan268">gedesPotentialtopfeswirddabeivonderAusdehnungderOrtswellenfunktionder</tspan><tspan
-             x="-115.27 -108.60454 -105.57181 -100.72817 -95.273621 -92.240891 -88.608162 -83.15361 -77.699059 -72.855423 -63.811775 -58.357224 -52.902676 -43.859032 -38.40448 -33.560841 -29.92811 -25.084471 -16.040827 -6.6153641 -1.7717236 3.0719168 8.5264664 12.770106 17.613747 20.537386 28.413755 31.446486 35.079216 40.533768 45.988316 51.442867 60.486511 65.941063 70.784698 75.028343 78.061073 81.093803 89.570168 98.057449 101.09018 107.40655 117.26838 120.3011 125.14474 130.59929 133.63202 136.66475 145.7084 148.74113 152.98477 159.6066 165.06114 168.09387 172.93752 176.57024 182.0248 186.86844 189.90117 196.21753 201.67209 206.51572 210.75937 218.5921 227.63574 235.51212 238.54485"
-             y="149.041"
-             sodipodi:role="line"
-             id="tspan270">ElektronenundderenWechselwirkungbestimmt.Wichtigisthierbei,dass–wie</tspan><tspan
-             x="58.603001 64.057549"
-             y="189.616"
-             sodipodi:role="line"
-             id="tspan272">10</tspan></text>
-</g></g></g></svg>
+   transform="matrix(1,0,0,-1,233.098,281.249)"
+   style="font-variant:normal;font-size:10.90909958px;font-family:'Nimbus Roman';-inkscape-font-specification:NimbusRomNo9L-Regu;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text274"><tspan
+     x="0 8.2909164 13.134557 19.603653 27.480022 32.934574 36.567303 42.021854 49.712769 55.16732 58.800049 64.254601 69.709152 72.741882 75.774605 80.618248 84.250977 87.283707 92.12735 99.207352 107.08372 110.11646 117.99283 122.83646 130.71283 137.79285 143.08376 147.9274 151.56012 159.43649 164.28014 169.73468 175.18924 180.03288 183.06561 188.62924 192.26198 200.55289 206.00745 210.85109 222.17473 226.41837 231.87292 234.90565 239.7493"
+     y="0"
+     sodipodi:role="line"
+     id="tspan248">4c)wurden-dotiertesAlGaAsverwendet.Indemskiz-</tspan><tspan
+     x="-115.27 -110.42636 -107.39363 -102.54999 -98.917259 -95.884529 -91.040886 -83.437248 -77.535423 -72.69178 -69.65905 -64.477234 -60.233589 -57.200859 -51.746311 -44.14267 -38.688118 -35.655388 -28.662655 -20.786285 -15.331735 -9.8771849 -5.0335445 -2.0008147 3.4537354 7.0864658 11.930106 14.962836 20.417385 28.893757 35.88649 41.341038 46.795589 55.282871 60.737419 66.191971 71.035606 78.639252 81.671982 92.308357 97.762901 102.60654 106.85018 111.69382 120.18111 123.21384 128.05748 135.66112 143.53749 146.57022 154.44659 159.29022 167.1666 171.41023 175.04297 182.91934 186.55206 189.58479 193.82845 196.86118 201.7048 204.73753 209.91936 215.21028 220.05391 223.68665 226.71938 231.56302 234.59575 237.62848 240.66121"
+     y="13.549"
+     sodipodi:role="line"
+     id="tspan250">ziertenFallsinddieDonatoratomehomogenimgesamtenAlGaAs-Kristallverteilt.</tspan><tspan
+     x="-115.27 -107.39363 -101.93908 -98.306351 -92.851799 -89.21907 -83.764519 -78.309967 -70.389961 -64.93541 -60.091774 -53.993584 -48.539036 -43.084484 -40.051754 -35.208115 -31.575384 -27.331745 -22.488104 -17.033554 -14.000825 -9.1571846 -3.7026343 -0.66990447 2.3628254 7.2064657 12.661016 17.504656 25.424664 30.268303 35.722855 40.566494 49.053772 52.086502 56.330143 61.173782 66.628334 71.471977 79.391983 85.457443 90.911987 93.944717 98.788361 104.24291 107.27564 110.30837 115.15201 118.18474 125.49384 130.94838 135.79202 141.90112 147.35567 152.19931 155.23204 160.6866 165.53023 173.45024 183.14844 187.99207 191.0248 195.86844 199.50117 202.53391 207.37755 210.41028 213.44301 218.28664 226.20665 231.49756 236.3412 239.75575"
+     y="27.099001"
+     sodipodi:role="line"
+     id="tspan252">AufgrundderunterschiedlichenchemischenPotentialederbeidenMaterialienver-</tspan><tspan
+     x="-115.27 -111.02636 -106.18272 -100.72817 -97.695442 -92.851799 -87.397247 -82.553612 -74.862694 -70.619057 -67.586327 -62.742683 -55.051769 -47.175396 -41.720848 -36.266296 -31.422657 -28.389927 -22.935377 -19.302647 -14.459007 -11.426277 -6.5826368 -1.1280867 1.9046431 5.5373735 10.991923 16.446474 21.290113 28.970119 32.00285 39.693764 45.148315 49.991955 57.682873 64.959244 69.802879 73.435616 78.279251 81.311981 86.155624 93.846535 99.301086 104.14473 110.62473 118.50111 123.34474 131.22112 137.69022 143.14476 148.5993 156.29022 161.74478 164.77751 171.85751 179.13388 183.97752 189.43207 194.88663 200.34117 205.18481 210.63936 213.67209 218.51573 226.20665 231.49756 236.3412 239.75575"
+     y="40.647999"
+     sodipodi:role="line"
+     id="tspan254">schiebensichDonatorelektronenindenBereichdesGaAsunddieBandkantenver-</tspan><tspan
+     x="-115.27 -109.81545 -106.78272 -102.10271 -96.648163 -91.804527 -83.208153 -78.964516 -75.931786 -71.088142 -62.491776 -57.648132 -52.193584 -49.160854 -44.917213 -39.462666 -35.829933 -30.986294 -26.142653 -20.688103 -15.844462 -10.389913 -1.7826327 1.2500972 9.846468 15.301018 20.144659 26.919209 34.795578 39.639221 45.093769 53.079231 58.533783 63.377422 70.15197 78.028343 81.661072 86.504715 91.959267 96.802902 102.86836 107.71201 112.55564 118.01019 122.85384 128.73384 135.9993 140.84294 147.0284 152.48296 157.32658 164.10114 168.34479 173.18842 176.22115 181.6757 185.91934 188.95207 194.29753 199.75208 205.20663 209.45027 212.483 216.72664 219.75937 224.60301 230.05756 233.09029 237.93393"
+     y="54.196999"
+     sodipodi:role="line"
+     id="tspan256">biegensichentsprechendinderNähederGrenzfäche.Beiderselbstkonsistenten</tspan><tspan
+     x="-115.27 -108.60454 -103.14999 -98.906349 -93.451797 -87.997253 -79.706337 -74.251785 -71.219055 -66.375412 -62.131775 -57.288132 -50.19722 -44.13176 -40.499027 -35.044479 -29.589928 -26.557199 -21.713558 -13.226278 -6.1462727 -3.1135428 1.130097 7.0101018 11.853743 20.144659 25.599209 30.442848 35.286488 40.130131 45.584679 48.617409 53.461048 58.9156 64.49015 69.944702 74.788338 79.031982 86.111984 93.988358 97.021088 104.89745 109.7411 117.61747 124.69747 129.54111 132.57384 138.0284 145.71931 151.17386 154.80659 160.26114 165.71568 170.55933 174.19206 181.87207 189.14844 193.99208 199.44662 204.90117 207.9339 213.38846 218.2321 223.57756 231.26846 236.11211 239.14484"
+     y="67.746002"
+     sodipodi:role="line"
+     id="tspan258">LösungdiesesProblemsistzubeachten,dassAlGaAseinegrößereBandlückeals</tspan><tspan
+     x="-115.27 -107.39363 -102.54999 -94.673622 -88.106339 -82.651794 -77.808151 -73.564514 -70.531784 -67.499054 -62.655411 -57.299042 -51.844494 -46.389942 -38.600845 -33.146294 -30.113565 -22.946287 -16.880827 -12.037187 -8.4044561 0.082823403 3.1155531 7.9591937 13.413744 18.257383 21.69375 27.1483 30.18103 37.348309 40.381039 48.170135 56.046505 59.068329 66.944695 71.788338 79.664711 86.242897 91.086533 96.541084 100.17381 105.62836 109.26109 114.71564 120.1702 127.94839 133.40294 138.24658 144.20294 149.65749 153.29022 161.1666 166.62114 169.65387 172.6866 177.53024 181.16298 186.61752 192.07207 199.86118 205.31572 210.77028 216.72664 222.18118 227.63574 232.47939 237.93393"
+     y="81.294998"
+     sodipodi:role="line"
+     id="tspan260">GaAsbesitztunddieFermienergieinAlGaAsaufgrunddern-Dotierungnurknapp</tspan><tspan
+     x="-115.27 -109.81545 -104.3609 -101.32817 -96.484528 -92.851799 -87.397247 -82.553612 -79.520882 -70.455414 -65.00087 -60.157227 -52.913586 -46.248123 -41.404484 -38.371754 -35.339024 -29.884474 -24.429924 -18.975374 -14.731734 -9.2771845 -4.4335442 1.021006 6.4755559 11.930106 16.773746 22.228296 25.261026 33.726486 36.759216 39.791946 44.471951 49.926502 52.959232 59.297417 66.573792 71.417427 78.061073 83.515617 88.359261 93.202904 96.235634 101.69018 107.14473 111.98837 115.0211 119.86474 127.10838 134.98476 140.4393 143.47203 146.50476 151.3484 154.98114 160.43568 165.89023 174.9557 180.41025 185.25389 189.49753 192.53026 195.56299 200.40663 207.06117 212.51573 217.35938 225.21391 231.87938 236.72302 239.75575"
+     y="94.845001"
+     sodipodi:role="line"
+     id="tspan262">unterhalbderLeitungsbandkanteliegt.BeigeeigneterDotierungbesitztdasLei-</tspan><tspan
+     x="-115.27 -112.23727 -106.78272 -101.32817 -95.873619 -91.629982 -86.17543 -81.331787 -75.877243 -67.422684 -62.579048 -57.124496 -50.491764 -45.037212 -40.193573 -33.560841 -25.684471 -20.84083 -12.96446 -8.7208204 -5.0880899 0.97736961 5.8210101 8.8537397 11.88647 19.730112 25.184662 30.028303 36.661037 44.155586 49.610138 55.064686 58.097416 62.941059 68.395607 71.428337 77.493797 82.33744 87.181076 92.635628 100.49018 105.33382 108.36655 113.8211 118.66474 127.11929 131.36293 136.20657 141.66112 148.29385 152.53749 157.38113 162.83569 171.32297 176.16661 179.19934 184.04298 192.49753 197.95207 201.58481 206.42845 209.46118 214.30482 219.14847 224.60301 227.63574 233.09029 237.93393"
+     y="108.394"
+     sodipodi:role="line"
+     id="tspan264">tungsbandaufderGaAs-SeitederKontaktfächeeinensehrschmalendreieckigen</tspan><tspan
+     x="-115.27 -109.20454 -103.74999 -100.71726 -95.873619 -90.419067 -87.386337 -84.353607 -79.509972 -76.477242 -73.444511 -67.98996 -62.535412 -58.902679 -52.848129 -47.393581 -42.549938 -38.306301 -34.06266 -29.219019 -20.426285 -10.728095 -7.695365 -2.2408149 0.79191488 9.2791948 14.733745 26.5483 32.00285 37.457401 40.490131 45.333771 48.966499 54.421051 59.26469 62.297421 71.079247 76.533798 81.377434 88.348351 94.413811 99.257454 102.89018 111.37746 114.39928 119.24292 124.69747 129.54111 132.97748 138.43202 141.46475 149.64659 152.67932 155.71205 160.39204 165.8466 168.87933 174.93388 182.81024 185.84297 194.0139 199.46844 204.31209 209.76663 214.61028 220.06482 228.24664 234.91211 239.75575"
+     y="121.943"
+     sodipodi:role="line"
+     id="tspan266">Potentialtopf,dessenMinimumunterhalbderFermienergieliegt.DiegenaueLa-</tspan><tspan
+     x="-115.27 -109.81545 -102.28817 -96.833618 -91.989983 -85.062698 -78.997246 -73.542694 -70.509964 -65.666321 -60.211773 -57.179043 -54.146313 -49.302673 -46.269943 -43.237213 -37.782661 -32.328114 -28.695383 -23.851742 -16.935373 -9.0590029 -6.0262728 -2.3935423 5.7446461 11.199196 16.042837 21.497387 26.341026 32.057396 37.293762 42.748314 50.886501 56.341053 61.184692 67.49015 75.366524 80.821075 85.064713 90.519264 95.3629 100.81745 106.272 111.72655 117.18111 125.31929 130.77383 135.61748 141.93385 149.81023 153.44295 156.47568 160.71931 168.59569 173.43933 176.47206 179.50479 184.34843 189.80298 193.43571 198.89026 204.34482 209.79936 212.83209 215.86482 221.31937 229.45757 234.91211 239.75575"
+     y="135.492"
+     sodipodi:role="line"
+     id="tspan268">gedesPotentialtopfeswirddabeivonderAusdehnungderOrtswellenfunktionder</tspan><tspan
+     x="-115.27 -108.60454 -105.57181 -100.72817 -95.273621 -92.240891 -88.608162 -83.15361 -77.699059 -72.855423 -63.811775 -58.357224 -52.902676 -43.859032 -38.40448 -33.560841 -29.92811 -25.084471 -16.040827 -6.6153641 -1.7717236 3.0719168 8.5264664 12.770106 17.613747 20.537386 28.413755 31.446486 35.079216 40.533768 45.988316 51.442867 60.486511 65.941063 70.784698 75.028343 78.061073 81.093803 89.570168 98.057449 101.09018 107.40655 117.26838 120.3011 125.14474 130.59929 133.63202 136.66475 145.7084 148.74113 152.98477 159.6066 165.06114 168.09387 172.93752 176.57024 182.0248 186.86844 189.90117 196.21753 201.67209 206.51572 210.75937 218.5921 227.63574 235.51212 238.54485"
+     y="149.041"
+     sodipodi:role="line"
+     id="tspan270">ElektronenundderenWechselwirkungbestimmt.Wichtigisthierbei,dass–wie</tspan><tspan
+     x="58.603001 64.057549"
+     y="189.616"
+     sodipodi:role="line"
+     id="tspan272">10</tspan></text>
+
+</g></g><path
+       style="fill:none;stroke:#000000;stroke-width:0.86361647;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.72723291, 0.86361646;stroke-dashoffset:0;stroke-opacity:0.62051284"
+       d="M 290.08562,460.82624 V 347.9451"
+       id="path948"
+       inkscape:connector-curvature="0" /><text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11.00000095px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75"
+       x="221.66325"
+       y="-369.3862"
+       id="text952"
+       transform="scale(1,-1)"><tspan
+         sodipodi:role="line"
+         id="tspan950"
+         x="221.66325"
+         y="-369.3862"
+         style="stroke-width:0.75">n-AlGaAs</tspan></text>
+<text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11.00000095px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75"
+       x="328.23819"
+       y="-370.01682"
+       id="text956"
+       transform="scale(1,-1)"><tspan
+         sodipodi:role="line"
+         id="tspan954"
+         x="328.23819"
+         y="-370.01682"
+         style="stroke-width:0.75">GaAs</tspan></text>
+</g></svg>
