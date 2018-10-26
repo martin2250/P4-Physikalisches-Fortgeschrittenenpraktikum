@@ -3,6 +3,7 @@ from __future__ import division, print_function
 
 import sys
 
+import matplotlib.patches
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.signal
@@ -21,6 +22,12 @@ if len(B_hall) != len(U_hall) or len(B_res) != len(U_res):
 	print('lengths don\'t match')
 	exit(1)
 
+# make figure
+fig = plt.figure()
+
+axL = fig.add_subplot(111)
+axR = axL.twinx()
+
 # find index where shit goes haywire
 I_hall = B_hall + 1j * U_hall
 I_res = B_res + 1j * U_res
@@ -31,18 +38,101 @@ I_res_diff = np.abs(np.diff(I_res))
 cutoff_hall = np.argmax(I_hall_diff > 1) - 1
 cutoff_res = np.argmax(I_res_diff > 1) - 1
 
-# cut off bad parts and simultaneously apply weiner filter, to filter weiners
-weiner_size = 11
-B_hall = scipy.signal.wiener(B_hall[:cutoff_hall], weiner_size)
-U_hall = scipy.signal.wiener(U_hall[:cutoff_hall], weiner_size) * 1000
-B_res = scipy.signal.wiener(B_res[:cutoff_res], weiner_size)
-U_res = scipy.signal.wiener(U_res[:cutoff_res], weiner_size) * 1000
+# cut off haywire shit and scale voltages to mV
+B_hall = B_hall[:cutoff_hall]
+U_hall = U_hall[:cutoff_hall] * 1000
+B_res = B_res[:cutoff_res]
+U_res = U_res[:cutoff_res] * 1000
 
-# make figure
-fig = plt.figure()
+# choose filter
+if False:
+	# apply weiner filter, to filter weiners
+	weiner_size = 11
+	B_hall = scipy.signal.wiener(B_hall, weiner_size)
+	U_hall = scipy.signal.wiener(U_hall, weiner_size)
+	B_res = scipy.signal.wiener(B_res, weiner_size)
+	U_res = scipy.signal.wiener(U_res, weiner_size)
+if True:
+	# apply savgol filter
+	savgol_size = 51
+	savgol_order = 2
+	B_hall = scipy.signal.savgol_filter(B_hall, savgol_size, savgol_order)
+	U_hall = scipy.signal.savgol_filter(U_hall, savgol_size, savgol_order)
+	B_res = scipy.signal.savgol_filter(B_res, savgol_size, savgol_order)
+	U_res = scipy.signal.savgol_filter(U_res, savgol_size, savgol_order)
 
-axL = fig.add_subplot(111)
-axR = axL.twinx()
+# scale magnetic field
+max_B = np.max(np.append(B_hall, B_res))
+min_B = np.min(np.append(B_hall, B_res))
+
+factor_B = 6 / (max_B - min_B)
+print(f'magnetic field scaling factor: {factor_B:0.4f}; offset: {min_B:0.2f}T')
+B_hall = (B_hall - min_B) * factor_B
+B_res = (B_res - min_B) * factor_B
+
+# get U_res peak indexes
+peak_dict = {
+	'4K-20uA': [1298, 2029, 2295, 2442],
+	'2K-20uA': [710, 1417, 1671, 1817, 1900],
+	'2K-100uA': [657, 1451, 1712]
+}  # (I'm sorry)
+indexes_peaks_U_res = peak_dict[sys.argv[1]]
+U_res_peak = U_res[indexes_peaks_U_res]
+B_res_peak = B_res[indexes_peaks_U_res]
+
+# print U_res peaks
+print('peaks of logitudinal voltage:')
+print('B (T)\tU (mV)')
+for (B, U) in zip(B_res_peak, U_res_peak):
+	print(f'{B:0.2f}\t{U:0.0f}')
+
+# get U_h plateau voltages
+current_dict = {
+	'4K-20uA': 20e-6,
+	'2K-20uA': 20e-6,
+	'2K-100uA': 100e-6
+}
+current = current_dict[sys.argv[1]]
+hall_resistance = 25.81281e3
+# dict contents: (index_min, index_max, current uA, hall index)
+plateau_dict = {
+	'4K-20uA': [
+		(165, 190),
+		(490, 620),
+		(1334, 2060)
+	],
+	'2K-20uA': [
+		(113, 165),
+		(424, 630),
+		(1252, 2160)
+	],
+	'2K-100uA': [
+		(1135, 1202),
+		(1972, 2615)
+	]
+}
+indexes_plateau_U_hall = plateau_dict[sys.argv[1]]
+
+print()
+print('hall plateaus:')
+print('B_min (T)\tB_max (T)\tU_h_mean (mV)\tU_h_std (mV)\ti')
+for (plat_start, plat_end) in indexes_plateau_U_hall:
+	U_hall_plat = U_hall[plat_start:plat_end]
+	B_hall_plat = B_hall[plat_start:plat_end]
+
+	print(f'{np.min(B_hall_plat):0.2f}\t\t{np.max(B_hall_plat):0.2f}\t\t{np.mean(U_hall_plat):0.0f}\t\t{np.std(U_hall_plat):0.1f}\t\t{1000 * hall_resistance * current / np.mean(U_hall_plat):0.2f}')
+
+	# draw ellipse
+	# el = matplotlib.patches.Ellipse(xy=(np.mean(B_hall_plat), np.mean(
+	# 	U_hall_plat)), width=(0.5 + np.max(B_hall_plat) - np.min(B_hall_plat)), height=10, fill=False, linewidth=2)
+	# axL.add_artist(el)
+
+	# mark start + end
+	axL.vlines(np.min(B_hall_plat), np.mean(
+		U_hall_plat) - 10, np.mean(U_hall_plat) + 10)
+	axL.vlines(np.max(B_hall_plat), np.mean(
+		U_hall_plat) - 10, np.mean(U_hall_plat) + 10)
+	# TODO: prettify that
 
 # align y axes
 Uh_max = np.max(U_hall)
@@ -57,9 +147,10 @@ axL.set_yticks(ticks)
 axR.set_yticks(ticks / 4)
 
 # plot
-axL.plot(B_hall, U_hall, '.', label='U_h')
+axL.plot(B_hall, U_hall, '.', label='U_h', markersize=1)
 axR.plot(0, 0)  # skip first color
-axR.plot(B_res, U_res, '.', label='U_res')
+axR.plot(B_res, U_res, '.', label='U_res', markersize=1)
+axR.plot(B_res_peak, U_res_peak, '+k', markersize=20)
 
 axL.set_xlabel('B (T)')
 axL.set_ylabel('$U_h$ (mV)')
