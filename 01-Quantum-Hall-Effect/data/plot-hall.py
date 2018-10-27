@@ -31,6 +31,9 @@ axR = axL.twinx()
 fig_R_hall = plt.figure(2)
 ax_R_hall = fig_R_hall.add_subplot(111)
 
+fig_B_periodicity = plt.figure(3)
+ax_B_periodicity = fig_B_periodicity.add_subplot(111)
+
 # find index where shit goes haywire
 I_hall = B_hall + 1j * U_hall
 I_res = B_res + 1j * U_res
@@ -82,6 +85,22 @@ peak_dict = {
 indexes_peaks_U_res = peak_dict[sys.argv[1]]
 U_res_peak = U_res[indexes_peaks_U_res]
 B_res_peak = B_res[indexes_peaks_U_res]
+
+i_B_periodicity = np.arange(len(B_res_peak)) * 2
+one_over_B_periodicity = 1 / B_res_peak
+
+one_over_B_period, _ = np.polyfit(i_B_periodicity, one_over_B_periodicity, 1)
+
+ax_B_periodicity.plot(i_B_periodicity, one_over_B_periodicity, 'xk')
+ax_B_periodicity.set_xlabel('$i$')
+ax_B_periodicity.set_ylabel('$\\frac{1}{B}$ (T$^{-1}$)')
+ax_B_periodicity.set_title('absolute value of i neither correct nor relevant')
+
+print(f'Delta (1/B) = {one_over_B_period:0.2f} T^-1')
+electron_charge = 1.602e-19
+planck = 6.626e-34
+charge_carrier_density = 2 * electron_charge / (planck * one_over_B_period)
+print(f'charge carrier density: {charge_carrier_density * 1e-4:0.3e} 1/m²')
 
 # print U_res peaks
 print('peaks of logitudinal voltage:')
