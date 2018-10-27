@@ -23,10 +23,13 @@ if len(B_hall) != len(U_hall) or len(B_res) != len(U_res):
 	exit(1)
 
 # make figure
-fig = plt.figure()
+fig = plt.figure(1)
 
 axL = fig.add_subplot(111)
 axR = axL.twinx()
+
+fig_R_hall = plt.figure(2)
+ax_R_hall = fig_R_hall.add_subplot(111)
 
 # find index where shit goes haywire
 I_hall = B_hall + 1j * U_hall
@@ -115,12 +118,27 @@ indexes_plateau_U_hall = plateau_dict[sys.argv[1]]
 
 print()
 print('hall plateaus:')
-print('B_min (T)\tB_max (T)\tU_h_mean (mV)\tU_h_std (mV)\ti')
+print('B_min (T)\tB_max (T)\tU_h_mean (mV)\tU_h_std (mV)\t(i)\ti\tR_h (ohm)')
+
+data_hall_regression_i = []
+data_hall_regression_1_over_R_hall = []
+
 for (plat_start, plat_end) in indexes_plateau_U_hall:
 	U_hall_plat = U_hall[plat_start:plat_end]
 	B_hall_plat = B_hall[plat_start:plat_end]
 
-	print(f'{np.min(B_hall_plat):0.2f}\t\t{np.max(B_hall_plat):0.2f}\t\t{np.mean(U_hall_plat):0.0f}\t\t{np.std(U_hall_plat):0.1f}\t\t{1000 * hall_resistance * current / np.mean(U_hall_plat):0.2f}')
+	B_min = np.min(B_hall_plat)
+	B_max = np.max(B_hall_plat)
+	U_mean = np.mean(U_hall_plat)
+	U_std = np.std(U_hall_plat)
+	R_hall = U_mean * 1e-3 / current
+	i = hall_resistance / R_hall
+	i_actual = int(2 * round(i / 2))
+
+	print(f'{B_min:0.2f}\t\t{B_max:0.2f}\t\t{U_mean:0.0f}\t\t{U_std:0.1f}\t\t{i:0.2f}\t{i_actual:d}\t{R_hall:0.1f}')
+
+	data_hall_regression_i.append(i_actual)
+	data_hall_regression_1_over_R_hall.append(1 / R_hall)
 
 	# draw ellipse
 	# el = matplotlib.patches.Ellipse(xy=(np.mean(B_hall_plat), np.mean(
@@ -133,6 +151,23 @@ for (plat_start, plat_end) in indexes_plateau_U_hall:
 	axL.vlines(np.max(B_hall_plat), np.mean(
 		U_hall_plat) - 10, np.mean(U_hall_plat) + 10)
 	# TODO: prettify that
+
+# do linear regression of hall voltages
+
+slope_1_over_R_hall_over_i, _ = np.polyfit(
+	data_hall_regression_i, data_hall_regression_1_over_R_hall, 1)
+
+R_k_measured = 1 / slope_1_over_R_hall_over_i
+alpha_measured = 299792458 * 4 * np.pi * 1e-7 / (2 * R_k_measured)
+
+print(
+	f'1/(R_h * i) = {slope_1_over_R_hall_over_i*1e6:0.2f} uS ^= {R_k_measured:0.1f}ohm')
+print(f'1/alpha = {1/alpha_measured:0.2f}')
+
+ax_R_hall.plot(data_hall_regression_i,
+               np.array(data_hall_regression_1_over_R_hall) * 1e3, 'xk')
+ax_R_hall.set_xlabel('$i$')
+ax_R_hall.set_ylabel('$\\frac{1}{R_h}$ (mS)')
 
 # align y axes
 Uh_max = np.max(U_hall)
