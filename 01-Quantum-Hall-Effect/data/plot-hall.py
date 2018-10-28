@@ -9,7 +9,10 @@ import numpy as np
 import scipy.signal
 
 # for p in 4K-20uA 2K-20uA 2K-100uA; do ./plot-hall.py $p & done
-
+if len(sys.argv) < 3:
+	print('Usage: ./plot-hall.py <show|table|save> [--suppress-plots] (filename for save)')
+	sys.exit(2)
+	
 param = sys.argv[1]
 loadparams = {'unpack': True, 'skiprows': 3, 'delimiter': ';'}
 
@@ -72,7 +75,7 @@ max_B = np.max(np.append(B_hall, B_res))
 min_B = np.min(np.append(B_hall, B_res))
 
 factor_B = 6 / (max_B - min_B)
-print(f'magnetic field scaling factor: {factor_B:0.4f}; offset: {min_B:0.2f}T')
+
 B_hall = (B_hall - min_B) * factor_B
 B_res = (B_res - min_B) * factor_B
 
@@ -96,17 +99,12 @@ ax_B_periodicity.set_xlabel('$i$')
 ax_B_periodicity.set_ylabel('$\\frac{1}{B}$ (T$^{-1}$)')
 ax_B_periodicity.set_title('absolute value of i neither correct nor relevant')
 
-print(f'Delta (1/B) = {one_over_B_period:0.2f} T^-1')
+
 electron_charge = 1.602e-19
 planck = 6.626e-34
 charge_carrier_density = 2 * electron_charge / (planck * one_over_B_period)
-print(f'charge carrier density: {charge_carrier_density * 1e-4:0.3e} 1/m²')
 
 # print U_res peaks
-print('peaks of logitudinal voltage:')
-print('B (T)\tU (mV)')
-for (B, U) in zip(B_res_peak, U_res_peak):
-	print(f'{B:0.2f}\t{U:0.0f}')
 
 # get U_h plateau voltages
 current_dict = {
@@ -135,9 +133,6 @@ plateau_dict = {
 }
 indexes_plateau_U_hall = plateau_dict[sys.argv[1]]
 
-print()
-print('hall plateaus:')
-print('B_min (T)\tB_max (T)\tU_h_mean (mV)\tU_h_std (mV)\t(i)\ti\tR_h (ohm)')
 
 data_hall_regression_i = []
 data_hall_regression_1_over_R_hall = []
@@ -154,7 +149,6 @@ for (plat_start, plat_end) in indexes_plateau_U_hall:
 	i = hall_resistance / R_hall
 	i_actual = int(2 * round(i / 2))
 
-	print(f'{B_min:0.2f}\t\t{B_max:0.2f}\t\t{U_mean:0.0f}\t\t{U_std:0.1f}\t\t{i:0.2f}\t{i_actual:d}\t{R_hall:0.1f}')
 
 	data_hall_regression_i.append(i_actual)
 	data_hall_regression_1_over_R_hall.append(1 / R_hall)
@@ -179,9 +173,6 @@ slope_1_over_R_hall_over_i, _ = np.polyfit(
 R_k_measured = 1 / slope_1_over_R_hall_over_i
 alpha_measured = 299792458 * 4 * np.pi * 1e-7 / (2 * R_k_measured)
 
-print(
-	f'1/(R_h * i) = {slope_1_over_R_hall_over_i*1e6:0.2f} uS ^= {R_k_measured:0.1f}ohm')
-print(f'1/alpha = {1/alpha_measured:0.2f}')
 
 ax_R_hall.plot(data_hall_regression_i,
                np.array(data_hall_regression_1_over_R_hall) * 1e3, 'xk')
@@ -214,7 +205,48 @@ fig.legend()
 
 plt.grid()
 
-if len(sys.argv) == 2:
-	plt.show()
-elif len(sys.argv) >= 3:
-	plt.savefig(sys.argv[2])
+def genTables():
+
+	dick = '\\begin{tabular}{S|S}\n\\toprule\nB (\\si{\\tesla})\t&\tU (\\si{\\mV})\t\\\\\n'
+	dick += '\\midrule\n'
+	for (B, U) in zip(B_res_peak, U_res_peak):
+		dick += (f'{B:0.2f}\t&\t{U:0.0f} \\\\\n')
+	dick += '\\bottomrule\n\\end{tabular}'
+
+	print(dick)
+
+	dick = '\\begin{tabular}{SS|SS|S|S}\n\\toprule\nB_\\text{min} (\\si{\\tesla})\t&\tB_\\text{max} (\\si{\\tesla})\t&\t\\bar{U_\\text{h}} (\\si{\\mV})\t&\t\\Delta U_\\text{h} (\\si{\\mV})\t&\ti\t&\tR_\\text{h} (\\si{\\ohm})\t\\\\\n'
+	dick += '\\midrule\n'
+	for (plat_start, plat_end) in indexes_plateau_U_hall:
+		dick += (f'{B_min:0.2f}\t&\t{B_max:0.2f}\t&\t{U_mean:0.0f}\t&\t{U_std:0.1f}\t&\t{i:0.2f}\t&\t{R_hall:0.1f} \\\\\n')
+	dick += '\\bottomrule\n\\end{tabular}'
+
+	print(dick)
+
+if len(sys.argv) >= 3:
+
+	if sys.argv[2] == 'show':
+
+		print(f'magnetic field scaling factor: {factor_B:0.4f}; offset: {min_B:0.2f}T')
+		print(f'Delta (1/B) = {one_over_B_period:0.2f} T^-1')
+		print(f'charge carrier density: {charge_carrier_density * 1e-4:0.3e} 1/m²')
+		print('peaks of logitudinal voltage:')
+		print('B (T)\tU (mV)')
+		for (B, U) in zip(B_res_peak, U_res_peak):
+			print(f'{B:0.2f}\t{U:0.0f}')
+		print('\nhall plateaus:')
+		print('B_min (T)\tB_max (T)\tU_h_mean (mV)\tU_h_std (mV)\t(i)\ti\tR_h (ohm)')
+		for (plat_start, plat_end) in indexes_plateau_U_hall:
+			print(f'{B_min:0.2f}\t\t{B_max:0.2f}\t\t{U_mean:0.0f}\t\t{U_std:0.1f}\t\t{i:0.2f}\t{i_actual:d}\t{R_hall:0.1f}')
+		print(f'1/(R_h * i) = {slope_1_over_R_hall_over_i*1e6:0.2f} uS ^= {R_k_measured:0.1f}ohm')
+		print(f'1/alpha = {1/alpha_measured:0.2f}')
+
+		if len(sys.argv) > 3 and sys.argv[3] == '--suppress-plots':
+			pass
+		else:
+			plt.show()
+
+	if sys.argv[2] == 'table':
+		genTables()
+	if sys.argv[2] == 'save':
+		plt.savefig(sys.argv[3])
