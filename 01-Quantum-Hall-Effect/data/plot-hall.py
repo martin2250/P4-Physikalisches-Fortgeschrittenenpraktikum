@@ -134,7 +134,7 @@ current_dict = {
 }
 current = current_dict[args.curve]
 hall_resistance = 25.81281e3
-# dict contents: (index_min, index_max, current uA, hall index)
+# dict contents: (index_min, index_max)
 plateau_dict = {
 	'4K-20uA': [
 		(165, 190),
@@ -171,6 +171,8 @@ i_actual_arr = []
 for (plat_start, plat_end) in indexes_plateau_U_hall:
 	U_hall_plat = U_hall_unfiltered[plat_start:plat_end]
 	B_hall_plat = B_hall_unfiltered[plat_start:plat_end]
+	U_hall_plat_f = U_hall[plat_start:plat_end]
+	B_hall_plat_f = B_hall[plat_start:plat_end]
 
 	B_min = np.min(B_hall_plat)
 	B_min_arr.append(B_min)
@@ -189,6 +191,8 @@ for (plat_start, plat_end) in indexes_plateau_U_hall:
 	i_actual = int(2 * round(i / 2))
 	i_actual_arr.append(i_actual)
 
+	axL.annotate(i_actual, xy=(np.mean([np.min(B_hall_plat_f), np.max(B_hall_plat_f)]), np.mean(U_hall_plat_f) + 10),ha="center",va="bottom")
+
 	data_hall_regression_i.append(i_actual)
 	data_hall_regression_1_over_R_hall.append(1 / R_hall)
 	data_hall_regression_1_over_R_hall_err.append(R_hall_err / (R_hall**2))
@@ -199,10 +203,10 @@ for (plat_start, plat_end) in indexes_plateau_U_hall:
 	# axL.add_artist(el)
 
 	# mark start + end
-	axL.vlines(np.min(B_hall_plat), np.mean(
-		U_hall_plat) - 10, np.mean(U_hall_plat) + 10)
-	axL.vlines(np.max(B_hall_plat), np.mean(
-		U_hall_plat) - 10, np.mean(U_hall_plat) + 10)
+	axL.vlines(np.min(B_hall_plat_f), np.mean(
+		U_hall_plat) - 10, np.mean(U_hall_plat_f) + 10)
+	axL.vlines(np.max(B_hall_plat_f), np.mean(
+		U_hall_plat) - 10, np.mean(U_hall_plat_f) + 10)
 	# TODO: prettify that
 
 # do linear regression of hall voltages
