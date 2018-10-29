@@ -8,6 +8,8 @@ import matplotlib.patches
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.signal
+import kafe
+from kafe.function_library import linear_2par
 
 parser = argparse.ArgumentParser()
 
@@ -154,6 +156,7 @@ indexes_plateau_U_hall = plateau_dict[args.curve]
 
 data_hall_regression_i = []
 data_hall_regression_1_over_R_hall = []
+data_hall_regression_1_over_R_hall_err = []
 
 #I don't even care anymore at this point
 B_min_arr = []
@@ -161,6 +164,7 @@ B_max_arr = []
 U_mean_arr = []
 U_std_arr = []
 R_hall_arr = []
+R_hall_err_arr = []
 i_arr = []
 i_actual_arr = []
 
@@ -178,6 +182,8 @@ for (plat_start, plat_end) in indexes_plateau_U_hall:
 	U_std_arr.append(U_std)
 	R_hall = U_mean * 1e-3 / current
 	R_hall_arr.append(R_hall)
+	R_hall_err = U_std * 1e-3 / current
+	R_hall_err_arr.append(R_hall_err)
 	i = hall_resistance / R_hall
 	i_arr.append(i)
 	i_actual = int(2 * round(i / 2))
@@ -185,6 +191,7 @@ for (plat_start, plat_end) in indexes_plateau_U_hall:
 
 	data_hall_regression_i.append(i_actual)
 	data_hall_regression_1_over_R_hall.append(1 / R_hall)
+	data_hall_regression_1_over_R_hall_err.append(R_hall_err / (R_hall**2))
 
 	# draw ellipse
 	# el = matplotlib.patches.Ellipse(xy=(np.mean(B_hall_plat), np.mean(
@@ -206,9 +213,21 @@ data_hall_regression_1_over_R_hall = np.array(
 slope_1_over_R_hall_over_i, offset_1_over_R_hall_over_i = np.polyfit(
 	data_hall_regression_i, data_hall_regression_1_over_R_hall, 1)
 
-R_k_measured = 1 / slope_1_over_R_hall_over_i
-alpha_measured = 299792458 * 4 * np.pi * 1e-7 / (2 * R_k_measured)
 
+dataset_1_over_R_hall_over_i = kafe.Dataset(data=[data_hall_regression_i, data_hall_regression_1_over_R_hall])
+dataset_1_over_R_hall_over_i.add_error_source('y', 'simple', data_hall_regression_1_over_R_hall_err)
+fit_1_over_R_hall_over_i = kafe.Fit(dataset_1_over_R_hall_over_i, linear_2par)
+fit_1_over_R_hall_over_i.do_fit(quiet=True)
+# my_p = kafe.Plot(fit_1_over_R_hall_over_i)
+# my_p.plot_all()
+# my_p.show()
+slope_1_over_R_hall_over_i_err = fit_1_over_R_hall_over_i.get_results()[0][1]
+
+R_k_measured = 1 / slope_1_over_R_hall_over_i
+
+# alpha_measured = 299792458 * 4 * np.pi * 1e-7 / (2 * R_k_measured)
+alpha_measured = slope_1_over_R_hall_over_i * 299792458 * 4 * np.pi * 1e-7 / 2
+alpha_measured_err = slope_1_over_R_hall_over_i_err * 299792458 * 4 * np.pi * 1e-7 / 2
 
 ax_R_hall.plot(data_hall_regression_i,
 			   data_hall_regression_1_over_R_hall * 1e3, 'xk')
@@ -296,4 +315,5 @@ if showPlots:
 	print(
 		f'1/(R_h * i) = {slope_1_over_R_hall_over_i*1e6:0.2f} uS ^= {R_k_measured:0.1f}ohm')
 	print(f'1/alpha = {1/alpha_measured:0.2f}')
+	print(f'1/alpha err = {alpha_measured_err/(alpha_measured**2):0.2f}')
 	plt.show()
