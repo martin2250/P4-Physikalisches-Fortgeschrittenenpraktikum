@@ -29,16 +29,151 @@ A \texttt{PeakTech 12xx} digital oscilloscope is used to acquire voltage curves,
 	\label{fig:comparison}
 \end{figure}
 \autoref{fig:comparison} shows a side-by-side comparison of example data prior to and after processing.
-It is easy to see that part of the data is corrupted and cannot be evaluated as a result of using the \texttt{PeakTech} oscilloscope.
+It is easy to see that part of the data is corrupted and cannot be evaluated as a result of a data corruption while saving the trace to a file.
 Therefore, the corrupted part is cut off and a Savitzky–Golay filter is applied to the data for the purpose of increasing the signal-to-noise ratio.
 
 Since, in this setup, the magnetic field is recorded with the oscilloscope as well, the oscilloscope's measuremement and the magnetic field have to be put into context by calculating a scaling factor for the B-curve.
 
-\section{Longitudinal Voltages} %TODO: Listing of long. voltages and their corresponding magnetic flux densities
+\section{Plots}
+\begin{figure}
+	\centering
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{example-image-a}
+		\caption{$T=\SI{4}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{example-image-b}
+		\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{example-image-a}
+		\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{100}{\micro\ampere}$}
+	\end{subfigure}
+	\caption[Plots for various adjustments]{\textbf{Plots for various adjustments}}
+	\label{fig:plots}
+\end{figure}
+\autoref{fig:plots} shows all of the recorded data for different temperatures and sample currents.
+The hall voltages show the expected plateau-behavior while the longitudinal voltages oscillate as suggested by theory established in \autoref{chap:theory}.
+Plateau numbers shown in the plots are obtained by utilizing the relation
+\begin{equation*}
+	i = \left. \frac{R_\text{K}}{R_\text{hall}} \right\rvert_{\text{plat}} = R_\text{K}\cdot\left. \frac{I_\text{samp}}{U_\text{H}}\right\rvert_{\text{plat}}
+\end{equation*}
+
+\section{Longitudinal Voltages}
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{example-image}
+	\caption[Setup for measuring longitudinal voltage]{\textbf{Setup for measuring longitudinal voltage} Probing points are adjusted by utilizing the provided rotary encoders.}
+	\label{fig:setup_long_don_jon}
+\end{figure}
+
+\begin{table}
+	\caption[Longitudinal voltages]{\textbf{Longitudinal voltages}}
+	\label{tabs:long}
+\begin{minipage}[t]{.33\linewidth}
+\caption{$T=\SI{4}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}  \label{tab:4k20}
+		\begin{tabular}{SS}
+		\toprule
+		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		\midrule
+		3.36    &       48 \\
+		1.82    &       16 \\
+		1.36    &       18 \\
+		1.05    &       16 \\
+		\bottomrule
+		\end{tabular}%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{.33\linewidth}
+	\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}\label{tab:2k20}
+		\begin{tabular}{SS}
+		\toprule
+		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		\midrule
+		3.32    &       54 \\
+		1.86    &       24 \\
+		1.41    &       24 \\
+		1.05    &       18 \\
+		0.82    &       14 \\
+		\bottomrule
+		\end{tabular}%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{.33\linewidth}
+	\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{100}{\micro\ampere}$} \label{tab:2k100}
+		\begin{tabular}{SS}
+		\toprule
+		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		\midrule
+		3.45    &       208 \\
+		1.86    &       104 \\
+		1.41    &       96 \\
+		\bottomrule
+		\end{tabular}
+\end{minipage}
+\end{table}
+\autoref{tabs:long} shows the values for longitudinal voltages and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_long_don_jon}.
+It is easy to see that more extreme values are visible for a sample current of $I_\text{samp}=\SI{20}{\micro\ampere}$ and a given range of the magnetic field $B\in[0,B_\text{cut}]$, where $B_\text{cut}$ is the magnetic field value at which the measurements begin to get corrupted.
 
 \section{Hall Voltages} %TODO: Listing of hall voltages and their corresponding magnetic flux densities
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{example-image}
+	\caption[Setup for measuring hall voltage]{\textbf{Setup for measuring hall voltage} Probing points are adjusted by utilizing the provided rotary encoders.}
+	\label{fig:setup_hall_of_fame}
+\end{figure}
 
-\section{Identification of Plateaus} %TODO: Title says it all.
+\begin{table}
+	\caption[Hall voltages]{\textbf{Hall voltages}}
+	\label{tabs:hall}
+\begin{minipage}[t]{.33\linewidth}
+\caption{$T=\SI{4}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}  \label{tab:4k20}
+		\begin{tabular}{SS}
+		\toprule
+		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		\midrule
+		3.36    &       48 \\
+		1.82    &       16 \\
+		1.36    &       18 \\
+		1.05    &       16 \\
+		\bottomrule
+		\end{tabular}%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{.33\linewidth}
+	\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}\label{tab:2k20}
+		\begin{tabular}{SS}
+		\toprule
+		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		\midrule
+		3.32    &       54 \\
+		1.86    &       24 \\
+		1.41    &       24 \\
+		1.05    &       18 \\
+		0.82    &       14 \\
+		\bottomrule
+		\end{tabular}%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{.33\linewidth}
+	\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{100}{\micro\ampere}$} \label{tab:2k100}
+		\begin{tabular}{SS}
+		\toprule
+		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		\midrule
+		3.45    &       208 \\
+		1.86    &       104 \\
+		1.41    &       96 \\
+		\bottomrule
+		\end{tabular}
+\end{minipage}
+\end{table}
+\todo{COPY PASTE TABLES!} \autoref{tabs:hall} shows the values for hall voltages and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_hall_of_fame}.
 
 \section{Charge Carrier Density} %TODO: Dito.
 
