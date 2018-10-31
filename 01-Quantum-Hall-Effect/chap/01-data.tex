@@ -17,13 +17,13 @@ A \texttt{PeakTech 12xx} digital oscilloscope is used to acquire voltage curves,
 	\begin{subfigure}{.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{example-image-a}
-		\caption{\textbf{Unfiltered data} The data before a savgol filter is applied. Part of data is not recoverable and thus not evaluable.}
+		\caption{\textbf{Unfiltered data} The data before filtering. Part of data is not recoverable and thus not evaluable.}
 	\end{subfigure}
 	\hspace*{\fill}
 	\begin{subfigure}{.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{example-image-b}
-		\caption{\textbf{Filtered data} The data after filtering with increased STN ratio.}
+		\caption{\textbf{Filtered data} The data after filtering with increased S/N.}
 	\end{subfigure}
 	\caption[Comparison of (un)filtered example data]{\textbf{Comparison of (un)filtered example data}}
 	\label{fig:comparison}
@@ -182,5 +182,23 @@ It is easy to see that more extreme values are visible for a sample current of $
 \todo{COPY PASTE TABLES!} \autoref{tabs:hall} shows the values for hall voltages and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_hall_of_fame}.
 
 \section{Charge Carrier Density} %TODO: Dito.
+Assuming that all $N$ Landau levels are fully occupied, relation
+\begin{equation*}
+	n_\text{cc} = \frac{2e}{h\cdot\Delta\left(\frac{1}{B}\right)}
+\end{equation*}
+may be used to calculate the charge carrier density $n_\text{cc}$ of the 2DEG, where $\Delta\left(\frac{1}{B}\right)$ is the measured period of the conductivity oscillations, observable in the oscillations of longitudinal voltages.
+$\Delta\left(\frac{1}{B}\right)$ is obtained via linear regression of form $\frac{1}{B_\text{peaks}} = \Delta\left(\frac{1}{B}\right)\cdot i + b$, where $i\in\mathbb{N}_0$.
+
+Applying these deliberations yields charge carrier density values of
+\begin{align*}
+	n_\text{2K20uA} &= \SI{4.439e11}{\per\meter\squared} \\
+	n_\text{2K100uA} &= \SI{4.203e11}{\per\meter\squared} \\
+	n_\text{4K20uA} &= \SI{4.224e11}{\per\meter\squared},
+\end{align*}
+with a rather low standard deviation of \SI{1.31e10}{\per\meter\squared}.
+
+The mean value of found charge carrier densities is of no interest, since the quality of measurements carried out at different temperatures should differ vastly.
+It is assumed that for lower temperatures less electrons will be excited into higher states of the triangular quantum well discussed in \autoref{sec:2deg-theory}.
+Therefore, the quality of the used 2DEG will be higher at lower temperatures, increasing the significance of these results.
 
 \section{Fine-Structure Constant} %TODO: Why are you reading this?
