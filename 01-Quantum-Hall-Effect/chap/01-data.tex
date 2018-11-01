@@ -1,13 +1,11 @@
 \chapter{Data}
 Data is collected for cryostat temperatures of $T\in\{ 2,4\}\ \si{\kelvin}$.
 The \SI{2}{\kelvin} measurement features two series with $I_\text{sample}\in\{ 20,100\}\ \si{\micro\ampere}$, whereas the \SI{4}{\kelvin} measurement only features a series for $I_\text{sample}=\SI{20}{\micro\ampere}$.
-The procedure for recording data is
+The procedure for recordingone set of data is
 \begin{enumerate}
-	\item Adjust sample current.
+	\item Adjust sample current and temperature.
 	\item Record hall voltage while sweeping magnetic field up.
 	\item Record longitudinal voltage while sweeping magnetic field down.
-	\item Repeat steps 1-3
-	\item Change temperature and repeat steps 2-4.
 \end{enumerate}
 A \texttt{PeakTech 12xx} digital oscilloscope is used to acquire voltage curves, which has to be replaced as soon as humanly possible.
 
@@ -30,9 +28,10 @@ A \texttt{PeakTech 12xx} digital oscilloscope is used to acquire voltage curves,
 \end{figure}
 \autoref{fig:comparison} shows a side-by-side comparison of example data prior to and after processing.
 It is easy to see that part of the data is corrupted and cannot be evaluated as a result of a data corruption while saving the trace to a file.
-Therefore, the corrupted part is cut off and a Savitzky–Golay filter is applied to the data for the purpose of increasing the signal-to-noise ratio.
+Therefore, the corrupted part is cut off and a Savitzky–Golay filter is applied to the data filter out high frequency noise.
 
-Since, in this setup, the magnetic field is recorded with the oscilloscope as well, the oscilloscope's measuremement and the magnetic field have to be put into context by calculating a scaling factor for the B-curve.
+Since, in this setup, the magnetic field is recorded with the oscilloscope as well, the magnetic field is calculated from the voltage recorded by the oscilloscope using linear mapping.
+This is obtained by comparing the difference between the lowest and highest recorded voltages of the curve with the maximum megnetic field set in the controller.
 
 \section{Plots}
 \begin{figure}
@@ -54,12 +53,12 @@ Since, in this setup, the magnetic field is recorded with the oscilloscope as we
 		\includegraphics[width=\linewidth]{example-image-a}
 		\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{100}{\micro\ampere}$}
 	\end{subfigure}
-	\caption[Plots for various adjustments]{\textbf{Plots for various adjustments}}
+	\caption[Plots for various settings]{\textbf{Plots for various settings}}
 	\label{fig:plots}
 \end{figure}
 \autoref{fig:plots} shows all of the recorded data for different temperatures and sample currents.
 The hall voltages show the expected plateau-behavior while the longitudinal voltages oscillate as suggested by theory established in \autoref{chap:theory}.
-Plateau numbers shown in the plots are obtained by utilizing the relation
+Plateau numbers shown in the plots are obtained by utilizing relation
 \begin{equation*}
 	i = \left. \frac{R_\text{K}}{R_\text{hall}} \right\rvert_{\text{plat}} = R_\text{K}\cdot\left. \frac{I_\text{samp}}{U_\text{H}}\right\rvert_{\text{plat}}
 \end{equation*}
@@ -68,7 +67,7 @@ Plateau numbers shown in the plots are obtained by utilizing the relation
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{example-image}
-	\caption[Setup for measuring longitudinal voltage]{\textbf{Setup for measuring longitudinal voltage} Probing points are adjusted by utilizing the provided rotary encoders.}
+	\caption[Setup for measuring longitudinal voltage]{\textbf{Setup for measuring longitudinal voltage} Probing points are selected by utilizing the provided rotary switches.}
 	\label{fig:setup_long_don_jon}
 \end{figure}
 
@@ -120,7 +119,7 @@ Plateau numbers shown in the plots are obtained by utilizing the relation
 		\end{tabular}
 \end{minipage}
 \end{table}
-\autoref{tabs:long} shows the values for longitudinal voltages and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_long_don_jon}.
+\autoref{tabs:long} shows the peak values of the longitudinal voltages and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_long_don_jon}.
 It is easy to see that more extreme values are visible for a sample current of $I_\text{samp}=\SI{20}{\micro\ampere}$ and a given range of the magnetic field $B\in[0,B_\text{cut}]$, where $B_\text{cut}$ is the magnetic field value at which the measurements begin to get corrupted.
 
 \section{Hall Voltages} %TODO: Listing of hall voltages and their corresponding magnetic flux densities
@@ -179,23 +178,23 @@ It is easy to see that more extreme values are visible for a sample current of $
 		\end{tabular}
 \end{minipage}
 \end{table}
-\todo{COPY PASTE TABLES!} \autoref{tabs:hall} shows the values for hall voltages and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_hall_of_fame}.
+\todo{COPY PASTE TABLES!} \autoref{tabs:hall} shows the values for hall voltages at the plateaus and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_hall_of_fame}.
 
 \section{Charge Carrier Density} %TODO: Dito.
-Assuming that all $N$ Landau levels are fully occupied, relation
+Assuming that all $N$ Landau levels are fully occupied, the relation
 \begin{equation*}
 	n_\text{cc} = \frac{2e}{h\cdot\Delta\left(\frac{1}{B}\right)}
 \end{equation*}
 may be used to calculate the charge carrier density $n_\text{cc}$ of the 2DEG, where $\Delta\left(\frac{1}{B}\right)$ is the measured period of the conductivity oscillations, observable in the oscillations of longitudinal voltages.
-$\Delta\left(\frac{1}{B}\right)$ is obtained via linear regression of form $\frac{1}{B_\text{peaks}} = \Delta\left(\frac{1}{B}\right)\cdot i + b$, where $i\in\mathbb{N}_0$.
+$\Delta\left(\frac{1}{B}\right)$ is obtained via linear regression of form $\frac{1}{B_\text{peaks}} = \Delta\left(\frac{1}{B}\right)\cdot i + b$, where $i\in\mathbb{N}_0$ \todo{along the lines of is the index of the corresponding plateau, where the absolute value of i doesn't matter}.
 
 Applying these deliberations yields charge carrier density values of
 \begin{align*}
-	n_\text{2K20uA} &= \SI{4.439e11}{\per\meter\squared} \\
-	n_\text{2K100uA} &= \SI{4.203e11}{\per\meter\squared} \\
-	n_\text{4K20uA} &= \SI{4.224e11}{\per\meter\squared},
+	n_{\SI{2}{\kelvin},\SI{20}{\micro\ampere}} &= \SI{4.439e11}{\per\meter\squared} \\
+	n_{\SI{2}{\kelvin},\SI{100}{\micro\ampere}} &= \SI{4.203e11}{\per\meter\squared} \\
+	n_{\SI{4}{\kelvin},\SI{20}{\micro\ampere}} &= \SI{4.224e11}{\per\meter\squared},
 \end{align*}
-with a rather low standard deviation of \SI{1.31e10}{\per\meter\squared}.
+with a (rather low)\todo{keep this?} standard deviation of \SI{1.31e10}{\per\meter\squared}.
 
 The mean value of found charge carrier densities is of no interest, since the quality of measurements carried out at different temperatures should differ vastly.
 It is assumed that for lower temperatures less electrons will be excited into higher states of the triangular quantum well discussed in \autoref{sec:2deg-theory}.
