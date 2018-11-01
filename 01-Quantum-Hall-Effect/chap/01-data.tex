@@ -58,7 +58,7 @@ This is obtained by comparing the difference between the lowest and highest reco
 \end{figure}
 \autoref{fig:plots} shows all of the recorded data for different temperatures and sample currents.
 The hall voltages show the expected plateau-behavior while the longitudinal voltages oscillate as suggested by theory established in \autoref{chap:theory}.
-Plateau numbers shown in the plots are obtained by utilizing relation
+Plateau numbers shown in the plots are obtained by utilizing the relation
 \begin{equation*}
 	i = \left. \frac{R_\text{K}}{R_\text{hall}} \right\rvert_{\text{plat}} = R_\text{K}\cdot\left. \frac{I_\text{samp}}{U_\text{H}}\right\rvert_{\text{plat}}
 \end{equation*}
@@ -186,15 +186,15 @@ Assuming that all $N$ Landau levels are fully occupied, the relation
 	n_\text{cc} = \frac{2e}{h\cdot\Delta\left(\frac{1}{B}\right)}
 \end{equation*}
 may be used to calculate the charge carrier density $n_\text{cc}$ of the 2DEG, where $\Delta\left(\frac{1}{B}\right)$ is the measured period of the conductivity oscillations, observable in the oscillations of longitudinal voltages.
-$\Delta\left(\frac{1}{B}\right)$ is obtained via linear regression of form $\frac{1}{B_\text{peaks}} = \Delta\left(\frac{1}{B}\right)\cdot i + b$, where $i\in\mathbb{N}_0$ \todo{along the lines of is the index of the corresponding plateau, where the absolute value of i doesn't matter}.
+$\Delta\left(\frac{1}{B}\right)$ is obtained via linear regression of form $\frac{1}{B_\text{peaks}} = \Delta\left(\frac{1}{B}\right)\cdot i + b$, where subsequent values of $i$ have a distance of 2 from each other.
 
 Applying these deliberations yields charge carrier density values of
 \begin{align*}
-	n_{\SI{2}{\kelvin},\SI{20}{\micro\ampere}} &= \SI{4.439e11}{\per\meter\squared} \\
-	n_{\SI{2}{\kelvin},\SI{100}{\micro\ampere}} &= \SI{4.203e11}{\per\meter\squared} \\
-	n_{\SI{4}{\kelvin},\SI{20}{\micro\ampere}} &= \SI{4.224e11}{\per\meter\squared},
+	n\left(\SI{2}{\kelvin},\SI{20}{\micro\ampere}\right) &= \SI{4.439e11}{\per\meter\squared} \\
+	n\left(\SI{2}{\kelvin},\SI{100}{\micro\ampere}\right) &= \SI{4.203e11}{\per\meter\squared} \\
+	n\left(\SI{4}{\kelvin},\SI{20}{\micro\ampere}\right) &= \SI{4.224e11}{\per\meter\squared},
 \end{align*}
-with a (rather low)\todo{keep this?} standard deviation of \SI{1.31e10}{\per\meter\squared}.
+with a rather low standard deviation of \SI{1.31e10}{\per\meter\squared}. %yup, keeping this. whole point of computing the std
 
 The mean value of found charge carrier densities is of no interest, since the quality of measurements carried out at different temperatures should differ vastly.
 It is assumed that for lower temperatures less electrons will be excited into higher states of the triangular quantum well discussed in \autoref{sec:2deg-theory}.
