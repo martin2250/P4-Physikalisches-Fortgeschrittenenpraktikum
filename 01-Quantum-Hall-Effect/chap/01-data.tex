@@ -180,7 +180,7 @@ It is easy to see that more extreme values are visible for a sample current of $
 \end{table}
 \todo{COPY PASTE TABLES!} \autoref{tabs:hall} shows the values for hall voltages at the plateaus and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_hall_of_fame}.
 
-\section{Charge Carrier Density} %TODO: Dito.
+\section{Charge Carrier Density}\label{sec:ccd} %TODO: Dito.
 Assuming that all $N$ Landau levels are fully occupied, the relation
 \begin{equation*}
 	n_\text{cc} = \frac{2e}{h\cdot\Delta\left(\frac{1}{B}\right)}
@@ -200,7 +200,7 @@ The mean value of found charge carrier densities is of no interest, since the qu
 It is assumed that for lower temperatures less electrons will be excited into higher states of the triangular quantum well discussed in \autoref{sec:2deg-theory}.
 Therefore, the quality of the used 2DEG will be higher at lower temperatures, increasing the significance of these results.
 
-\section{Fine-Structure Constant} %TODO: Why are you reading this?
+\section{Fine-Structure Constant}\label{sec:fine} %TODO: Why are you reading this?
 To determine a value for the fine-structure constant, relations
 \begin{equation*}
 	R_\text{hall} = \left. \frac{U_\text{hall}}{I_\text{sample}}\right\rvert_\text{peaks}
@@ -227,9 +227,9 @@ and finally into the y-errors of the linear regression like
 
 Carrying out linear regression and rearranging for $\alpha$ yields fine-structure constants of
 \begin{align*}
-	\alpha^{-1}_\text{2K20uA} &= \num{145.18(733)} \\
-	\alpha^{-1}_\text{2K100uA} &= \num{142.43(578)} \\
-	\alpha^{-1}_\text{4K20uA} &= \num{144.91(704)}.
+	\alpha^{-1}_{\SI{2}{\kelvin},\SI{20}{\micro\ampere}} &= \num{145.18(733)} \\
+	\alpha^{-1}_{\SI{2}{\kelvin},\SI{100}{\micro\ampere}} &= \num{142.43(578)} \\
+	\alpha^{-1}_{\SI{4}{\kelvin},\SI{20}{\micro\ampere}} &= \num{144.91(704)}.
 \end{align*}
 Errors are propagated like
 \begin{equation*}
