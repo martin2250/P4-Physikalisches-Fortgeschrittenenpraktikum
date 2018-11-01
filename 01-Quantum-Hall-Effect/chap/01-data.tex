@@ -202,3 +202,38 @@ It is assumed that for lower temperatures less electrons will be excited into hi
 Therefore, the quality of the used 2DEG will be higher at lower temperatures, increasing the significance of these results.
 
 \section{Fine-Structure Constant} %TODO: Why are you reading this?
+To determine a value for the fine-structure constant, relations
+\begin{equation*}
+	R_\text{hall} = \left. \frac{U_\text{hall}}{I_\text{sample}}\right\rvert_\text{peaks}
+\end{equation*}
+and
+\begin{equation*}
+	\left. \frac{1}{R_\text{hall}}\right\rvert_\text{peaks} = \frac{2\alpha}{\mu_0 c}\cdot i
+\end{equation*}
+are used.
+
+A linear regression of form
+\begin{equation*}
+	\left. \frac{1}{R_\text{hall}}\right\rvert_\text{peaks} = a\cdot i + b
+\end{equation*}
+is used to determine the slope $a=\frac{2\upalpha}{\mu_0 c}$.
+Errors on measurements of $U_\text{hall}$ propagate into $R_\text{hall}$ like
+\begin{equation*}
+	\sigma_{R_\text{hall}} = \frac{\sigma_{U_\text{hall}}}{I_\text{sample}}
+\end{equation*}
+and finally into the y-errors of the linear regression like
+\begin{equation*}
+	\sigma_{R^{-1}_\text{hall}} = \frac{\sigma_{R_\text{hall}}}{R_\text{hall}^2}.
+\end{equation*}
+
+Carrying out linear regression and rearranging for $\alpha$ yields fine-structure constants of
+\begin{align*}
+	\alpha^{-1}_\text{2K20uA} &= \num{145.18(733)} \\
+	\alpha^{-1}_\text{2K100uA} &= \num{142.43(578)} \\
+	\alpha^{-1}_\text{4K20uA} &= \num{144.91(704)}.
+\end{align*}
+Errors are propagated like
+\begin{equation*}
+	\sigma_{\alpha^{-1}} = \frac{\sigma_\alpha}{\alpha^2}\quad\text{, where}\quad\sigma_\alpha = \sigma_a\cdot\frac{\mu_0c}{2}
+\end{equation*}
+with the fit error $\sigma_a$ from the performed linear regression.
