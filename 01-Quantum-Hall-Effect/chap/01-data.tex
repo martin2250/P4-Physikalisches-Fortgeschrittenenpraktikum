@@ -15,44 +15,46 @@ A \texttt{PeakTech 12xx} digital oscilloscope is used to acquire voltage curves,
 	\begin{subfigure}{.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{./data/plots/2K-20uA-hw.pdf}
-		\caption{\textbf{Unfiltered data} The data before filtering. Part of data is not recoverable and thus not evaluable.}
+		\caption{\textbf{Uncut data} Part of data is not recoverable and thus not evaluable.}
 	\end{subfigure}
 	\hspace*{\fill}
 	\begin{subfigure}{.48\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{./data/plots/2K-20uA-main.pdf}
-		\caption{\textbf{Filtered data} The data after filtering with increased S/N.}
+		\includegraphics[width=\linewidth]{./data/plots/2K-20uA-unfiltered.pdf}
+		\caption{\textbf{Unfiltered, cut data}}
 	\end{subfigure}
-	\caption[Comparison of (un)filtered example data]{\textbf{Comparison of (un)filtered example data}}
+	\caption[Comparison of (un)processed example data]{\textbf{Comparison of (un)processed example data}}
 	\label{fig:comparison}
 \end{figure}
-\autoref{fig:comparison} shows a side-by-side comparison of example data prior to and after processing.
+\autoref{fig:comparison} shows a side-by-side comparison of example data prior to and after cutting.
 It is easy to see that part of the data is corrupted and cannot be evaluated as a result of a data corruption while saving the trace to a file.
 Therefore, the corrupted part is cut off and a Savitzky–Golay filter is applied to the data filter out high frequency noise.
+Filtered data can be seen in \autoref{sec:plots} and will be discussed henceforth.
 
 Since, in this setup, the magnetic field is recorded with the oscilloscope as well, the magnetic field is calculated from the voltage recorded by the oscilloscope using linear mapping.
 This is obtained by comparing the difference between the lowest and highest recorded voltages of the curve with the maximum megnetic field set in the controller.
 
-\section{Plots}
+\section{Plots}\label{sec:plots}
 \begin{figure}
 	\centering
-	\begin{subfigure}{.32\textwidth}
+	\begin{subfigure}{.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{./data/plots/4K-20uA-main.pdf}
 		\caption{$T=\SI{4}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}
 	\end{subfigure}
 	\hspace*{\fill}
-	\begin{subfigure}{.32\textwidth}
+	\begin{subfigure}{.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{./data/plots/2K-20uA-main.pdf}
 		\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}
 	\end{subfigure}
 	\hspace*{\fill}
-	\begin{subfigure}{.32\textwidth}
+	\begin{subfigure}{.48\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{./data/plots/2K-100uA-main.pdf}
 		\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{100}{\micro\ampere}$}
 	\end{subfigure}
+	\hspace*{\fill}
 	\caption[Plots for various settings]{\textbf{Plots for various settings}}
 	\label{fig:plots}
 \end{figure}
@@ -66,7 +68,7 @@ Plateau numbers shown in the plots are obtained by utilizing the relation
 \section{Longitudinal Voltages}
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{example-image}
+	\includegraphics[width=.5\textwidth]{./img/setup_res.pdf}
 	\caption[Setup for measuring longitudinal voltage]{\textbf{Setup for measuring longitudinal voltage} Probing points are selected by utilizing the provided rotary switches.}
 	\label{fig:setup_long_don_jon}
 \end{figure}
@@ -125,7 +127,7 @@ It is easy to see that more extreme values are visible for a sample current of $
 \section{Hall Voltages} %TODO: Listing of hall voltages and their corresponding magnetic flux densities
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{example-image}
+	\includegraphics[width=.5\textwidth]{./img/setup_hall.pdf}
 	\caption[Setup for measuring hall voltage]{\textbf{Setup for measuring hall voltage} Probing points are adjusted by utilizing the provided rotary encoders.}
 	\label{fig:setup_hall_of_fame}
 \end{figure}
@@ -133,52 +135,49 @@ It is easy to see that more extreme values are visible for a sample current of $
 \begin{table}
 	\caption[Hall voltages]{\textbf{Hall voltages}}
 	\label{tabs:hall}
-\begin{minipage}[t]{.33\linewidth}
-\caption{$T=\SI{4}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}  \label{tab:4k20}
-\centering
-		\begin{tabular}{SS}
+\begin{minipage}[t]{\linewidth}
+	\caption{$T=\SI{4}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}  \label{tab:4k20}
+	\centering
+	\begin{tabular}{SS|SS|S|S}
 		\toprule
-		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		{$B_\text{min}$ (\si{\tesla})}      &       {$B_\text{max}$ (\si{\tesla})}      &       {$\bar{U_\text{h}}$ (\si{\mV})}     &       {$\sigma(U_\text{h})$ (\si{\mV})}   &       {$i$}       &       {$R_\text{h}$ (\si{\ohm})}  \\
 		\midrule
-		3.36    &       48 \\
-		1.82    &       16 \\
-		1.36    &       18 \\
-		1.05    &       16 \\
+		1.32    &       1.44    &       90      &       3.0     &       6    &       4500.0 \\
+		1.88    &       2.20    &       133     &       3.4     &       4    &       6653.1 \\
+		3.40    &       4.80    &       264     &       3.5     &       2    &       13214.0 \\
 		\bottomrule
-		\end{tabular}%
+	\end{tabular}
 \end{minipage}%
 \hfill%
-\begin{minipage}[t]{.33\linewidth}
+\begin{minipage}[t]{\linewidth}
 	\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{20}{\micro\ampere}$}\label{tab:2k20}
 	\centering
-		\begin{tabular}{SS}
+	\begin{tabular}{SS|SS|S|S}
 		\toprule
-		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		{$B_\text{min}$ (\si{\tesla})}      &       {$B_\text{max}$ (\si{\tesla})}      &       {$\bar{U_\text{h}}$ (\si{\mV})}     &       {$\sigma(U_\text{h})$ (\si{\mV})}   &       {$i$}       &       {$R_\text{h}$ (\si{\ohm})}  \\
 		\midrule
-		3.32    &       54 \\
-		1.86    &       24 \\
-		1.41    &       24 \\
-		1.05    &       18 \\
-		0.82    &       14 \\
+		1.28    &       1.44    &       90      &       3.3     &       6    &       4513.5 \\
+		1.84    &       2.28    &       134     &       3.3     &       4    &       6710.7 \\
+		3.32    &       5.04    &       266     &       3.3     &       2    &       13281.7 \\
 		\bottomrule
-		\end{tabular}%
+	\end{tabular}
 \end{minipage}%
 \hfill%
-\begin{minipage}[t]{.33\linewidth}
+\begin{minipage}[t]{\linewidth}
 	\caption{$T=\SI{2}{\kelvin}, I_\text{samp} = \SI{100}{\micro\ampere}$} \label{tab:2k100}
 	\centering
-		\begin{tabular}{SS}
+	\begin{tabular}{SS|SS|S|S}
 		\toprule
-		{B (\si{\tesla})} &       {U (\si{\mV})}    \\
+		{$B_\text{min}$ (\si{\tesla})}      &       {$B_\text{max}$ (\si{\tesla})}      &       {$\bar{U_\text{h}}$ (\si{\mV})}     &       {$\sigma(U_\text{h})$ (\si{\mV})}   &       {$i$}       &       {$R_\text{h}$ (\si{\ohm})}  \\
 		\midrule
-		3.45    &       208 \\
-		1.86    &       104 \\
-		1.41    &       96 \\
+		1.96    &       2.16    &       664     &       6.0     &       4    &       6640.0 \\
+		3.44    &       4.68    &       1315    &       6.4     &       2    &       13148.0 \\
 		\bottomrule
-		\end{tabular}
+	\end{tabular}
 \end{minipage}
+\hfill
 \end{table}
-\todo{COPY PASTE TABLES!} \autoref{tabs:hall} shows the values for hall voltages at the plateaus and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_hall_of_fame}.
+\autoref{tabs:hall} shows the values for hall voltages at the plateaus and their corresponding magnetic flux densities collected using the setup shown in \autoref{fig:setup_hall_of_fame}.
 
 \section{Charge Carrier Density}\label{sec:ccd} %TODO: Dito.
 Assuming that all $N$ Landau levels are fully occupied, the relation

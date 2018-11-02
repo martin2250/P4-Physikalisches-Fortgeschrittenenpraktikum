@@ -253,9 +253,9 @@ axL.set_yticks(ticks)
 axR.set_yticks(ticks / 4)
 
 # plot
-axL.plot(B_hall, U_hall, '.', label='U_h', markersize=1)
+axL.plot(B_hall, U_hall, '.', label='$U_{hall}$', markersize=1)
 axR.plot(0, 0)  # skip first color
-axR.plot(B_res, U_res, '.', label='U_res', markersize=1)
+axR.plot(B_res, U_res, '.', label='$U_{res}$', markersize=1)
 axR.plot(B_res_peak, U_res_peak, '+k', markersize=20)
 
 axL.set_xlabel('B (T)')
