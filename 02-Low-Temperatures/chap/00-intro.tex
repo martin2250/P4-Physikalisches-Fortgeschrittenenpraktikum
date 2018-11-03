@@ -29,3 +29,22 @@ Similarly, the specific resistance $\rho$ can be written as
 	\rho = \rho_\text{ph}(T) + \rho_\text{de},
 \end{equation*}
 the temperature independent $\rho_\text{de}$ is also called residual resistance, as it persists even at low temperatures, where phonon scattering is suppressed.
+
+An exact term for $\rho_\text{ph}(T)$, calculated by Grüneisen \cite{elresistancemetal}, is given by
+\begin{equation}
+	\rho_\text{ph}(T) = A \left(\frac{T}{\Theta}\right)^5 \cdot \int_0^\frac{\Theta}{T}\frac{x^5}{(\e^x - 1)(1 - \e^{-x})} \d x.
+\end{equation}
+For low temperatures $T \ll \Theta$ this function behaves like $T^5$, for higher $T$ a linear behavior emerges.
+
+The resistance of a sample can be split up like the specific resistance as
+\begin{equation*}
+	R = R_\text{res} + R_\text{T}(T),
+\end{equation*}
+where $R_\text{res}$ denotes the residual resistance.
+
+In the linear region the resistance approaches \cite{elresistancemetal}
+\begin{equation}
+	R_\text{T}(T) = \num{1.17} \cdot \frac{R_\Theta}{\theta} \cdot T - \num{0.17} \cdot R_\Theta,
+\end{equation}
+where $\rho_\Theta$ is the resistance at the debye temperature $\Theta$.
+This facilitates a straightforward way to measure the debye temperature.
