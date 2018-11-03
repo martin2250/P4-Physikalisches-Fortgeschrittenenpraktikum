@@ -1,2 +1,31 @@
 \chapter{Theory}
 This experiment explores the electrical behavior of various conductors and semiconductors at cryogenic temperatures.
+
+\section{Classical Electrical Conductivity}
+The classical concept of free, localized electrons gives a simple explanation for electrical resistance, assuming that the electrons can scatter on the nuclei of the conductor material.
+An external electric field $E$ accelerates the electrons with mass $m$, which regularly lose their kinetic energy to elastic collisions with nuclei.
+The mean time between collisions $\tau$ depends on the parameters of the conductor's lattice structure.
+Solving the equations of motion gives the term
+\begin{equation*}
+	\frac{m}{\tau} v_\text{D} = - e E
+\end{equation*}
+for the mean drift velocity $v_\text{D}$. The current density $j$ is given by $j = - e n v_\text{D}$, where $n$ denotes the density of electrons.
+Using the definition of the conductance $j = \sigma E$, yields
+\begin{equation}\label{eq:classical-resistance}
+	\sigma = \frac{n e^2 \tau}{m}.
+\end{equation}
+
+\section{Temperature Dependence}
+Most materials show a dependence on temperature in their electrical properties.
+The density of free electrons $n$ in metals is independent of temperature, so the dependency must be in $\tau$, as the other variables in the RHS of \autoref{eq:classical-resistance} are constants.
+
+In addition to the nuclei, electrons can also scatter on lattice defects and, more importantly, phonons, which are strongly associated with temperature.
+The scattering processes are independent of each other, the total scattering rate $\tau^{-1}$ is calculated as the sum of the scattering rates due to phonons $\tau_\text{ph}^{-1}$ and nuclei/defects $\tau_\text{de}^{-1}$
+\begin{equation*}
+	\frac{1}{\tau} = \frac{1}{\tau_\text{ph}} + \frac{1}{\tau_\text{de}}.
+\end{equation*}
+Similarly, the specific resistance $\rho$ can be written as
+\begin{equation*}
+	\rho = \rho_\text{ph}(T) + \rho_\text{de},
+\end{equation*}
+the temperature independent $\rho_\text{de}$ is also called residual resistance, as it persists even at low temperatures, where phonon scattering is suppressed.
