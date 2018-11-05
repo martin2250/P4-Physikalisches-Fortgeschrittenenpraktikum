@@ -1,2 +1,11 @@
 # dependence on magnetic field of critical temperature of Nb sample
 # coil current (A); critical Temperature (ohms measured by carbon resistor)
+0	1046
+1.5	1072
+3	1090
+4.5	1109
+6	1128
+7.5	1146
+9	1165
+10.5	1182
+12	1200
