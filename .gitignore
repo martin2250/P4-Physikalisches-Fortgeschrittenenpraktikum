@@ -1,4 +1,6 @@
 common/emails.tex
+constants.py
+!common/constants.py
 
 *.ag.tex
 
