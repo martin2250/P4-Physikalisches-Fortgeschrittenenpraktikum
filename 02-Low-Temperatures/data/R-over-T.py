@@ -39,19 +39,48 @@ T_wa = np.append(tc.int_carbon(Rtwac), tc.int_pt100(Rtwapt))
 R_cd_cu = np.append(Rcucdpt, Rcucdc)
 R_cd_si = np.append(Rsicdpt, Rsicdc)
 R_cd_nb = np.append(Rnbcdpt, Rnbcdc)
-R_wa_cu = np.append(Rcuwapt, Rcuwac)
-R_wa_si = np.append(Rsiwapt, Rsiwac)
-R_wa_nb = np.append(Rnbwapt, Rnbwac)
+R_wa_cu = np.append(Rcuwac, Rcuwapt)
+R_wa_si = np.append(Rsiwac, Rsiwapt)
+R_wa_nb = np.append(Rnbwac, Rnbwapt)
+
+R = np.array([np.array([R_cd_cu, R_wa_cu]), np.array([R_cd_si, R_wa_si]), np.array([R_cd_nb, R_wa_nb])])
 
 # draw plots
+markers = ['o', '^', 's']
+labels = ['Cu', 'Si', 'Nb']
 if args.plot == 'overview':
-	plt.scatter(T_cd, R_cd_cu, label='$R_{Cu}$ cooldown', marker='x')
-	plt.scatter(T_cd, R_cd_si, label='$R_{Si}$ cooldown', marker='x')
-	plt.scatter(T_cd, R_cd_nb, label='$R_{Nb}$ cooldown', marker='x')
+
+	for r, l, m in zip(R, labels, markers):
+		plt.scatter(np.append(T_cd, T_wa), np.append(r[0], r[1]), label='$R_{%s}$'%l, marker=m, s=12)
+
 	plt.xlabel('$T$ (K)')
 	plt.ylabel('$R$ ($\\Omega$)')
 	plt.grid()
 	plt.legend()
-	plt.savefig(os.path.join('plots', f'{args.plot}.pdf'))
+
+	if args.magnify:
+		plt.xlim(np.min(T_cd)-2, 60)
+		plt.savefig(os.path.join('plots', f'{args.plot}-mag.pdf'))
+
+	else:
+		plt.savefig(os.path.join('plots', f'{args.plot}.pdf'))
+
 else:
-	print('Entered separate thing.')
+
+	ind = np.arange(3)
+	figs = [plt.figure(n+1) for n in ind]
+	axs = [figs[n].add_subplot(111) for n in ind]
+
+	for fig, ax, r, l in zip(figs, axs, R, labels):
+		ax.scatter(T_cd, r[0], marker='o', label='cooldown', s=12)
+		ax.scatter(T_wa, r[1], marker='s', label='warmup', s=12)
+		ax.set_xlabel('$T$ (K)')
+		ax.set_ylabel('$R_{%s}$'%l)
+		ax.grid()
+		ax.legend()
+
+		if args.magnify:
+			ax.set_xlim(np.min(T_cd)-2, 60)
+			fig.savefig(os.path.join('plots', f'{l}-mag.pdf'))
+		else:
+			fig.savefig(os.path.join('plots', f'{l}.pdf'))
