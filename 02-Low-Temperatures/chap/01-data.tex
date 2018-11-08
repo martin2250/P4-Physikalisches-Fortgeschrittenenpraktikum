@@ -1,0 +1,24 @@
+\chapter{Data}
+\section{Temperature Dependence of Resistance}
+The resistances of the temperature sensor and the three samples are displayed on four digital bench multimeters.
+To ensure simultaneous readout of all values, the multimeters are recorded with a video camera and the video is paused to read off a set of values.
+
+\section{Superconductor}
+A heater is used to accurately sweep the temperature of the sample chamber.
+A plotter is used to plot the resistance of the Nb sample against the resistance of the temperature sensor.
+This $T$-$R$ curve is recorded for magnetic fields from \SIrange{0}{0.6}{\tesla} in \SI{0.1}{\tesla} increments.
+The temperature at which the sample becomes superconducting cannot be read off directly as the transition to zero resistance is not instantaneous, rather the steep slope between the residual resistance and zero resistance transitions into an asymptote to $R = 0$.
+Thus, to get a repeatable measure of the transition temperature, the steep slope, which behaves approximately linearly, is extended to find it's intersection with $R = 0$, which is used as the temperature for each setting of the magnetic field.
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\textwidth]{./data/plots/Bc2-over-T.pdf}
+	\captiond{Critical Magnetic Flux Density $B_\text{C2}$ of Nb as a Function of Temperature}{The transition temperature of Nb is measured for magnetic fields up to \SI{0.6}{\tesla}}
+	\label{fig:Bc2-over-T}
+\end{figure}
+The resulting data is shown in \autoref{fig:Bc2-over-T}.
+A linear regression of form $B_\text{C2}(T) = a + b \cdot T$ is used to find the parameters $a = \SI{5.37}{\tesla}$ and $b = \SI{-0.630}{\tesla\per\kelvin}$.
+Comparing the orders in $T$ between the formulae given in the experiment instructions and rearranging for the coherence length $\xi_\text{GL}(T = 0)$ and mean free path $l$ yields
+\begin{alignat*}{2}
+	\xi_\text{GL}(T = 0) &= \sqrt{\frac{\Psi_0}{2 \uppi a}} &= \SI{7.83e-9}{\meter}\\
+	l &= \frac{\xi^2_\text{GL}(T = 0)}{\SI{39}{\nano\meter}} &= \SI{1.57e-09}{\meter}
+\end{alignat*}
