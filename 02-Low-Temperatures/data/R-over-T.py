@@ -5,6 +5,7 @@ import argparse
 import sys
 import os
 import matplotlib.pyplot as plt
+import matplotlib.backends.backend_pdf
 import numpy as np
 import tempconv as tc
 
@@ -12,6 +13,8 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('plot', choices=['overview', 'separate'],
 					help='query either overview or separate plots')
+parser.add_argument('--output', type=str,
+					help='output file')
 parser.add_argument('--magnify', action='store_true',
 					help='magnify on low temperature regimes')
 args = parser.parse_args()
@@ -50,20 +53,18 @@ markers = ['o', '^', 's']
 labels = ['Cu', 'Si', 'Nb']
 if args.plot == 'overview':
 
+	figs, ax = plt.subplots()
+	figs = [figs]
 	for r, l, m in zip(R, labels, markers):
 		plt.scatter(np.append(T_cd, T_wa), np.append(r[0], r[1]), label='$R_{%s}$'%l, marker=m, s=12)
 
-	plt.xlabel('$T$ (K)')
-	plt.ylabel('$R$ ($\\Omega$)')
-	plt.grid()
-	plt.legend()
+	ax.set_xlabel('$T$ (K)')
+	ax.set_ylabel('$R$ ($\\Omega$)')
+	ax.grid()
+	ax.legend()
 
 	if args.magnify:
 		plt.xlim(np.min(T_cd)-2, 60)
-		plt.savefig(os.path.join('plots', f'{args.plot}-mag.pdf'))
-
-	else:
-		plt.savefig(os.path.join('plots', f'{args.plot}.pdf'))
 
 else:
 
@@ -81,6 +82,13 @@ else:
 
 		if args.magnify:
 			ax.set_xlim(np.min(T_cd)-2, 60)
-			fig.savefig(os.path.join('plots', f'{l}-mag.pdf'))
-		else:
-			fig.savefig(os.path.join('plots', f'{l}.pdf'))
+
+if args.output:
+
+	pdf = matplotlib.backends.backend_pdf.PdfPages(os.path.join('plots', args.output))
+	for fig in figs:
+		pdf.savefig(fig)
+	pdf.close()
+
+else:
+	plt.show()
