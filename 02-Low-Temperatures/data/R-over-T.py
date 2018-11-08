@@ -19,6 +19,13 @@ parser.add_argument('--magnify', action='store_true',
 					help='magnify on low temperature regimes')
 args = parser.parse_args()
 
+# debye temp and resistance
+def debye(slope, off, resid):
+
+	R_thet = ( resid - off ) / 0.17
+	thet = 1.17 * R_thet / slope
+	return thet, R_thet
+
 # load data
 Rtcdpt, Rcucdpt, Rsicdpt, Rnbcdpt = np.loadtxt(f'src/RoverRT-cooldown-pt.dat', unpack=True)
 Rtwapt, Rcuwapt, Rsiwapt, Rnbwapt = np.loadtxt(f'src/RoverRT-warmup-pt.dat', unpack=True)
@@ -47,14 +54,18 @@ R_wa_si = np.append(Rsiwac, Rsiwapt)
 R_wa_nb = np.append(Rnbwac, Rnbwapt)
 
 R = np.array([np.array([R_cd_cu, R_wa_cu]), np.array([R_cd_si, R_wa_si]), np.array([R_cd_nb, R_wa_nb])])
+R_c_nb = 23.58
 
 # draw plots
 markers = ['o', '^', 's']
 labels = ['Cu', 'Si', 'Nb']
+
+# overview over all samples
 if args.plot == 'overview':
 
 	figs, ax = plt.subplots()
 	figs = [figs]
+
 	for r, l, m in zip(R, labels, markers):
 		plt.scatter(np.append(T_cd, T_wa), np.append(r[0], r[1]), label='$R_{%s}$'%l, marker=m, s=12)
 
@@ -63,6 +74,7 @@ if args.plot == 'overview':
 	ax.grid()
 	ax.legend()
 
+	# zooming in on low temperature regime
 	if args.magnify:
 		plt.xlim(np.min(T_cd)-2, 60)
 
@@ -72,16 +84,27 @@ else:
 	figs = [plt.figure(n+1) for n in ind]
 	axs = [figs[n].add_subplot(111) for n in ind]
 
+	T_lin = T_cd[T_cd>60]
+
 	for fig, ax, r, l in zip(figs, axs, R, labels):
+
+		#linear regression
+		if not l == 'Si' and not args.magnify:
+			r_lin = r[0][T_cd>60]
+			T = np.linspace(0, np.max(T_cd), 5)
+			slp, inter = np.polyfit(T_lin, r_lin, 1)
+			ax.plot(T, slp*T + inter, '--', label='linear regression', color='red')
+			print('Nb -- theta = %.2f K, rtheta = %.2f Ohm'%debye(slp, inter, R_c_nb)) if l == 'Nb' else print('Cu -- theta = %.2f K, rtheta = %.2f Ohm'%debye(slp, inter, np.min(R_cd_cu)))
+
 		ax.scatter(T_cd, r[0], marker='o', label='cooldown', s=12)
 		ax.scatter(T_wa, r[1], marker='s', label='warmup', s=12)
 		ax.set_xlabel('$T$ (K)')
 		ax.set_ylabel('$R_{%s}$'%l)
-		ax.grid()
+		#ax.grid()
 		ax.legend()
-
 		if args.magnify:
 			ax.set_xlim(np.min(T_cd)-2, 60)
+			ax.set_ylim(0, np.max(r[1]))
 
 if args.output:
 
