@@ -2,24 +2,28 @@
 from __future__ import division, print_function
 
 import argparse
-import sys
 import os
-import matplotlib.pyplot as plt
+import sys
+
 import matplotlib.backends.backend_pdf
+import matplotlib.pyplot as plt
 import numpy as np
+
+import loadRT as RT
 import tempconv as tc
+
 ################################################################################
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument('plot', choices=['overview', 'separate', 'reduced'],
-					help='query either overview/separate/reduced plots')
+                    help='query either overview/separate/reduced plots')
 parser.add_argument('--output', type=str,
-					help='output file')
+                    help='output file')
 parser.add_argument('--magnify', action='store_true',
-					help='magnify on low temperature regimes')
+                    help='magnify on low temperature regimes')
 parser.add_argument('--verbose', action='store_true',
-					help='print verbose output')
+                    help='print verbose output')
 args = parser.parse_args()
 
 ################################################################################
@@ -41,53 +45,26 @@ def debye(slope, off, resid):
 ################################################################################
 
 
-# load data
-Rtcdpt, Rcucdpt, Rsicdpt, Rnbcdpt = np.loadtxt(
-	f'src/RoverRT-cooldown-pt.dat', unpack=True)
-Rtwapt, Rcuwapt, Rsiwapt, Rnbwapt = np.loadtxt(
-	f'src/RoverRT-warmup-pt.dat', unpack=True)
-Rtcdc, Rcucdc, Rsicdc, Rnbcdc = np.loadtxt(
-	f'src/RoverRT-cooldown-C.dat', unpack=True)
-Rtwac, Rcuwac, Rsiwac, Rnbwac = np.loadtxt(
-	f'src/RoverRT-warmup-C.dat', unpack=True)
+# import needed vars from loadRT
+T_cd = RT.T_cd
+T_wa = RT.T_wa
 
-# convert kOhms to Ohms
-Rtcdc = Rtcdc * 1e3
-Rtwac = Rtwac * 1e3
+R_cd_cu = RT.R_cd_cu
 
-Tcdpt = tc.int_pt100(Rtcdpt)
-
-# replace out of bounds values with regression
-Tcdpt = np.where(Tcdpt == -1, tc.pt100_linear(Rtcdpt), Tcdpt)
-
-# append temperatures
-T_cd = np.append(Tcdpt, tc.int_carbon(Rtcdc))
-T_wa = np.append(tc.int_carbon(Rtwac), tc.int_pt100(Rtwapt))
-
-# append resistances
-R_cd_cu = np.append(Rcucdpt, Rcucdc)
-R_cd_si = np.append(Rsicdpt, Rsicdc)
-R_cd_nb = np.append(Rnbcdpt, Rnbcdc)
-R_wa_cu = np.append(Rcuwac, Rcuwapt)
-R_wa_si = np.append(Rsiwac, Rsiwapt)
-R_wa_nb = np.append(Rnbwac, Rnbwapt)
-
-R = np.array([np.array([R_cd_cu, R_wa_cu]),
-			  np.array([R_cd_si, R_wa_si]),
-			  np.array([R_cd_nb, R_wa_nb])])
+R = RT.R
 
 ################################################################################
 
 # constants
 # to do this properly one has to detect the critical slope and take the last value before it
 resid = {
-	'Cu': np.min(R_cd_cu),
-	'Nb': 23.58
+    'Cu': np.min(R_cd_cu),
+   	'Nb': 23.58
 }
 
 theta = {
-	'Cu': (0.0, 0.0),
-	'Nb': (0.0, 0.0)
+    'Cu': (0.0, 0.0),
+   	'Nb': (0.0, 0.0)
 }
 
 markers = ['o', '^', 's']
@@ -100,13 +77,13 @@ T_lin = T_cd[T_cd > 60]
 T = np.linspace(0, np.max(T_cd), 5)
 
 slps = {
-	'Cu': 0,
-	'Nb': 0
+    'Cu': 0,
+   	'Nb': 0
 }
 
 inters = {
-	'Cu': 0,
-	'Nb': 0
+    'Cu': 0,
+   	'Nb': 0
 }
 
 for r, l in zip(R, labels):
@@ -118,7 +95,7 @@ for r, l in zip(R, labels):
 
 		if args.verbose:
 			print(
-				f'{l} -- theta = {theta[l][0]:0.2f} K, rtheta = {theta[l][1]:0.2f} Ohm')
+                            f'{l} -- theta = {theta[l][0]:0.2f} K, rtheta = {theta[l][1]:0.2f} Ohm')
 
 ################################################################################
 
@@ -132,7 +109,7 @@ if not args.plot == 'separate':
 
 		for r, l, m in zip(R, labels, markers):
 			plt.scatter(np.append(T_cd, T_wa), np.append(r[0], r[1]),
-						label='$R_{%s}$' % l, marker=m, s=11)
+                            label='$R_{%s}$' % l, marker=m, s=11)
 
 		ax.set_xlabel('$T$ (K)')
 		ax.set_ylabel('$R$ ($\\Omega$)')
@@ -147,7 +124,7 @@ if not args.plot == 'separate':
 
 			if not l == 'Si':
 				plt.scatter(np.append(T_cd, T_wa) / theta[l][0], (np.append(r[0], r[1]) - resid[l]) / theta[l][1],
-							label=l, marker=m, s=11)
+                                    label=l, marker=m, s=11)
 				ax.set_xlabel('$\\frac{T}{\\theta}$')
 				ax.set_ylabel('$\\frac{R-R_{res}}{R_{\\theta}}$')
 
@@ -167,12 +144,12 @@ else:
 		if not args.magnify and not l == 'Si':
 
 			ax.plot(T, slps[l] * T + inters[l], '--',
-					label='linear regression', color='red')
+                            label='linear regression', color='red')
 
 		ax.scatter(T_cd, r[0], marker='o', label='cooldown', s=11)
 		ax.scatter(T_wa, r[1], marker='s', label='warmup', s=11)
 		ax.set_xlabel('$T$ (K)')
-		ax.set_ylabel('$R_{%s}$'% l)
+		ax.set_ylabel('$R_{%s}$' % l)
 		ax.legend()
 
 		# zooming in on low temperature regime
