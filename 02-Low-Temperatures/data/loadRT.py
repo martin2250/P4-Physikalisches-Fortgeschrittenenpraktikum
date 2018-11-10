@@ -45,3 +45,6 @@ R_wa_nb = np.append(Rnbwac, Rnbwapt)
 R = np.array([np.array([R_cd_cu, R_wa_cu]),
               np.array([R_cd_si, R_wa_si]),
               np.array([R_cd_nb, R_wa_nb])])
+
+T = np.append(T_cd, T_wa)
+R_si = np.append(R_cd_si, R_wa_si)
