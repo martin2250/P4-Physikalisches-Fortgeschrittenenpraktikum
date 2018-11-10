@@ -23,3 +23,20 @@ Comparing the orders in $T$ between the formulae given in the experiment instruc
 	l &= \frac{\xi^2_\text{GL}(T = 0)}{\SI{39}{\nano\meter}} &= \SI{1.57e-09}{\meter}
 \end{alignat*}
 \todo{instructions say to only use the first three points (see page 2 of addenum)}
+
+\section{Semiconductor}
+Plotting the logarithm of the conductivity of the silicon sample over the reciprocal temperature yields a curve similar to the theoretical curve shown in \autoref{fig:itscomplicated}.
+Area $\upbeta$ contains significantly more samples than area $\upalpha$, so only the samples in $\upbeta$ are used for the linear fit.
+The fit of the linearized data yields a conductance of
+\begin{equation*}
+	\sigma_\text{Si} = \sigma_\infty \cdot \exp\left(- \frac{E_2}{2 k T}\right),
+\end{equation*}
+with an activation energy of $E_2 = \SI{6.6e-3}{\eV}$ and $\sigma_\infty = \SI{5.11}{S\per\milli\meter}$.
+This activation energy is small compared to the band gap energy of $E_\text{G} \approx \SI{1.1}{\eV}$, which is desirable in electronic applications.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\textwidth]{./data/plots/lns-over-inv-T.pdf}
+	\captiond{Conductance of silicon sample over temperature}{Axes are scaled as $\log(\sigma)$ and $\frac{1}{T}$.}
+	\label{fig:lns-over-inv-T}
+\end{figure}
