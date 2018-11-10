@@ -6,9 +6,19 @@ import sys
 
 with open(sys.argv[1]) as f:
 	commit_msg = f.read()
-if not re.match('^(\d\d|all) - ', commit_msg):
+
+if not re.match('^(\\d\\d|all) - ', commit_msg):
 	print("not accepted")
 	print("commit title must start with the current experiment number")
 	print("or 'all', followed by ' - '")
 	print("regex used: /^(\\d\\d|all) - /")
 	exit(1)
+
+bad_words = [word for word in commit_msg.split(' ') if word.endswith('ed')]
+if bad_words:
+	from tkinter import messagebox
+	result = messagebox.askyesno(
+		"Hey asshole", "Did you just use the past tense?")
+	if result:
+		print('aborted commit')
+		exit(1)
