@@ -1,7 +1,42 @@
 \chapter{Data}
+
+\section{Errors}
+Since the lab manual does not specify any error boundaries on the used equipment, it is not possible to estimate any errors for the experiment in a reasonable manner.
+Statistical errors from the performed fits are expected to be negligably small compared to the systematic errors, so they are omitted as well.
+
 \section{Temperature Dependence of Resistance}
 The resistances of the temperature sensor and the three samples are displayed on four digital bench multimeters.
 To ensure simultaneous readout of all values, the multimeters are recorded with a video camera and the video is paused to read off a set of values.
+
+Three samples are to be measured: a copper sample as a thin wire, a phosphorus-doped silicon sample and an evaporated layer of niobium.
+Following behaviors are expected for these materials (as discussed in \autoref{chap:theory}):
+\begin{itemize}
+	\item \textbf{Copper sample} For the high temperature limit, the resistance should be linear in $T$, at about the debye temperature $\theta$, $R\propto T^5$ and for low temperatures, $R=\text{const.}$ since only the residual resistance caused by defects remains.
+	\item \textbf{Silicon sample} Since phosphorus-doped silicon is a doped semiconductor, an inverse exponential dependence is expected, so at high temperatures the resistance ought to be very low, whereas for low temperatures the resistance should increase quickly.
+	\item \textbf{Niobium sample} For high and intermediate (around debye temperature) temperatures, it should behave like the copper sample but at a certain temperature $T_\text{c}$, the resistance should vanish as the material transitions into a superconducting phase.
+\end{itemize}
+
+\subsection{Overview}
+\begin{figure}
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{./data/plots/overview.pdf}
+		\caption{\textbf{Overview}}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{./data/plots/overview-mag.pdf}
+		\caption{\textbf{Magnified for low temperature regime}}
+	\end{subfigure}
+	\captiond{Resistance as a function of temperature}{for all three samples}
+	\label{fig:overview}
+\end{figure}
+
+\autoref{fig:overview} depicts the temperature dependence of all three samples.
+It is easy to see that, compared to the other samples, niobium has a rather high resistance, which decreases linearly until it reaches its critical temperature $T_\text{c}\approx\SI{5}{\kelvin}$, at which it almost instantly drops to \SI{0}{\ohm}.
+As expected, copper also decreases linearly while the silicon sample shows a low resistance for high temperature with a sharp increase for low temperatures.
 
 \section{Superconductor}
 A heater is used to accurately sweep the temperature of the sample chamber.
