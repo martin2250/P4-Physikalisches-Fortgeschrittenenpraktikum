@@ -82,6 +82,7 @@
                                                 % (is used below).
 \usepackage{placeins}                           % To use \FloatBarrier
 
+\usepackage{changepage}
 \usepackage[nottoc,                             % So that the Bibliography will
             notlot,                             % be added to the ToC
             notlof]{tocbibind}
