@@ -4,10 +4,7 @@
 Since the lab manual does not specify any error boundaries on the used equipment, it is not possible to estimate any errors for the experiment in a reasonable manner.
 Statistical errors from the performed fits are expected to be negligably small compared to the systematic errors, so they are omitted as well.
 
-\section{Temperature Dependence of Resistance}
-The resistances of the temperature sensor and the three samples are displayed on four digital bench multimeters.
-To ensure simultaneous readout of all values, the multimeters are recorded with a video camera and the video is paused to read off a set of values.
-
+\section{Temperature Dependence of Resistance}\label{sec:samples}
 Three samples are to be measured: a copper sample as a thin wire, a phosphorus-doped silicon sample and an evaporated layer of niobium.
 Following behaviors are expected for these materials (as discussed in \autoref{chap:theory}):
 \begin{itemize}
@@ -37,11 +34,29 @@ Following behaviors are expected for these materials (as discussed in \autoref{c
 \autoref{fig:overview} depicts the temperature dependence of all three samples.
 It is easy to see that, compared to the other samples, niobium has a rather high resistance, which decreases linearly until it reaches its critical temperature $T_\text{c}\approx\SI{5}{\kelvin}$, at which it almost instantly drops to \SI{0}{\ohm}.
 As expected, copper also decreases linearly while the silicon sample shows a low resistance for high temperature with a sharp increase for low temperatures.
+In the following, each sample will be assessed individually.
+
+\subsection{Copper}
+\begin{figure}
+	\centering
+	\begin{subfigure}{.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, page=1]{./data/plots/separate.pdf}
+		\caption{\textbf{Overview}}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}{.48\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, page=1]{./data/plots/separate-mag.pdf}
+		\caption{\textbf{Magnified for low temperature regime}}
+	\end{subfigure}
+	\captiond{Resistance as a function of temperature}{for copper}
+	\label{fig:copper}
+\end{figure}
+
+\autoref{fig:copper} shows the temperature dependence of the copper sample, recorded for cooldown as well as warmup.
 
 \section{Superconductor}
-A heater is used to accurately sweep the temperature of the sample chamber.
-To plot the resistance of the Nb sample against the resistance of the temperature sensor, an $x$-$y$ plotter is used.
-This $T$-$R$ curve is recorded for magnetic fields from \SIrange{0}{0.6}{\tesla} in \SI{0.1}{\tesla} increments.
 The temperature at which the sample becomes superconducting cannot be read off directly as the transition to zero resistance is not instantaneous, rather the steep slope between the residual resistance and zero resistance transitions into an asymptote to $R = 0$.
 Thus, to get a repeatable measure of the transition temperature, the steep slope, which behaves approximately linearly, is extended to find it's intersection with $R = 0$, which is used as the temperature for each setting of the magnetic field.
 \begin{figure}
