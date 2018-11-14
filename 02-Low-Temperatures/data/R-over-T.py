@@ -94,8 +94,8 @@ for r, l in zip(R, labels):
 		theta[l] = debye(slps[l], inters[l], resid[l])
 
 		if args.verbose:
-			print(
-                            f'{l} -- theta = {theta[l][0]:0.2f} K, rtheta = {theta[l][1]:0.2f} Ohm')
+			print(f'{l} -- slope = {slps[l]:0.5f} ohm/K, intercept = {inters[l]:0.5f}')
+			print(f'{l} -- theta = {theta[l][0]:0.2f} K, rtheta = {theta[l][1]:0.2f} Ohm')
 
 ################################################################################
 
@@ -155,7 +155,7 @@ else:
 		# zooming in on low temperature regime
 		if args.magnify:
 			ax.set_xlim(np.min(T_cd) - 2, 60)
-			ax.set_ylim(0, np.max(r[1]))
+			ax.set_ylim(0 - np.max(r[1])/10, np.max(r[1]))
 
 # if output secified, save figures
 if args.output:

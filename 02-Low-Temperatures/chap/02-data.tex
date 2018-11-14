@@ -57,6 +57,43 @@ In the following, each sample will be assessed individually.
 \end{figure}
 
 \autoref{fig:copper} shows the temperature dependence of the copper sample, recorded for cooldown as well as warmup.
+It is easy to see that the behavior discussed in \autoref{sec:samples} is confirmed by the data.
+To obtain the Debye temperature $\theta$ and the Debye resistance $R_\theta$ \autoref{eq:borrel} is used.
+Linear regression for temperatures greater than \SI{60}{\kelvin} yields fit parameters, which can be identified with their respective physical quantities like
+\begin{equation*}
+	R_\text{T}(T) = \underbrace{\num{1.17} \cdot \frac{R_\Theta}{\theta}}_a \cdot T \underbrace{- \num{0.17} \cdot R_\Theta + R_\text{res}}_b,
+\end{equation*}
+keeping in mind that residual resistance $R_\text{res}$ has to be subtracted in order to get the corrected values.
+
+Applying these deliberations yields
+\begin{align*}
+	\theta &= \SI{310}{\kelvin} \\
+	R_\theta &= \SI{2.39}{\ohm}
+\end{align*}
+which is in astonishing agreement with literature values found in \cite{debyecu} in a range from \SIrange{100}{300}{\kelvin}.
+
+\subsection{Niobium}
+\begin{figure}
+\begin{adjustwidth}{-1cm}{-1cm}
+	\centering
+	\begin{subfigure}{.55\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, page=3]{./data/plots/separate.pdf}
+		\caption{\textbf{Overview}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{.55\textwidth}
+		\centering
+		\includegraphics[width=\linewidth, page=3]{./data/plots/separate-mag.pdf}
+		\caption{\textbf{Magnified for low temperature regime}}
+	\end{subfigure}
+	\captiond{Resistance as a function of temperature}{for niobium}
+	\label{fig:niob}
+\end{adjustwidth}
+\end{figure}
+
+\autoref{fig:niob} shows the temperature dependence of the niobium sample, recorded for cooldown as well as warmup.
+
 
 \section{Superconductor}
 The temperature at which the sample becomes superconducting cannot be read off directly as the transition to zero resistance is not instantaneous, rather the steep slope between the residual resistance and zero resistance transitions into an asymptote to $R = 0$.
