@@ -36,14 +36,14 @@ It is easy to see that, compared to the other samples, niobium has a rather high
 As expected, copper also decreases linearly while the silicon sample shows a low resistance for high temperature with a sharp increase for low temperatures.
 In the following, each sample will be assessed individually.
 
-\subsection{Copper}
+\subsection{Copper}\label{sec:copper}
 \begin{figure}
 \begin{adjustwidth}{-1cm}{-1cm}
 	\centering
 	\begin{subfigure}{.55\textwidth}
 		\centering
 		\includegraphics[width=\linewidth, page=1]{./data/plots/separate.pdf}
-		\caption{\textbf{Overview}}
+		\caption{\textbf{Overview} Linear regression yields \SI{9.02e-3}{\ohm\per\kelvin} for slope and \SI{-0.376}{\ohm} for y-intercept.}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{.55\textwidth}
@@ -61,7 +61,7 @@ It is easy to see that the behavior discussed in \autoref{sec:samples} is confir
 To obtain the Debye temperature $\theta$ and the Debye resistance $R_\theta$ \autoref{eq:borrel} is used.
 Linear regression for temperatures greater than \SI{60}{\kelvin} yields fit parameters, which can be identified with their respective physical quantities like
 \begin{equation*}
-	R_\text{T}(T) = \underbrace{\num{1.17} \cdot \frac{R_\Theta}{\theta}}_a \cdot T \underbrace{- \num{0.17} \cdot R_\Theta + R_\text{res}}_b,
+	R_\text{T}(T) = \underbrace{\num{1.17} \cdot \frac{R_\Theta}{\theta}}_\text{slope} \cdot T \underbrace{- \num{0.17} \cdot R_\Theta + R_\text{res}}_\text{y-intercept},
 \end{equation*}
 keeping in mind that residual resistance $R_\text{res}$ has to be subtracted in order to get the corrected values.
 
@@ -79,7 +79,7 @@ which is in astonishing agreement with literature values found in \cite{debyecu}
 	\begin{subfigure}{.55\textwidth}
 		\centering
 		\includegraphics[width=\linewidth, page=3]{./data/plots/separate.pdf}
-		\caption{\textbf{Overview}}
+		\caption{\textbf{Overview} Linear regression yields \SI{0.133}{\ohm\per\kelvin} for slope and \SI{19.6}{\ohm} for y-intercept.}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{.55\textwidth}
@@ -93,7 +93,16 @@ which is in astonishing agreement with literature values found in \cite{debyecu}
 \end{figure}
 
 \autoref{fig:niob} shows the temperature dependence of the niobium sample, recorded for cooldown as well as warmup.
-
+The behavior discussed in \autoref{sec:samples} is confirmed by the data.
+For the residual resistance of niobium the last value before the transition into superconducting phase is taken ($R_\text{res}=\SI{23.58}{\ohm}$).
+Linear regression (as performed in \autoref{sec:copper}) yields
+\begin{align*}
+	\theta &= \SI{206.7}{\kelvin} \\
+	R_\theta &= \SI{23.5}{\ohm}.
+\end{align*}
+Comparing this value to values found in \cite{debyenb} delivers a significant deviation.
+Sharma et al. find a value of $\theta_\text{lit}\approx\SI{250}{\kelvin}$ for the Debye temperature of niobium in a domain of \SIrange{100}{300}{\kelvin}, so the experimental result deviates by $\approx 17\%$ from the literature value.
+This deviation can most likely be explained by the rather rough estimation of the residual resistance of niobium, since it could not be determined exactly in the experiment. Estimating the residual resistance of niobium just $\approx 3\%$ higher gives a value of $\theta\approx\SI{250}{\kelvin}$, which is in significantly better agreement with the results found by Sharma et al..
 
 \section{Superconductor}
 The temperature at which the sample becomes superconducting cannot be read off directly as the transition to zero resistance is not instantaneous, rather the steep slope between the residual resistance and zero resistance transitions into an asymptote to $R = 0$.
