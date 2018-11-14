@@ -131,6 +131,7 @@ if not args.plot == 'separate':
 				# zooming in on low temperature regime (although this isn't interesting in this case)
 				if args.magnify:
 					plt.xlim(0, 0.5)
+	ax.grid()
 	ax.legend()
 
 else:
@@ -150,6 +151,7 @@ else:
 		ax.scatter(T_wa, r[1], marker='s', label='warmup', s=11)
 		ax.set_xlabel('$T$ (K)')
 		ax.set_ylabel('$R_{%s}$' % l)
+		ax.grid()
 		ax.legend()
 
 		# zooming in on low temperature regime
