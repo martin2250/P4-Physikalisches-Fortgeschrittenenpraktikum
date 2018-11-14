@@ -67,9 +67,10 @@ theta = {
    	'Nb': (0.0, 0.0)
 }
 
-markers = ['o', '^', 's']
+markers = ['o', 'x', '+']
 labels = ['Cu', 'Si', 'Nb']
-
+sz_o = 25
+sz_s = 45
 ################################################################################
 
 # linear regression
@@ -109,7 +110,7 @@ if not args.plot == 'separate':
 
 		for r, l, m in zip(R, labels, markers):
 			plt.scatter(np.append(T_cd, T_wa), np.append(r[0], r[1]),
-                            label='$R_{%s}$' % l, marker=m, s=11)
+                            label='$R_{%s}$' % l, marker=m, s=sz_o)
 
 		ax.set_xlabel('$T$ (K)')
 		ax.set_ylabel('$R$ ($\\Omega$)')
@@ -124,7 +125,7 @@ if not args.plot == 'separate':
 
 			if not l == 'Si':
 				plt.scatter(np.append(T_cd, T_wa) / theta[l][0], (np.append(r[0], r[1]) - resid[l]) / theta[l][1],
-                                    label=l, marker=m, s=11)
+                                    label=l, marker=m, s=sz_o)
 				ax.set_xlabel('$\\frac{T}{\\theta}$')
 				ax.set_ylabel('$\\frac{R-R_{res}}{R_{\\theta}}$')
 
@@ -144,11 +145,11 @@ else:
 
 		if not args.magnify and not l == 'Si':
 
-			ax.plot(T, slps[l] * T + inters[l], '--',
+			ax.plot(T, slps[l] * T + inters[l], '-',
                             label='linear regression', color='red')
 
-		ax.scatter(T_cd, r[0], marker='o', label='cooldown', s=11)
-		ax.scatter(T_wa, r[1], marker='s', label='warmup', s=11)
+		ax.scatter(T_cd, r[0], marker='x', label='cooldown', s=sz_s)
+		ax.scatter(T_wa, r[1], marker='x', label='warmup', s=sz_s)
 		ax.set_xlabel('$T$ (K)')
 		ax.set_ylabel('$R_{%s}$' % l)
 		ax.grid()
