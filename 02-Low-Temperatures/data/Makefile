@@ -1,6 +1,6 @@
 .PHONY: data
 
-data: plots/Bc2-over-T.pdf plots/lns-over-inv-T.pdf plots/overview.pdf plots/overview-mag.pdf plots/separate.pdf plots/separate-mag.pdf
+data: plots/Bc2-over-T.pdf plots/lns-over-inv-T.pdf plots/overview.pdf plots/overview-mag.pdf plots/separate.pdf plots/separate-mag.pdf plots/reduced.pdf
 
 plots:
 	mkdir plots
@@ -26,5 +26,7 @@ plots/separate.pdf: R-over-T.py loadRT.py constants.py plots
 plots/separate-mag.pdf: R-over-T.py loadRT.py constants.py plots
 	./$< separate --magnify --output $@
 
+plots/reduced.pdf: R-over-T.py loadRT.py constants.py plots
+	./$< reduced --output $@
 clean:
 	git clean -Xf
