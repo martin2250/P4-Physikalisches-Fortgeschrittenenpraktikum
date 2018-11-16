@@ -96,7 +96,8 @@ for r, l in zip(R, labels):
 
 		if args.verbose:
 			print(f'{l} -- slope = {slps[l]:0.5f} ohm/K, intercept = {inters[l]:0.5f}')
-			print(f'{l} -- theta = {theta[l][0]:0.2f} K, rtheta = {theta[l][1]:0.2f} Ohm')
+			print(
+                            f'{l} -- theta = {theta[l][0]:0.2f} K, rtheta = {theta[l][1]:0.2f} Ohm')
 
 ################################################################################
 
@@ -151,14 +152,14 @@ else:
 		ax.scatter(T_cd, r[0], marker='x', label='cooldown', s=sz_s)
 		ax.scatter(T_wa, r[1], marker='x', label='warmup', s=sz_s)
 		ax.set_xlabel('$T$ (K)')
-		ax.set_ylabel('$R_{%s}$' % l)
+		ax.set_ylabel('$R_{%s}$ ($\\Omega$)' % l)
 		ax.grid()
 		ax.legend()
 
 		# zooming in on low temperature regime
 		if args.magnify:
 			ax.set_xlim(np.min(T_cd) - 2, 60)
-			ax.set_ylim(0 - np.max(r[1])/10, np.max(r[1]))
+			ax.set_ylim(0 - np.max(r[1]) / 10, np.max(r[1]))
 
 # if output secified, save figures
 if args.output:

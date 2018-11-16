@@ -72,6 +72,15 @@ Applying these deliberations yields
 \end{align*}
 which is in astonishing agreement with literature values found in \cite{debyecu} in a range from \SIrange{100}{300}{\kelvin}.
 
+The dimensions of the copper sample are not given, so the specific resistance at \SI{4.2}{\kelvin} is calculated by multiplying the literature value at room temperature with the ratio between the measured cold and warm resistance.
+\begin{alignat*}{1}
+	\rho_\text{Cu, \SI{300}{\kelvin}, lit} &= \SI{1.71}{\micro\ohm\centi\meter}\\
+	R_\text{Cu, \SI{300}{\kelvin}} &= \SI{2.33}{\ohm} \tag{extrapolated from linear fit}\\
+	R_\text{Cu, \SI{4.2}{\kelvin}} &= \SI{0.03}{\ohm}\\
+	\rho_\text{Cu, \SI{4.2}{\kelvin}} &= \rho_\text{Cu, \SI{300}{\kelvin}, lit} \cdot \frac{R_\text{Cu, \SI{4.2}{\kelvin}}}{R_\text{Cu, \SI{300}{\kelvin}}} = \SI{0.22}{\micro\ohm\milli\meter}
+\end{alignat*}
+Using the value $\rho l \; \text{(Cu)} = \SI{658.7e-18}{\ohm\meter\squared}$ given in the experiment manual yields a mean free path of $l = \SI{3.0}{\micro\meter}$.
+
 \subsection{Niobium}
 \begin{figure}
 \begin{adjustwidth}{-1cm}{-1cm}
@@ -103,6 +112,14 @@ Linear regression (as performed in \autoref{sec:copper}) yields
 Comparing this value to values found in \cite{debyenb} delivers a significant deviation.
 Sharma et al. find a value of $\theta_\text{lit}\approx\SI{250}{\kelvin}$ for the Debye temperature of niobium in a domain of \SIrange{100}{300}{\kelvin}, so the experimental result deviates by $\approx 17\%$ from the literature value.
 This deviation can most likely be explained by the rather rough estimation of the residual resistance of niobium, since it could not be determined exactly in the experiment. Estimating the residual resistance of niobium just $\approx 3\%$ higher gives a value of $\theta\approx\SI{250}{\kelvin}$, which is in significantly better agreement with the results found by Sharma et al..
+
+The dimensions of this sample are given in the experiment manual, so the specific resistance at \SI{12}{\kelvin} is calculated as
+\begin{equation*}
+	\rho_\text{Nb, \SI{12}{\kelvin}} = R_\text{Nb, \SI{12}{\kelvin}} \cdot \frac{w \cdot h}{l} = \SI{106.5}{\micro\ohm\milli\meter},
+\end{equation*}
+with the dimensions $w \;\text{x}\; h \;\text{x}\; l = \SI{0.9}{\mm} \;\text{x}\; \SI{40}{\nm} \;\text{x}\; \SI{8}{\mm}$ and the resistance $R_\text{Nb, \SI{12}{\kelvin}} = \SI{23.65}{\ohm}$.
+
+Using the value $\rho l \; \text{(Nb)} = \SI{375e-18}{\ohm\meter\squared}$ given in the experiment manual yields a mean free path of $l = \SI{3.5}{\nano\meter}$.
 
 \subsection{Test of the Grüneisen-Borrelius Equation}
 \begin{figure}
@@ -155,7 +172,6 @@ Comparing the orders in $T$ between the formulae given in the experiment instruc
 	\xi_\text{GL}(T = 0) &= \sqrt{\frac{\Psi_0}{2 \uppi a}} &= \SI{7.83e-9}{\meter}\\
 	l &= \frac{\xi^2_\text{GL}(T = 0)}{\SI{39}{\nano\meter}} &= \SI{1.57e-09}{\meter}
 \end{alignat*}
-\todo{instructions say to only use the first three points (see page 2 of addenum)}
 
 \section{Semiconductor}
 Plotting the logarithm of the conductivity of the silicon sample over the reciprocal temperature yields a curve similar to the theoretical curve shown in \autoref{fig:itscomplicated}.
