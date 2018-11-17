@@ -94,7 +94,71 @@ The exact geometry is shown in \autoref{fig:samples:ge}.
 Sample B is a 2D electron gas inside a GaAs heterostructure.
 The individual layers are depicted in the cross section \autoref{fig:samples:gaas-cross}.
 The 2DEG forms between the active GaAs layer and the n-doped layer of AlGaAs.
-The macroscopic shape of the sample is shown in \autoref{fig:samples:gaas-cross}.
+The macroscopic shape of the sample is shown in \autoref{fig:samples:gaas-clover}.
 The clover leaf or cross shaped geometry is chosen to minimize errors introduced by effects of the imperfect metal-semiconductor contact, as discussed in \autoref{sec:van-der-pauw-geometry}.
 
+The electron density $n_\text{2D}$ and mobility $\mu$, as stated by the manufacturer, are listed in \autoref{tab:lit-2deg}
+
+\begin{table}
+	\centering
+	\captiond{Parameters of the 2DEG}{(stated by the manufacturer)}
+	\begin{tabular}{SSS}
+		\toprule
+		{$T$ (\si{\kelvin})}&	{$n_\text{2D}$ (\si{\per\centi\meter\squared})}&	{$\mu$ (\si{\centi\meter\squared\per\volt\per\second})}\\
+		\midrule
+		300&	2.9e11&	6.5e2\\
+		70&	1.7e11&	1.94e5\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./img/sample-ge.png}
+		\caption{Sample A (Ge)}
+		\label{fig:samples:ge}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./img/sample-gaas-clover.png}
+		\caption{Sample B (GaAs)}
+		\label{fig:samples:gaas-clover}
+	\end{subfigure}
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./img/sample-gaas-cross.pdf}
+		\caption{Sample B (GaAs) cross section}
+		\label{fig:samples:gaas-cross}
+	\end{subfigure}
+	\captiond{The samples}{used in the experiment}
+\end{figure}
+
 \section{Van-der-Pauw Method}\label{sec:van-der-pauw-geometry}
+Manufacturing samples with the very precise geometries required for experiments is an experimental challenge.
+To obtain accurate results even with imperfect samples, the Van-der-Pauw method is used.
+This method allows measuring the sheet resistance of a sample of constant thickness and otherwise arbitrary shape.
+Four point-like contacts are placed on the sample and the resistance between pairs of points is measured with a four-wire method.
+The points are numbered in a circular fashion.
+A current is applied between two points (ex. 1 and 2) and the voltage between the other two points (ex. 3 and 4) is measured.
+This yields the resistance $R_{12,34} = \frac{U_{34}}{I_{12}}$.
+
+Van-der-Pauw proved theoretically that for such a measurement, two resistances between three adjacent points relate to the sheet resistance $R_\text{s}$ of the sample as
+\begin{equation}
+	\e^{- \uppi \; ^{R_{12,34}}/_{R_\text{s}}} + \e^{- \uppi \; ^{R_{23,41}}/_{R_\text{s}}} = 1.
+\end{equation}
+There exists no analytical solution, so $R_\text{s}$ can only be approximated numerically.
+
+Assuming a roughly square sample ($R_{12,34} \approx R_{23,41}$), the sheet resistance approximates
+\begin{equation*}
+	R_\text{s} = \frac{\uppi}{\ln 2} \cdot \frac{1}{2} \left( R_{12,34} + R_{23,41} \right).
+\end{equation*}
+The specific conductivity of a sample with finite thickness $h$ is calculated as $\sigma = \frac{h}{R_\text{s}}$.
+
+The hall coefficient $R_\text{H}$ is obtained by measuring the resistance across the sample (eg. $R_{13,24}$), instead of along the edges.
+It holds
+\begin{equation*}
+	R_\text{H} = \Updelta R_{13,24} \cdot \frac{h}{B_\text{v}},
+\end{equation*}
+with the magnetic field perpendicular to the sample $B_\text{v}$ and the difference of resistances $\Updelta R_{13,24} = R_{13,24}(B = 0) - R_{13,24}(B = B_\text{v})$.
