@@ -31,9 +31,42 @@ Depending on the filling of these bands, a distinction is made between
 \begin{itemize}
 	\item \textbf{isolators:} valence band full, conduction band empty, large band gap,
 	\item \textbf{semiconductors:} valence band full, conduction band empty, small band gap,
-	\item \textbf{metals:} valence band full, conduction partially full.
+	\item \textbf{metals:} valence band full, conduction band partially full.
 \end{itemize}
 
+\section{Semiconductors}
+Semiconductors are materials with a Fermi level inside their band gap at equilibrium, where the band gap is significantly smaller than that of an insulator.
+Depending on the width of the band gap,
+\begin{itemize}
+	\item \textbf{narrow gap semiconductors}, with $0<E_\text{g}\leq\SI{0.5}{\eV}$,
+	\item \textbf{ordinary semiconductors}, with $\SI{0.5}{\eV}<E_\text{g}\leq\SI{2}{\eV}$ and
+	\item \textbf{wide gap semiconductors}, with $E_\text{g}\geq\SI{2}{\eV}$
+\end{itemize}
+are distinguished theoretically.
+In practical use cases, the distinction between insulators (with $E_\text{g}\geq\SI{4}{\eV}$) is loosen up depending on the context.
+For example, diamond ($E_\text{g}\approx\SI{5.5}{\eV}$) is still considered to be an ordinary semiconductor.
+
+Two types of semiconductors may be distinguished: intrinsic semiconductors which have their Fermi level right in the middle of the band gap and extrinsic materials which are also referred to as 'doped'.
+
+\subsection{Doping}
+A pure semiconductor is not very useful, since it is neither a good insulator, nor a good conductor.
+By adding impurities to or gating pure semiconductors (such as pure Si) their electrical properties may be varied in a useful manner.
+Doping and gating draw either the conduction or the valence band very close to the Fermi level, greatly increasing the number of free states there.
+
+Doping is accomplished by adding small quantities of foreign atoms to the semiconductor.
+Consider for example Si from the fourth main group of the periodic system of elements which has four valence electrons that bond each silicon atom to its neighbors.
+Adding either elements from the third (i.e. B, In) or fifth main group (i.e. As, P) may be used for creating p- or n-doped semiconductors, since they either lack or add one electron in their valence shells.
+
+In \textit{p-doped} materials the so called \textit{acceptors} leave a vacant electron state (\textit{hole}) when they replace a silicon atom in the crystal.
+This hole can move around the lattice and function as a charge carrier.
+The acceptor levels have energies just above the valence band.
+By supplying a small amount of energy, electrons from the valence band may be excited into these acceptor states and thus ionize the foreign atom, leaving a negatively charged defect behind.
+
+Similarly, in \textit{n-doped} materials the so called \textit{donators} leave one electron free, which can contribute to the conductivity of the material.
+These weakly bound electrons have energies just below the conduction band and thus can be excited very easily into conducting states by supplying a small amount of energy.
+
+Electrons and holes are characterized by their \textit{effective masses}.
+%blah blah
 \section{Setup}
 The experiment uses a transparent cryostat, a double-walled piece of glassware that is evacuated during the experiment, shown in \autoref{fig:cryostat}.
 The probe chamber is located at the end of an elongated section of the cryostat and sits between the poles of a magnetic yoke.
