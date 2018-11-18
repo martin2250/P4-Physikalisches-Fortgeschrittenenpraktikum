@@ -1,4 +1,10 @@
 \chapter{Theory}
+\section{Bloch Wave}\label{sec:bloch}
+\textbf{Theorem} (without proof) Let $V:\mathbb{R}^3\longrightarrow\mathbb{R}$ denote a scalar potential obeying periodic boundary conditions, such that $V(\mvec{r}) = V(\mvec{r}+s\cdot\mvec{T})$, where $s\in\mathbb{Z}$ and $\mvec{T}$ is the translation vector of a periodic lattice. Then, the stationary Schrödinger equation has solutions, which satisfy $\psi_k(\mvec{r}+\mvec{T}) = \e^{i\mvec{k}\cdot\mvec{T}}\cdot\psi_k(\mvec{r})$, where $\psi_k(\mvec{r})$ is a solution of the non-periodic stationary Schrödinger equation with a wave vector $\mvec{k}$.
+
+\textbf{Remark} Such solutions are called \textit{Bloch waves}. The electron wave functions in a crystal lattice have a basis consisting entirely of Bloch wave energy eigenstates. This is easy to see, if one introduces a translation operator $\hat{T}$, such that $\hat{T}\psi (\mvec{r}) = \psi (\mvec{r}+\mvec{T})$. For a periodic potential, $\hat{T}$ commutes with the Hamiltonian, because the crystal has translational symmetry. Therefore, there is a simultaneous eigenbasis of the Hamiltonian and every possible translation operator (note that $\comm{T_i}{T_j} = 0$ for every $i\neq j$).
+The eigenstates in this basis are energy eigenstates and Bloch waves at the same time.
+
 \section{Electronic Band Structure}
 If the electronic configuration inside of a periodic lattice is approximated as being free, according to the stationary Schrödinger equation for electrons, an electronic dispersion relation of
 \begin{equation*}
@@ -66,7 +72,36 @@ Similarly, in \textit{n-doped} materials the so called \textit{donators} leave o
 These weakly bound electrons have energies just below the conduction band and thus can be excited very easily into conducting states by supplying a small amount of energy.
 
 Electrons and holes are characterized by their \textit{effective masses}.
-%blah blah
+Consider wave packets as a superposition of Bloch states, moving with a group velocity of
+\begin{equation*}
+	v_\text{g} = \frac{1}{\hbar}\pdb{E}{k}.
+\end{equation*}
+Calculating $a=\pdb{v_\text{g}}{t} = \frac{F}{m}$, the concept of effective can be introduced as
+\begin{equation*}
+	m_\text{eff}^{-1} = \frac{1}{\hbar^2}\frac{\partial E}{\partial k_i \partial k_j},
+\end{equation*}
+which implies that $m_\text{eff}$ has tensor qualities.
+
+\section{Carrier Concentration in Non-Degenerate Semiconductors}
+Assuming that the Fermi energy of a semiconductor lies far within the band gap, Fermi-Dirac statistics may be replaced by Boltzmann statistics, effectively treating the electrons as a classical gas.
+This approximation is called the \textit{non-degenerate approximation} and may only be used, if the Fermi energy is located far enough away from both band edges with respect to the thermal energy $k_\text{B}T$ of the system.
+
+In the non-degenerate approximation, the carrier concentrations
+\begin{align*}
+	n &= \int_{E_\text{c}}^\infty\d E\ \nu_\text{n}(E)\cdot\e^{-\frac{E-E_\text{F}}{k_\text{B}T}} \\
+	p &= \int_{-\infty}^{E_\text{v}}\d E\ \nu_\text{p}(E)\cdot\e^{-\frac{E_\text{F}-E}{k_\text{B}T}}
+\end{align*}
+can be calculated analytically and be used to calculate intrinsic carrier concentration with the condition $n=p$ as
+\begin{equation*}
+	n_\text{i}(T) \propto T^{\nicefrac{3}{2}}\cdot\e^{-\frac{E_\text{G}}{2k_\text{B}T}}.
+\end{equation*}
+
+Taking the logarithm on both sides and rearranging yields a way, to determine the band gap energy $E_\text{G}$
+\begin{equation*}
+	\log{\frac{n_\text{i}}{T^{\nicefrac{3}{2}}}} = \log{A} - \frac{E_\text{G}}{k_\text{b}T},
+\end{equation*}
+by plotting the LHS against $\frac{1}{T}$.
+
 \section{Setup}
 The experiment uses a transparent cryostat, a double-walled piece of glassware that is evacuated during the experiment, shown in \autoref{fig:cryostat}.
 The probe chamber is located at the end of an elongated section of the cryostat and sits between the poles of a magnetic yoke.
