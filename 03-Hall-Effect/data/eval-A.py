@@ -46,7 +46,7 @@ if args.plot == '2.1':
 
 elif args.plot == '2.2':
 	plt.plot(temperature, conductivity
-	         * hall_coefficient, 'x', label='conductivity')
+	         * hall_coefficient, 'x', label='$\\sigma\\times R_{H}$')
 
 	ax = plt.gca()
 	ax.set_xscale("log", nonposx='clip')
