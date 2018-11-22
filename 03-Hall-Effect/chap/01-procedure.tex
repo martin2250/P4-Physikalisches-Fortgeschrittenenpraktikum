@@ -1,10 +1,12 @@
 \chapter{Procedure}
 \section{Setup}
-The experiment uses a transparent cryostat, a double-walled piece of glassware that is evacuated during the experiment, shown in \autoref{fig:cryostat}.
+The experiment uses a transparent cryostat, a double-walled piece of glassware \todo{, which does not consist of glass at all :D} that is evacuated during the experiment, shown in \autoref{fig:cryostat}.
 The probe chamber is located at the end of an elongated section of the cryostat and sits between the poles of a magnetic yoke.
 The cryostat is cooled with liquid nitrogen, which is held in a toroidal storage tank.
 The probe chamber is connected to the storage tank via a small tube, the flow of liquid nitrogen is limited by the static pressure due to nitrogen evaporating in the probe chamber.
 Venting the probe chamber with the topmost valve regulates the pressure and in turn the flow of liquid nitrogen.
+
+To examine the Hall effect, a superconducting coil is used to set the magnetic field of the samples.
 
 A heating coil, which is regulated by a PID controller, is used to accurately set the temperature of the probe chamber.
 This gives a total temperature range of \SIrange{-180}{150}{\celsius} for the experiment.
@@ -27,9 +29,10 @@ Sample B is a 2D electron gas inside a GaAs heterostructure.
 The individual layers are depicted in the cross section \autoref{fig:samples:gaas-cross}.
 The 2DEG forms between the active GaAs layer and the n-doped layer of AlGaAs.
 The macroscopic shape of the sample is shown in \autoref{fig:samples:gaas-clover}.
-The clover leaf or cross shaped geometry is chosen to minimize errors introduced by effects of the imperfect metal-semiconductor contact, as discussed in \autoref{sec:van-der-pauw-geometry}.
 
-The electron density $n_\text{2D}$ and mobility $\mu$, as stated by the manufacturer, are listed in \autoref{tab:lit-2deg}
+The clover leaf or cross shaped geometry is chosen to minimize errors introduced by effects of the imperfect metal-semiconductor contact, as discussed in \autoref{sec:van-der-pauw-geometry}. Thanks to the design provided in this experiment, probing points that are necessary to measure value pairs $\left(V_\text{long}, I_\text{diag}\right)$ and $\left(V_\text{H}, I_\text{long}\right)$ can be selected by the flick of a switch.
+
+The electron density $n_\text{2D}$ and mobility $\mu$, as stated by the manufacturer, are listed in \autoref{tab:lit-2deg}.
 
 \begin{table}
 	\centering
@@ -59,6 +62,7 @@ The electron density $n_\text{2D}$ and mobility $\mu$, as stated by the manufact
 		\caption{Sample B (GaAs)}
 		\label{fig:samples:gaas-clover}
 	\end{subfigure}
+  \par\bigskip
 	\begin{subfigure}{0.7\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{./img/sample-gaas-cross.pdf}
