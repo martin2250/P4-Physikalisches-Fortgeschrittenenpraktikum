@@ -42,7 +42,7 @@ magnetic_field = 0.5
 resistanceA = voltage_longA / currentA
 resistance_hallA = (voltage_hall_posA - voltage_hall_negA) / (2 * currentA)
 
-hall_coefficientA = -1 / (resistance_hallA / (1e-3 * magnetic_field))
+hall_coefficientA = - resistance_hallA / (1e-3 * magnetic_field)
 sheet_resistanceA = resistanceA * 10 / 19
 specific_resistanceA = sheet_resistanceA / 1e-3
 conductivityA = 1 / specific_resistanceA
@@ -71,10 +71,10 @@ elif args.plot == 2:
     mobilityA = hall_coefficientA[temperatureA
                                   <= 273.15] * conductivityA[temperatureA <= 273.15]
 
-    plt.plot(temperature, conductivity *
-             hall_coefficient, 'o', label='mobility sample B')
     plt.plot(temperature, mobilityA,
              'x', label='mobility sample A')
+    plt.plot(temperature, conductivity *
+             hall_coefficient, 'o', label='mobility sample B')
 
     ax = plt.gca()
     ax.set_yscale("log", nonposy='clip')
