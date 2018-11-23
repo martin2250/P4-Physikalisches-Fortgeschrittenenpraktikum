@@ -2,6 +2,39 @@
 
 \section{Sample A}
 
+\section{Conductivity and Hall Coefficient}
+For each temperature, four measurements are recorded: the current through the sample $I$, the longitudinal voltage $U_\text{L}$ with no external magnetic field and the hall voltage $U_\text{H}^{+,-}$ at a magnetic field of $\pm B = \pm \SI{0.5}{\tesla}$.
+
+The conductivity $\sigma$ of the sample is calculated as
+\begin{equation*}
+	\sigma = \frac{I}{U_\text{L}} \frac{l}{w h}
+\end{equation*}
+and the Hall coefficient $R_\text{H}$ is calculated as
+\begin{equation*}
+	R_\text{H} = \frac{U_\text{H}^+ - U_\text{H}^-}{2 I} \frac{1}{h B},
+\end{equation*}
+where $l$ denotes the sample's length along the current flow, $w$ the distance between the hall voltage contacts and $h$ denotes the other dimension.
+
+A plot of $\frac{1}{\left|R_\text{H}\right|}$ and $sigma$ over $T$ is shown in \autoref{fig:sample-a-conductivity}.
+The transition to the intrinsic region is clearly visible and it is estimated to start at \SI{288}{\kelvin}.
+The end of the extrinsic region is better observed in a log-log-plot of the product $\sigma \cdot \left| R_\text{H} \right|$, shown in \autoref{fig:sample-a-product}.
+It is estimated to end at \SI{160}{\kelvin}.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.6\textwidth]{./data/plots/sample-a-conductivity.pdf}
+  \captiond{Conductivity and Hall coefficient over temperature of sample A}{}
+  \label{fig:sample-a-conductivity}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.6\textwidth]{./data/plots/sample-a-product.pdf}
+  \captiond{Product of conductivity and Hall coefficient over temperature of sample A}{}
+  \label{fig:sample-a-product}
+\end{figure}
+
 \section{Sample B}
 
 \section{Comparison of Hall Mobilities}
@@ -21,3 +54,10 @@ For low temperatures, scattering at charged defects results in a $\propto T^{\ni
 \textbf{The GaAs composite sample (B)} appears to show the expected behavior as well.
 For this temperature regime, scattering at optical phonons should make the main contribution to the overall behavior so that a behavior like $\mu\propto \e^\frac{\hbar \omega}{k T} - 1$ is expected.
 This assumption is confirmed by the observed data.
+
+% todo: move this to appendix and uncomment
+% \begin{table}
+% 	\caption{title}
+% 	\centering
+% 	\input{data/plots/table-a.agtex}
+% \end{table}
