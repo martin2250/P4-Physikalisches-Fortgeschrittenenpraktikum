@@ -1,6 +1,6 @@
 .PHONY: data
 
-data: plots/mob-comp.pdf plots/sample-a-conductivity.pdf plots/sample-a-product.pdf plots/table-a.agtex
+data: plots/mob-comp.pdf plots/n.pdf plots/sample-a-conductivity.pdf plots/sample-a-product.pdf plots/table-a.agtex
 
 plots:
 	mkdir plots
@@ -11,11 +11,14 @@ constants.py: ../../common/constants.py
 plots/mob-comp.pdf: eval-B.py src/data-A.dat src/data-B.dat plots
 	./$< 2 --output $@
 
-plots/sample-a-conductivity.pdf:  eval-A.py src/data-A.dat plots
+plots/sample-a-conductivity.pdf:  eval-A.py src/data-A.dat constants.py plots
 	./$< 2.1 --output $@
 
-plots/sample-a-product.pdf:  eval-A.py src/data-A.dat plots
+plots/sample-a-product.pdf:  eval-A.py constants.py src/data-A.dat plots
 	./$< 2.2 --output $@
+
+plots/n.pdf: eval-A.py src/data-A.dat constants.py plots
+	./$< 4/5 --output $@
 
 plots/table-a.agtex: eval-B.py src/data-A.dat src/data-B.dat plots
 	./$< 1 --table-A $@
