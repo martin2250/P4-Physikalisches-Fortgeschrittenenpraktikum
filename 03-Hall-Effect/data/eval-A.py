@@ -13,6 +13,8 @@ parser.add_argument('plot', type=str, choices=['2.1', '2.2', '4'],
                     help='which plot to draw')
 parser.add_argument('--output', type=str,
                     help='output file')
+parser.add_argument('--verbose', action="store_true",
+                    help='enable verbose output')
 
 args = parser.parse_args()
 
@@ -46,8 +48,6 @@ def b(T):
 def n(R, T):
     return 1 / (constants.e * R) * (1 - b(T)) / (1 + b(T))
 ################################################################################
-
-
 if args.plot == '2.1':
     plt.plot(temperature, conductivity, 'x', label='conductivity $\\sigma$')
     plt.plot(temperature, 1 / hall_coefficient, 'o',
@@ -90,12 +90,16 @@ elif args.plot == '2.2':
 elif args.plot == '4':
     plt.plot(temperature, - n(hall_coefficient, temperature), 'x')
 
+    if args.verbose:
+        print(f'n_i(300 K) = {-n(hall_coefficient[21], temperature[21]):0.3e}')
+
     ax = plt.gca()
     #ax.set_xscale("log", nonposx='clip')
     ax.set_yscale("log", nonposy='clip')
     ax.set_xlabel('temperature (K)')
     ax.set_ylabel('$\\log\\ n_{i}\\ (m^{-3})$')
-    ax.set_xlim(temperature_intrinsic_min, np.max(temperature) + np.diff(temperature)[0]) # only intrinsic
+    ax.set_xlim(temperature_intrinsic_min, np.max(temperature), np.max(temperature) +
+                + np.diff(temperature)[0])  # only intrinsic
 
     xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
     ax.get_xaxis().set_minor_formatter(xformatter)
