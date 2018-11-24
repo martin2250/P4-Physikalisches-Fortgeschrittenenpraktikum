@@ -89,12 +89,14 @@ elif args.plot == '2.2':
 ################################################################################
 elif args.plot == '4':
     plt.plot(temperature, - n(hall_coefficient, temperature), 'x')
-    plt.xlabel('temperature (K)')
-    plt.ylabel('$\\log\\ n_{i}\\ (m^{-3})$')
 
     ax = plt.gca()
     #ax.set_xscale("log", nonposx='clip')
     ax.set_yscale("log", nonposy='clip')
+    ax.set_xlabel('temperature (K)')
+    ax.set_ylabel('$\\log\\ n_{i}\\ (m^{-3})$')
+    ax.set_xlim(temperature_intrinsic_min, np.max(temperature) + np.diff(temperature)[0]) # only intrinsic
+
     xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
     ax.get_xaxis().set_minor_formatter(xformatter)
     ax.get_xaxis().set_major_formatter(xformatter)
