@@ -3,8 +3,6 @@
 \section{Sample A}
 
 \section{Conductivity and Hall Coefficient}
-For each temperature, four measurements are recorded: the current through the sample $I$, the longitudinal voltage $U_\text{L}$ with no external magnetic field and the hall voltage $U_\text{H}^{+,-}$ at a magnetic field of $\pm B = \pm \SI{0.5}{\tesla}$.
-
 The conductivity $\sigma$ of the sample is calculated as
 \begin{equation*}
 	\sigma = \frac{I}{U_\text{L}} \frac{l}{w h}
@@ -15,7 +13,7 @@ and the Hall coefficient $R_\text{H}$ is calculated as
 \end{equation*}
 where $l$ denotes the sample's length along the current flow, $w$ the distance between the hall voltage contacts and $h$ denotes the other dimension.
 
-A plot of $\frac{1}{\left|R_\text{H}\right|}$ and $sigma$ over $T$ is shown in \autoref{fig:sample-a-conductivity}.
+A plot of $\frac{1}{\left|R_\text{H}\right|}$ and $\sigma$ over $T$ is shown in \autoref{fig:sample-a-conductivity}.
 The transition to the intrinsic region is clearly visible and it is estimated to start at \SI{288}{\kelvin}.
 The end of the extrinsic region is better observed in a log-log-plot of the product $\sigma \cdot \left| R_\text{H} \right|$, shown in \autoref{fig:sample-a-product}.
 It is estimated to end at \SI{160}{\kelvin}.
@@ -34,7 +32,7 @@ It is estimated to end at \SI{160}{\kelvin}.
   \captiond{Product of conductivity and Hall coefficient over temperature of sample A}{}
   \label{fig:sample-a-product}
 \end{figure}
-
+\todo{label axes in \autoref{fig:sample-a-product}}
 \section{Sample B}
 
 \section{Comparison of Hall Mobilities}
@@ -48,7 +46,7 @@ It is estimated to end at \SI{160}{\kelvin}.
 Hall mobility dependences for both samples are compared in \autoref{fig:mob-comp}.
 Apart from their obviously different absolute values, it is easy to see that the curves exhibit different temperature dependencies for low temperatures (with respect to the observed temperature range).
 
-\textbf{The germanium sample (A)} shows a temperature dependence which is in accordance with the theory outlined in \autoref{subsec:phonons}: For high temperatures, scattering at acoustic phonons makes a major contribution to the hall mobility $\left(T^{-\nicefrac{3}{2}}\right)$.
+\textbf{The germanium sample (A)} shows a temperature dependence which is in accordance with the theory outlined in \autoref{subsec:phonons}: For high temperatures, scattering at acoustic phonons makes a major contribution to the hall mobility $\left(\propto T^{-\nicefrac{3}{2}}\right)$.
 For low temperatures, scattering at charged defects results in a $\propto T^{\nicefrac{3}{2}}$ behavior.
 
 \textbf{The GaAs composite sample (B)} appears to show the expected behavior as well.
