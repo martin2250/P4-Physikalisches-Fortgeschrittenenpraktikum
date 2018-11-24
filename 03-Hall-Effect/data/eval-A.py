@@ -9,7 +9,7 @@ import constants
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('plot', type=str, choices=['2.1', '2.2', '4/5'],
+parser.add_argument('plot', type=str, choices=['2.1', '2.2', '4'],
                     help='which plot to draw')
 parser.add_argument('--output', type=str,
                     help='output file')
@@ -87,7 +87,7 @@ elif args.plot == '2.2':
     ax.get_xaxis().set_minor_formatter(xformatter)
     ax.get_xaxis().set_major_formatter(xformatter)
 ################################################################################
-elif args.plot == '4/5':
+elif args.plot == '4':
     plt.plot(temperature, - n(hall_coefficient, temperature), 'x')
     plt.xlabel('temperature (K)')
     plt.ylabel('$\\log\\ n_{i}\\ (m^{-3})$')

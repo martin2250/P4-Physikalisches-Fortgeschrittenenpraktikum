@@ -18,7 +18,7 @@ plots/sample-a-product.pdf:  eval-A.py constants.py src/data-A.dat plots
 	./$< 2.2 --output $@
 
 plots/n.pdf: eval-A.py src/data-A.dat constants.py plots
-	./$< 4/5 --output $@
+	./$< 4 --output $@
 
 plots/table-a.agtex: eval-B.py src/data-A.dat src/data-B.dat plots
 	./$< 1 --table-A $@
