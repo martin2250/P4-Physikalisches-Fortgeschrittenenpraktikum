@@ -18,6 +18,22 @@ The transition to the intrinsic region is clearly visible and it is estimated to
 The end of the extrinsic region is better observed in a log-log-plot of the product $\sigma \cdot \left| R_\text{H} \right|$, shown in \autoref{fig:sample-a-product}.
 It is estimated to end at \SI{160}{\kelvin}.
 
+\section{Conduction Type}
+From the sign of xxx and the geometry of the setup, shown in \autoref{fig:todo}, \todo{}
+
+\section{Intrinsic Charge Carrier Density}
+Rearranging Equation (55) from the experiment manual yields the following relation between the charge carrier density $n_\text{i}$ and the hall coefficient $R_\text{H}$:
+\begin{equation*}
+	n_\text{i} \left(R_\text{H}\left( T \right), T \right) = \frac{1}{e \cdot R_\text{H}\left(T\right)} \frac{ 1 - b \left( T \right) }{ 1 + b \left( T \right) },
+\end{equation*}
+with the ratio of the positive and negative charge carrier's mobilities
+\begin{equation*}
+	b \left( T \right) = \frac{\mu_\text{n}}{\mu_\text{p}} = \num{1.24553} + \num{0.00107} \cdot T,
+\end{equation*}
+calculated using the empirical formula given in the experiment manual.
+
+The value of $n_\text{i}\left(T = \SI{300}{\kelvin}\right)$ is obtained by (a linear interpolation between the closest measured values) or (fitting a polynomial (or similar) to all values of $n_\text{i}$)
+
 
 \begin{figure}
   \centering
