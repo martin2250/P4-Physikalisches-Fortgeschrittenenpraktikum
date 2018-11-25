@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import argparse
+import bisect
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker
@@ -9,7 +10,7 @@ import constants
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('plot', type=str, choices=['2.1', '2.2', '4'],
+parser.add_argument('plot', type=str, choices=['2.1', '2.2', '4', '5'],
                     help='which plot to draw')
 parser.add_argument('--output', type=str,
                     help='output file')
@@ -41,12 +42,21 @@ conductivity = 1 / specific_resistance
 temperature_extrinsic_max = 160
 temperature_intrinsic_min = 288
 ################################################################################
+
+
 def b(T):
     return 1.24553 + 0.00107 * T
 
 
 def n(R, T):
     return 1 / (constants.e * R) * (1 - b(T)) / (1 + b(T))
+
+
+################################################################################
+# limit to intrinsic region
+limit = bisect.bisect(temperature, temperature_intrinsic_min)
+limited_temp = temperature[limit:]
+limited_hall_coeff = hall_coefficient[limit:]
 ################################################################################
 if args.plot == '2.1':
     plt.plot(temperature, conductivity, 'x', label='conductivity $\\sigma$')
@@ -88,7 +98,7 @@ elif args.plot == '2.2':
     ax.get_xaxis().set_major_formatter(xformatter)
 ################################################################################
 elif args.plot == '4':
-    plt.plot(temperature, - n(hall_coefficient, temperature), 'x')
+    plt.plot(limited_temp, - n(limited_hall_coeff, limited_temp), 'x')
 
     if args.verbose:
         print(f'n_i(300 K) = {-n(hall_coefficient[21], temperature[21]):0.3e}')
@@ -98,12 +108,27 @@ elif args.plot == '4':
     ax.set_yscale("log", nonposy='clip')
     ax.set_xlabel('temperature (K)')
     ax.set_ylabel('$\\log\\ n_{i}\\ (m^{-3})$')
-    ax.set_xlim(temperature_intrinsic_min, np.max(temperature), np.max(temperature) +
-                + np.diff(temperature)[0])  # only intrinsic
 
     xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
     ax.get_xaxis().set_minor_formatter(xformatter)
     ax.get_xaxis().set_major_formatter(xformatter)
+################################################################################
+elif args.plot == '5':
+    # Arrhenius representation for band gap
+    slp, inter = np.polyfit(
+        1 / limited_temp, np.log(-n(limited_hall_coeff, limited_temp) / limited_temp**(3. / 2)), 1)
+    plt.plot(1 / limited_temp, np.log(-n(limited_hall_coeff,
+                                         limited_temp) / limited_temp**(3. / 2)), '+')
+    plt.plot(1 / limited_temp, slp * 1 /
+             limited_temp + inter, '--', color='red', )
+    plt.xlabel('$\\frac{1}{T} \\left(\\frac{1}{K}\\right)$')
+    plt.ylabel('$\\log\\left(\\frac{n_i}{T^{\\frac{3}{2}}}\\right)$')
+
+    if args.verbose:
+        Eg = -slp * 2 * constants.k
+        print(Eg)
+        print(f'Eg_0 = {Eg * 6.2415091e18:.2f} eV, offset = {inter:.2f}')
+    plt.plot()
 ################################################################################
 plt.grid(which='both')
 
