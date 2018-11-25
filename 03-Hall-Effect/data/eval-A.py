@@ -34,7 +34,7 @@ magnetic_field = 0.5
 resistance = voltage_long / current
 resistance_hall = (voltage_hall_pos - voltage_hall_neg) / (2 * current)
 
-hall_coefficient = - resistance_hall / (1e-3 * magnetic_field)
+hall_coefficient = - resistance_hall * 1e-3 / (magnetic_field)
 sheet_resistance = resistance * 10 / 19
 specific_resistance = sheet_resistance / 1e-3
 conductivity = 1 / specific_resistance
