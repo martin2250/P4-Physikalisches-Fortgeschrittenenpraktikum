@@ -36,7 +36,7 @@ resistance_hall = (voltage_hall_pos - voltage_hall_neg) / (2 * current)
 
 hall_coefficient = - resistance_hall * 1e-3 / (magnetic_field)
 sheet_resistance = resistance * 10 / 19
-specific_resistance = sheet_resistance / 1e-3
+specific_resistance = sheet_resistance * 1e-3
 conductivity = 1 / specific_resistance
 
 temperature_extrinsic_max = 160
@@ -65,12 +65,12 @@ if args.plot == '2.1':
     plt.ylabel('conductivity (S/m)')
     plt.xlabel('temperature (K)')
 
-    plt.vlines(temperature_intrinsic_min, 1e-6, 2e-5)
-    plt.vlines(temperature_extrinsic_max, 1.3e-6,
-               5e-6, colors='C0', linestyles='dotted')
+    plt.vlines(temperature_intrinsic_min, 1, 2e1)
+    plt.vlines(temperature_extrinsic_max, 1.3,
+               5, colors='C0', linestyles='dotted')
 
-    plt.text(temperature_intrinsic_min + 3, 1.3e-6, 'purely intrinsic')
-    plt.text(temperature_intrinsic_min - 3, 1.3e-5,
+    plt.text(temperature_intrinsic_min + 3, 1.3, 'purely intrinsic')
+    plt.text(temperature_intrinsic_min - 3, 1.3e1,
              'transition region', horizontalalignment='right')
 
     ax = plt.gca()
