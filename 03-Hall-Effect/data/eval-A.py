@@ -45,11 +45,11 @@ temperature_intrinsic_min = 288
 
 
 def b(T):
-    return 1.24553 + 0.00107 * T
+	return 1.24553 + 0.00107 * T
 
 
 def n(R, T):
-    return 1 / (constants.e * R) * (1 - b(T)) / (1 + b(T))
+	return 1 / (constants.e * R) * (1 - b(T)) / (1 + b(T))
 
 
 ################################################################################
@@ -59,80 +59,80 @@ limited_temp = temperature[limit:]
 limited_hall_coeff = hall_coefficient[limit:]
 ################################################################################
 if args.plot == '2.1':
-    plt.plot(temperature, conductivity, 'x', label='conductivity $\\sigma$')
-    plt.plot(temperature, 1 / hall_coefficient, 'o',
-             label='hall coefficient $\\frac{1}{|R_\\mathrm{H}|}$')
-    plt.ylabel('conductivity (S/m)')
-    plt.xlabel('temperature (K)')
+	plt.plot(temperature, conductivity, 'x', label='conductivity $\\sigma$')
+	plt.plot(temperature, 1 / hall_coefficient, 'o',
+          label='hall coefficient $\\frac{1}{|R_\\mathrm{H}|}$')
+	plt.ylabel('conductivity (S/m)')
+	plt.xlabel('temperature (K)')
 
-    plt.vlines(temperature_intrinsic_min, 1, 2e1)
-    plt.vlines(temperature_extrinsic_max, 1.3,
-               5, colors='C0', linestyles='dotted')
+	plt.vlines(temperature_intrinsic_min, 1, 2e1)
+	plt.vlines(temperature_extrinsic_max, 1.3,
+            5, colors='C0', linestyles='dotted')
 
-    plt.text(temperature_intrinsic_min + 3, 1.3, 'purely intrinsic')
-    plt.text(temperature_intrinsic_min - 3, 1.3e1,
-             'transition region', horizontalalignment='right')
+	plt.text(temperature_intrinsic_min + 3, 1.3, 'purely intrinsic')
+	plt.text(temperature_intrinsic_min - 3, 1.3e1,
+          'transition region', horizontalalignment='right')
 
-    ax = plt.gca()
-    ax.set_yscale("log", nonposy='clip')
-    plt.legend()
+	ax = plt.gca()
+	ax.set_yscale("log", nonposy='clip')
+	plt.legend()
 ################################################################################
 elif args.plot == '2.2':
-    plt.plot(temperature, conductivity * hall_coefficient, 'x')
+	plt.plot(temperature, conductivity * hall_coefficient, 'x')
 
-    plt.vlines(temperature_extrinsic_max, 0.5, 1)
-    plt.vlines(temperature_intrinsic_min, 0.14, 0.3,
-               colors='C0', linestyles='dotted')
+	plt.vlines(temperature_extrinsic_max, 0.5, 1)
+	plt.vlines(temperature_intrinsic_min, 0.14, 0.3,
+            colors='C0', linestyles='dotted')
 
-    plt.text(temperature_extrinsic_max - 3, 0.55,
-             'purely extrinsic', horizontalalignment='right')
-    plt.text(temperature_extrinsic_max + 3, 0.93, 'transition region')
+	plt.text(temperature_extrinsic_max - 3, 0.55,
+          'purely extrinsic', horizontalalignment='right')
+	plt.text(temperature_extrinsic_max + 3, 0.93, 'transition region')
 
-    ax = plt.gca()
-    ax.set_xscale("log", nonposx='clip')
-    ax.set_yscale("log", nonposy='clip')
-    ax.set_xlabel('$\\log\\ T$ (K)')
-    ax.set_ylabel('$\\log(\\sigma\\times |R_H|)$ ($\\frac{m^{2}}{Vs}$)')
-    xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
-    ax.get_xaxis().set_minor_formatter(xformatter)
-    ax.get_xaxis().set_major_formatter(xformatter)
+	ax = plt.gca()
+	ax.set_xscale("log", nonposx='clip')
+	ax.set_yscale("log", nonposy='clip')
+	ax.set_xlabel('$\\log\\ T$ (K)')
+	ax.set_ylabel('$\\log(\\sigma\\times |R_H|)$ ($\\frac{m^{2}}{Vs}$)')
+	xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
+	ax.get_xaxis().set_minor_formatter(xformatter)
+	ax.get_xaxis().set_major_formatter(xformatter)
 ################################################################################
 elif args.plot == '4':
-    plt.plot(limited_temp, - n(limited_hall_coeff, limited_temp), 'x')
+	plt.plot(limited_temp, - n(limited_hall_coeff, limited_temp), 'x')
 
-    if args.verbose:
-        print(f'n_i(300 K) = {-n(hall_coefficient[21], temperature[21]):0.3e}')
+	if args.verbose:
+		print(f'n_i(300 K) = {-n(hall_coefficient[21], temperature[21]):0.3e}')
 
-    ax = plt.gca()
-    #ax.set_xscale("log", nonposx='clip')
-    ax.set_yscale("log", nonposy='clip')
-    ax.set_xlabel('temperature (K)')
-    ax.set_ylabel('$\\log\\ n_{i}\\ (m^{-3})$')
+	ax = plt.gca()
+	#ax.set_xscale("log", nonposx='clip')
+	ax.set_yscale("log", nonposy='clip')
+	ax.set_xlabel('temperature (K)')
+	ax.set_ylabel('$\\log\\ n_{i}\\ (m^{-3})$')
 
-    xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
-    ax.get_xaxis().set_minor_formatter(xformatter)
-    ax.get_xaxis().set_major_formatter(xformatter)
+	xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
+	ax.get_xaxis().set_minor_formatter(xformatter)
+	ax.get_xaxis().set_major_formatter(xformatter)
 ################################################################################
 elif args.plot == '5':
-    # Arrhenius representation for band gap
-    slp, inter = np.polyfit(
-        1 / limited_temp, np.log(-n(limited_hall_coeff, limited_temp) / limited_temp**(3. / 2)), 1)
-    plt.plot(1 / limited_temp, np.log(-n(limited_hall_coeff,
-                                         limited_temp) / limited_temp**(3. / 2)), '+')
-    plt.plot(1 / limited_temp, slp * 1 /
-             limited_temp + inter, '--', color='red', )
-    plt.xlabel('$\\frac{1}{T} \\left(\\frac{1}{K}\\right)$')
-    plt.ylabel('$\\log\\left(\\frac{n_i}{T^{\\frac{3}{2}}}\\right)$')
+	# Arrhenius representation for band gap
+	slp, inter = np.polyfit(
+            1 / limited_temp, np.log(-n(limited_hall_coeff, limited_temp) / limited_temp**(3. / 2)), 1)
+	plt.plot(1 / limited_temp, np.log(-n(limited_hall_coeff,
+                                      limited_temp) / limited_temp**(3. / 2)), '+')
+	plt.plot(1 / limited_temp, slp * 1 /
+          limited_temp + inter, '--', color='red', )
+	plt.xlabel('$\\frac{1}{T} \\left(\\frac{1}{K}\\right)$')
+	plt.ylabel('$\\log\\left(\\frac{n_i}{T^{\\frac{3}{2}}}\\right)$')
 
-    if args.verbose:
-        Eg = -slp * 2 * constants.k
-        print(Eg)
-        print(f'Eg_0 = {Eg * 6.2415091e18:.2f} eV, offset = {inter:.2f}')
-    plt.plot()
+	if args.verbose:
+		Eg = -slp * 2 * constants.k
+		print(Eg)
+		print(f'Eg_0 = {Eg * 6.2415091e18:.2f} eV, offset = {inter:.2f}')
+	plt.plot()
 ################################################################################
 plt.grid(which='both')
 
 if args.output:
-    plt.savefig(args.output)
+	plt.savefig(args.output)
 else:
-    plt.show()
+	plt.show()

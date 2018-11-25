@@ -95,49 +95,49 @@ S[tight - spacing = true]
 """)
 if args.plot == 1:
 
-    plt.plot(temperature, conductivity * hall_coefficient, 'x')
+	plt.plot(temperature, conductivity * hall_coefficient, 'x')
 
-    ax = plt.gca()
-    ax.set_xscale("log", nonposx='clip')
-    ax.set_yscale("log", nonposy='clip')
-    ax.set_xlabel('$\\log\\ T$ (K)')
-    ax.set_ylabel('$\\log\\ \\mu$ ($\\frac{m^2}{Vs}$)')
-    xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
-    ax.get_xaxis().set_minor_formatter(xformatter)
-    ax.get_xaxis().set_major_formatter(xformatter)
+	ax = plt.gca()
+	ax.set_xscale("log", nonposx='clip')
+	ax.set_yscale("log", nonposy='clip')
+	ax.set_xlabel('$\\log\\ T$ (K)')
+	ax.set_ylabel('$\\log\\ \\mu$ ($\\frac{m^2}{Vs}$)')
+	xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
+	ax.get_xaxis().set_minor_formatter(xformatter)
+	ax.get_xaxis().set_major_formatter(xformatter)
 
 elif args.plot == 2:
 
-    mobilityA = hall_coefficientA[temperatureA <=
-                                  273.15] * conductivityA[temperatureA <= 273.15]
-    mobility = conductivity * hall_coefficient
+	mobilityA = hall_coefficientA[temperatureA <=
+                               273.15] * conductivityA[temperatureA <= 273.15]
+	mobility = conductivity * hall_coefficient
 
-    fig, ax = plt.subplots()
-    ax.plot(temperature, mobilityA,
-            'x', label='mobility sample A')
-    ax.plot(temperature, mobility, 'o', label='mobility sample B')
+	fig, ax = plt.subplots()
+	ax.plot(temperature, mobilityA,
+         'x', label='mobility sample A')
+	ax.plot(temperature, mobility, 'o', label='mobility sample B')
 
-    ax.set_yscale("log", nonposy='clip')
-    ax.set_xlabel('T (K)')
-    ax.set_ylabel('$\\log\\ \\mu$ ($\\frac{m^2}{Vs}$)')
-    xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
-    ax.get_xaxis().set_major_formatter(xformatter)
-    plt.legend()
+	ax.set_yscale("log", nonposy='clip')
+	ax.set_xlabel('T (K)')
+	ax.set_ylabel('$\\log\\ \\mu$ ($\\frac{m^2}{Vs}$)')
+	xformatter = matplotlib.ticker.FormatStrFormatter('%0.0f')
+	ax.get_xaxis().set_major_formatter(xformatter)
+	plt.legend()
 
-    # # created zoomed up inset plot
-    # # zoom-factor: 2.5, location: upper-right
-    # axins = ax.inset_axes([0.65, 0.5, 0.3, 0.3])
-    # axins.plot(temperature, mobilityA, 'x')
-    # axins.plot(temperature, mobility, 'o')
-    # axins.set_xlim(90, 160)
-    # axins.set_ylim(mobilityA[0]-0.8, mobility[0])
-    # ax.indicate_inset_zoom(axins)
-    # axins.set_xticklabels('')
-    # axins.set_yticklabels('')
+	# # created zoomed up inset plot
+	# # zoom-factor: 2.5, location: upper-right
+	# axins = ax.inset_axes([0.65, 0.5, 0.3, 0.3])
+	# axins.plot(temperature, mobilityA, 'x')
+	# axins.plot(temperature, mobility, 'o')
+	# axins.set_xlim(90, 160)
+	# axins.set_ylim(mobilityA[0]-0.8, mobility[0])
+	# ax.indicate_inset_zoom(axins)
+	# axins.set_xticklabels('')
+	# axins.set_yticklabels('')
 
 plt.grid(which='both', linestyle='--')
 
 if args.output:
-    plt.savefig(args.output)
+	plt.savefig(args.output)
 elif not table_saved:
-    plt.show()
+	plt.show()
