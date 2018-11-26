@@ -5,6 +5,8 @@ import bisect
 import matplotlib.pyplot as plt
 import matplotlib.ticker
 import numpy as np
+import scipy
+import scipy.stats
 
 import constants
 
@@ -110,7 +112,7 @@ elif args.plot == '4':
 		print(f'n_i(300 K) = {n_at_300K:0.3e}')
 
 	ax = plt.gca()
-	#ax.set_xscale("log", nonposx='clip')
+	# ax.set_xscale("log", nonposx='clip')
 	ax.set_yscale("log", nonposy='clip')
 	ax.set_xlabel('temperature (K)')
 	ax.set_ylabel('$\\log\\ n_{i}\\ (m^{-3})$')
@@ -121,12 +123,13 @@ elif args.plot == '4':
 ################################################################################
 elif args.plot == '5+6':
 	# Arrhenius representation for band gap
-	slp, inter = np.polyfit(
-            1 / limited_temp, np.log(-n(limited_hall_coeff, limited_temp) / limited_temp**(3. / 2)), 1)
+	slp, inter, r, __, __ = scipy.stats.linregress(
+            1 / limited_temp, np.log(-n(limited_hall_coeff, limited_temp) / limited_temp**(3 / 2)))
+
 	plt.plot(1 / limited_temp, np.log(-n(limited_hall_coeff,
-                                      limited_temp) / limited_temp**(3. / 2)), '+')
+                                      limited_temp) / limited_temp**(3. / 2)), '+', markersize=12, label='data')
 	plt.plot(1 / limited_temp, slp * 1
-          / limited_temp + inter, '--', color='red', )
+          / limited_temp + inter, '--', label=f'linear fit\n $R^2={r**2:.4f}$', color='red')
 	plt.xlabel('$\\frac{1}{T} \\left(\\frac{1}{K}\\right)$')
 	plt.ylabel('$\\log\\ \\frac{n_i}{T^{\\frac{3}{2}}}$')
 
@@ -135,6 +138,7 @@ elif args.plot == '5+6':
 		print(f'Eg_0 = {Eg:.3f} eV, offset = {inter:.3f}')
 		print(f'band gap energy (300K)= {bandgap(Eg, 300):.3f}')
 	plt.plot()
+	plt.legend()
 ################################################################################
 plt.grid(which='both')
 

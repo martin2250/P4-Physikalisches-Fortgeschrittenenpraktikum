@@ -3,6 +3,20 @@
 \section{Sample A}
 
 \section{Conductivity and Hall Coefficient}
+\begin{figure}
+  \centering
+  \includegraphics[width=.6\textwidth]{./data/plots/sample-a-conductivity.pdf}
+  \captiond{Conductivity and Hall coefficient over temperature of sample A}{}
+  \label{fig:sample-a-conductivity}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.6\textwidth]{./data/plots/sample-a-product.pdf}
+  \captiond{Product of conductivity and Hall coefficient over temperature of sample A}{}
+  \label{fig:sample-a-product}
+\end{figure}
+
 The conductivity $\sigma$ of the sample is calculated as
 \begin{equation*}
 	\sigma = \frac{I}{U_\text{L}} \frac{l}{w h}
@@ -22,32 +36,51 @@ It is estimated to end at \SI{160}{\kelvin}.
 From the sign of xxx and the geometry of the setup, shown in \autoref{fig:todo}, \todo{}
 
 \section{Intrinsic Charge Carrier Density}
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{./data/plots/n.pdf}
+	\captiond{Intrinsic carrier concentration as a function of temperature}{}
+	\label{fig:intr_carrier}
+\end{figure}
+
 Rearranging Equation (55) from the experiment manual yields the following relation between the charge carrier density $n_\text{i}$ and the hall coefficient $R_\text{H}$:
 \begin{equation*}
 	n_\text{i} \left(R_\text{H}\left( T \right), T \right) = \frac{1}{e \cdot R_\text{H}\left(T\right)} \frac{ 1 - b \left( T \right) }{ 1 + b \left( T \right) },
 \end{equation*}
-with the ratio of the positive and negative charge carrier's mobilities
+where the ratio of positive and negative charge carriers' mobilities
 \begin{equation*}
 	b \left( T \right) = \frac{\mu_\text{n}}{\mu_\text{p}} = \num{1.24553} + \num{0.00107} \cdot T,
 \end{equation*}
-calculated using the empirical formula given in the experiment manual.
+is calculated using the empirical formula given in the experiment manual.
 
-The value of $n_\text{i}\left(T = \SI{300}{\kelvin}\right)$ is obtained by (a linear interpolation between the closest measured values) or (fitting a polynomial (or similar) to all values of $n_\text{i}$)
+\autoref{fig:intr_carrier} shows the intrinsic carrier concentration $n_\text{i}$ as a function of temperature $T$.
+The measured data obviously reflects the theoretical model, since the dependence is expected to be $\propto T^{\nicefrac{3}{2}}\cdot\e^{-\frac{E_\text{G}}{2k_\text{B}T}}$ as outlined in \autoref{sec:cc} (note that $n_\text{i}(T)$ is scaled logarithmically on the y-axis).
 
+The value of $n_\text{i}\left(T = \SI{300}{\kelvin}\right) = \SI{2.316e19}{\per\cubic\meter}$ is obtained by a linear interpolation between the closest measured values and not, despite the experiment manual's instructions, by using values for the y-intercept and $E_\text{g,0}$ from the Arrhenius plot (discussed in \autoref{sec:arrhenius}).
+The Arrhenius plot has been obtained by calculating $n_\text{i}(T)$ in the first place, so the best approach to obtain the intrinsic carrier concentration at \SI{300}{\kelvin} is using the original $n_\text{i}(T)$ dependence.
 
+\section{Arrhenius Plot}\label{sec:arrhenius}
 \begin{figure}
-  \centering
-  \includegraphics[width=.6\textwidth]{./data/plots/sample-a-conductivity.pdf}
-  \captiond{Conductivity and Hall coefficient over temperature of sample A}{}
-  \label{fig:sample-a-conductivity}
+	\centering
+	\includegraphics[width=.5\textwidth]{./data/plots/arrhenius.pdf}
+	\captiond{Arrhenius plot for sample A}{The expected linear dependence is easy to be seen.}
+	\label{fig:arrhenius}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=.6\textwidth]{./data/plots/sample-a-product.pdf}
-  \captiond{Product of conductivity and Hall coefficient over temperature of sample A}{}
-  \label{fig:sample-a-product}
-\end{figure}
+\autoref{fig:arrhenius} shows an Arrhenius plot for sample A (discussed at the end of \autoref{sec:cc}).
+As indicated by an $R^2$-value of $0.9998\approx 1$, a good linear dependence is observed for the underlying data, confirming the validness of the theoretical model.
+By identifying the parameters of the performed fit, values
+\begin{align*}
+	E_\text{g,0} = \SI{0.774}{\eV} \\
+	\text{y-intercept} = \num{50.993} % whatever units
+\end{align*}
+are acquired.
+
+Using the computed value for $E_\text{g,0}$ and the relation $E_\text{g}(T) = E_\text{g,0} -\upalpha T$ for the band gap energy, where $\upalpha=\SI{4e-4}{\eV\per\kelvin}$ is specified in the experiment manual, the band gap energy at \SI{300}{\kelvin}
+\begin{equation*}
+	E_\text{g}\left(T = \SI{300}{\kelvin}\right) = \SI{0.654}{\eV}
+\end{equation*}
+is obtained.
 
 \section{Sample B}
 
