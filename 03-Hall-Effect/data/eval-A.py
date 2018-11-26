@@ -41,8 +41,8 @@ sheet_resistance = resistance * 10 / 19
 specific_resistance = sheet_resistance * 1e-3
 conductivity = 1 / specific_resistance
 
-temperature_extrinsic_max = 160
-temperature_intrinsic_min = 288
+temperature_extrinsic_max = 268
+temperature_intrinsic_min = 320
 alpha = 4e-4  # eV/K
 ################################################################################
 
@@ -72,12 +72,11 @@ if args.plot == '2.1':
 	plt.ylabel('conductivity (S/m)')
 	plt.xlabel('temperature (K)')
 
-	plt.vlines(temperature_intrinsic_min, 1, 2e1)
-	plt.vlines(temperature_extrinsic_max, 1.3,
-            5, colors='C0', linestyles='dotted')
+	plt.vlines(temperature_intrinsic_min, 3, 90)
+	plt.vlines(temperature_extrinsic_max, 1, 7, colors='C0', linestyles='dotted')
 
-	plt.text(temperature_intrinsic_min + 3, 1.3, 'purely intrinsic')
-	plt.text(temperature_intrinsic_min - 3, 1.3e1,
+	plt.text(temperature_intrinsic_min + 3, 3.6, 'purely intrinsic')
+	plt.text(temperature_intrinsic_min - 3, 75,
           'transition region', horizontalalignment='right')
 
 	ax = plt.gca()
@@ -87,13 +86,13 @@ if args.plot == '2.1':
 elif args.plot == '2.2':
 	plt.plot(temperature, conductivity * hall_coefficient, 'x')
 
-	plt.vlines(temperature_extrinsic_max, 0.5, 1)
-	plt.vlines(temperature_intrinsic_min, 0.14, 0.3,
+	plt.vlines(temperature_extrinsic_max, 0.2, 0.4)
+	plt.vlines(temperature_intrinsic_min, 0.1, 0.2,
             colors='C0', linestyles='dotted')
 
-	plt.text(temperature_extrinsic_max - 3, 0.55,
+	plt.text(temperature_extrinsic_max - 3, 0.2,
           'purely extrinsic', horizontalalignment='right')
-	plt.text(temperature_extrinsic_max + 3, 0.93, 'transition region')
+	plt.text(temperature_extrinsic_max + 3, 0.4, 'transition region')
 
 	ax = plt.gca()
 	ax.set_xscale("log", nonposx='clip')
@@ -131,12 +130,14 @@ elif args.plot == '5+6':
 	plt.plot(1 / limited_temp, slp * 1
           / limited_temp + inter, '--', label=f'linear fit\n $R^2={r**2:.4f}$', color='red')
 	plt.xlabel('$\\frac{1}{T} \\left(\\frac{1}{K}\\right)$')
-	plt.ylabel('$\\log\\ \\frac{n_i}{T^{\\frac{3}{2}}}$')
+	plt.ylabel('$\\log\\ \\frac{n_\\mathrm{i}}{T^{\\frac{3}{2}}}$')
 
 	if args.verbose:
 		Eg = -slp * 2 * constants.k / constants.e  # in eV
 		print(f'Eg_0 = {Eg:.3f} eV, offset = {inter:.3f}')
 		print(f'band gap energy (300K)= {bandgap(Eg, 300):.3f}')
+		n_i_300 = np.exp(inter + slp * (1 / 300)) * 300**(3 / 2)
+		print(f'n_i (300K) = {n_i_300:0.3e} 1/m^3')
 	plt.plot()
 	plt.legend()
 ################################################################################

@@ -32,8 +32,8 @@ The transition to the intrinsic region is clearly visible and it is estimated to
 The end of the extrinsic region is better observed in a log-log-plot of the product $\sigma \cdot \left| R_\text{H} \right|$, shown in \autoref{fig:sample-a-product}.
 It is estimated to end at \SI{160}{\kelvin}.
 
-\section{Conduction Type}
-From the sign of xxx and the geometry of the setup, shown in \autoref{fig:todo}, \todo{}
+% \section{Conduction Type}
+% The type of charge carriers in the extrinsic region is determined by looking at the extrinsic region in \autoref{fig:sample}.
 
 \section{Intrinsic Charge Carrier Density}
 \begin{figure}
@@ -56,8 +56,8 @@ is calculated using the empirical formula given in the experiment manual.
 \autoref{fig:intr_carrier} shows the intrinsic carrier concentration $n_\text{i}$ as a function of temperature $T$.
 The measured data obviously reflects the theoretical model, since the dependence is expected to be $\propto T^{\nicefrac{3}{2}}\cdot\e^{-\frac{E_\text{G}}{2k_\text{B}T}}$ as outlined in \autoref{sec:cc} (note that $n_\text{i}(T)$ is scaled logarithmically on the y-axis).
 
-The value of $n_\text{i}\left(T = \SI{300}{\kelvin}\right) = \SI{2.316e19}{\per\cubic\meter}$ is obtained by a linear interpolation between the closest measured values and not, despite the experiment manual's instructions, by using values for the y-intercept and $E_\text{g,0}$ from the Arrhenius plot (discussed in \autoref{sec:arrhenius}).
-The Arrhenius plot has been obtained by calculating $n_\text{i}(T)$ in the first place, so the best approach to obtain the intrinsic carrier concentration at \SI{300}{\kelvin} is using the original $n_\text{i}(T)$ dependence.
+% The value of $n_\text{i}\left(T = \SI{300}{\kelvin}\right) = \SI{2.316e19}{\per\cubic\meter}$ is obtained by a linear interpolation between the closest measured values and not, despite the experiment manual's instructions, by using values for the y-intercept and $E_\text{g,0}$ from the Arrhenius plot (discussed in \autoref{sec:arrhenius}).
+% The Arrhenius plot has been obtained by calculating $n_\text{i}(T)$ in the first place, so the best approach to obtain the intrinsic carrier concentration at \SI{300}{\kelvin} is using the original $n_\text{i}(T)$ dependence.
 
 \section{Arrhenius Plot}\label{sec:arrhenius}
 \begin{figure}
@@ -68,11 +68,11 @@ The Arrhenius plot has been obtained by calculating $n_\text{i}(T)$ in the first
 \end{figure}
 
 \autoref{fig:arrhenius} shows an Arrhenius plot for sample A (discussed at the end of \autoref{sec:cc}).
-As indicated by an $R^2$-value of $0.9998\approx 1$, a good linear dependence is observed for the underlying data, confirming the validness of the theoretical model.
+As indicated by an $R^2$-value of $0.9995$, a good linear dependence is observed for the underlying data, confirming the validness of the theoretical model.
 By identifying the parameters of the performed fit, values
 \begin{align*}
-	E_\text{g,0} = \SI{0.774}{\eV} \\
-	\text{y-intercept} = \num{50.993} % whatever units
+	E_\text{g,0} = \SI{0.768}{\eV} \\
+	\text{y-intercept} = \num{50.904} % whatever units
 \end{align*}
 are acquired.
 
@@ -82,7 +82,9 @@ Using the computed value for $E_\text{g,0}$ and the relation $E_\text{g}(T) = E_
 \end{equation*}
 is obtained.
 
-\section{Sample B}
+The charge carrier density at $T = \SI{300}{\kelvin}$ is found by computing the value of the fit function at $\left(\SI{300}{\kelvin}\right)^{-1}$ and solving for $n_\text{i}$.
+
+This gives an intrinsic charge carrier density of $n_\text{i} (T=\SI{300}{\kelvin}) = \SI{2.33e19}{\per\meter\cubed}$
 
 \section{Comparison of Hall Mobilities}
 \begin{figure}
@@ -101,10 +103,3 @@ For low temperatures, scattering at charged defects results in a $\propto T^{\ni
 \textbf{The GaAs composite sample (B)} appears to show the expected behavior as well.
 For this temperature regime, scattering at optical phonons should make the main contribution to the overall behavior so that a behavior like $\mu\propto \e^\frac{\hbar \omega}{k T} - 1$ is expected.
 This assumption is confirmed by the observed data.
-
-% todo: move this to appendix and uncomment
-% \begin{table}
-% 	\caption{title}
-% 	\centering
-% 	\input{data/plots/table-a.agtex}
-% \end{table}

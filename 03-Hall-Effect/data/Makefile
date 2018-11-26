@@ -1,6 +1,6 @@
 .PHONY: data
 
-data: plots/mob-comp.pdf plots/arrhenius.pdf plots/n.pdf plots/sample-a-conductivity.pdf plots/sample-a-product.pdf plots/table-a.agtex
+data: plots/mob-comp.pdf plots/arrhenius.pdf plots/n.pdf plots/sample-a-conductivity.pdf plots/sample-a-product.pdf plots/table-a.agtex plots/table-b.agtex
 
 plots:
 	mkdir plots
@@ -23,8 +23,11 @@ plots/n.pdf: eval-A.py src/data-A.dat constants.py plots
 plots/arrhenius.pdf: eval-A.py src/data-A.dat constants.py plots
 	./$< 5+6 --output $@
 
-plots/table-a.agtex: eval-B.py src/data-A.dat src/data-B.dat plots
+plots/table-a.agtex: eval-B.py src/data-A.dat plots
 	./$< 1 --table-A $@
+
+plots/table-b.agtex: eval-B.py src/data-B.dat plots
+	./$< 1 --table-B $@
 
 clean:
 	git clean -Xf
