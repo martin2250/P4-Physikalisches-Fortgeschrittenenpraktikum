@@ -41,6 +41,7 @@ conductivity = 1 / specific_resistance
 
 temperature_extrinsic_max = 160
 temperature_intrinsic_min = 288
+alpha = 4e-4  # eV/K
 ################################################################################
 
 
@@ -50,6 +51,10 @@ def b(T):
 
 def n(R, T):
 	return 1 / (constants.e * R) * (1 - b(T)) / (1 + b(T))
+
+
+def bandgap(Eg, T):
+	return Eg - alpha * T
 
 
 ################################################################################
@@ -126,10 +131,9 @@ elif args.plot == '5+6':
 	plt.ylabel('$\\log\\ \\frac{n_i}{T^{\\frac{3}{2}}}$')
 
 	if args.verbose:
-		Eg = -slp * 2 * constants.k
-		print(Eg)
-		print(f'Eg_0 = {Eg / constants.e:.2f} eV, offset = {inter:.2f}')
-
+		Eg = -slp * 2 * constants.k / constants.e  # in eV
+		print(f'Eg_0 = {Eg:.3f} eV, offset = {inter:.3f}')
+		print(f'band gap energy (300K)= {bandgap(Eg, 300):.3f}')
 	plt.plot()
 ################################################################################
 plt.grid(which='both')
