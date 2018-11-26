@@ -9,19 +9,19 @@ from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
 parser = argparse.ArgumentParser()
 
 parser.add_argument('plot', type=int, choices=[1, 2],
-                    help='which plot to draw')
+					help='which plot to draw')
 parser.add_argument('--output', type=str,
-                    help='output file')
+					help='output file')
 parser.add_argument('--table-A', type=str,
-                    help='table output file')
+					help='table output file')
 
 args = parser.parse_args()
 
 
 temperature, current, voltage_long, voltage_hall_pos, voltage_hall_neg = np.loadtxt(
-    f'src/data-B.dat', unpack=True)
+	f'src/data-B.dat', unpack=True)
 temperatureA, currentA, voltage_longA, voltage_hall_posA, voltage_hall_negA = np.loadtxt(
-    f'src/data-A.dat', unpack=True)
+	f'src/data-A.dat', unpack=True)
 
 # mapping B
 temperature += 273.15
@@ -109,12 +109,12 @@ if args.plot == 1:
 elif args.plot == 2:
 
 	mobilityA = hall_coefficientA[temperatureA <=
-                               273.15] * conductivityA[temperatureA <= 273.15]
+								273.15] * conductivityA[temperatureA <= 273.15]
 	mobility = conductivity * hall_coefficient
 
 	fig, ax = plt.subplots()
 	ax.plot(temperature, mobilityA,
-         'x', label='mobility sample A')
+		 'x', label='mobility sample A')
 	ax.plot(temperature, mobility, 'o', label='mobility sample B')
 
 	ax.set_yscale("log", nonposy='clip')
