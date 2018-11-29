@@ -1,16 +1,15 @@
+\clearpage
 \Appendix
-\configureappendix
-
-\todo{move tables to same page as appendix header}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{\appendixname}
+\addcontentsline{toc}{chapter}{\appendixname}
 
 \begin{table}
-	\centering
 	\caption{Measured and computed values for sample B}
 	\input{data/plots/table-b.agtex}
 \end{table}
-
 \begin{table}
-	\centering
 	\caption{Measured and computed values for sample A}
 	\input{data/plots/table-a.agtex}
 \end{table}
