@@ -49,7 +49,7 @@ can be calculated analytically and be used to calculate intrinsic carrier concen
 \end{alignat*}
 This is also called the equilibrium charge carrier density.
 
-\section{Light Absorption}
+\section{Light Absorption}\label{sec:theory:absorption}
 Photons can only be absorbed when their energy is greater than the band gap of the semiconductor.
 Thus, if the energy $\hbar \omega$ is smaller than the band gap $E_\text{G}$, the semiconductor is transparent for photons of that frequency.
 If the energy is large enough, an electron is excited from the valence band into the conductance band, an electron-hole pair is formed.
@@ -67,4 +67,46 @@ A solid can be regarded as ininitely many, infinitesimally thin, such layers.
 Solving the differential equation gives a decaying exponential relation between the remaining intensity of light and the penetration depth.
 The absorption coefficient $k$ is highly dependent on the material and the wavelength of light.
 The absorbed light generates charge carriers $\Delta n' = \Delta p' = \beta k I$, where $\beta$ denotes the quantum efficiency, the ratio of produced charge carriers and absorbed photons.
+The quantum efficiency is usually smaller than one, $\beta \gt 1$ is only possible when charge carriers can obtain enough momentum to ionize further electrons from the valence band.
 In a sufficiently thick solid the total absorbed intensity is independent of $k$, only the local charge carrier density is still affected.
+
+If there were no recombination processes, the charge carrier density would rise indefinitely.
+In reality the charge carrier concentration quickly approaches a steady state, where the rates of generation and recombination of charge carriers are equal.
+The semiconductor's properties in this steady state are denoted by $\Delta n_\text{st}$, $\Delta p_\text{st}$ and $\Delta \sigma_\text{st}$ and it holds
+\begin{align*}
+	\Delta n_\text{st} &= \Delta n' \. \tau_\text{n} \\
+	\Delta p_\text{st} &= \Delta p' \. \tau_\text{p},
+\end{align*}
+where $\tau_i$ denotes the mean lifetime of the charge carriers.
+This linear dependence is only valid for weak light intensity and is dominated by nonlinear effects of recombination at higher intensities.
+
+\section{Linear Recombination}
+The total rate of change of the electron density as discussed in \autoref{sec:theory:absorption} is given by
+\begin{equation*}
+	\Delta n' = \beta k I - \frac{\Delta n}{\tau}.
+\end{equation*}
+Solving this differential equation for $I(t) = I_0 \Theta (t)$ and $\Delta n (t = 0) = 0$, where $\Theta$ is the Heaviside step function, yields
+\begin{equation}
+	\Delta n (t) = \tau \beta k I_0 \left(1 - \e^{\nicefrac{-t}{\tau}}\right).
+\end{equation}
+This linear behavior is also observed for the excess conductance $\Delta \sigma$.
+
+\section{Quadratic Recombination}
+The differential equation changes to
+\begin{equation*}
+	\Delta n' = \beta k I - \gamma (\Delta n)^2,
+\end{equation*}
+which is satisfied by
+\begin{equation*}
+	\Delta n (t) = \sqrt{\frac{\beta k I_0}{\gamma}} \tanh \left(t \sqrt{\gamma \beta k I_0} \right)
+\end{equation*}
+for $I(t) = I_0 \Theta (t)$ and
+\begin{equation*}
+	\Delta n (t) = \sqrt{\frac{\beta k I_0}{\gamma}} \left(1 + t \sqrt{\gamma \beta k I_0} \right)^{-1}
+\end{equation*}
+for $I(t) = I_0 \Theta (-t)$
+
+The stationary excess charge carrier density and conductance are both proportional to $\sqrt{I}$.
+Also the mean lifetime of charge carries is no longer fixed, but is dependent on the instantaneous charge carrier density.
+
+\section{Frequency Dependence}
