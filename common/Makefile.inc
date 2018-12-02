@@ -1,5 +1,5 @@
-BUILD := latexmk -pdf -interaction=batchmode -synctex=1 -file-line-error
-BUILDV := latexmk -pdf -interaction=nonstopmode -synctex=1 -file-line-error
+BUILD := latexmk -pdf -interaction=batchmode -synctex=1 -file-line-error -halt-on-error
+BUILDV := latexmk -pdf -interaction=nonstopmode -synctex=1 -file-line-error -halt-on-error
 FILE := $(shell basename "$(CURDIR)")
 svgimgs := $(wildcard img/*.svg)
 svgimtargets := $(patsubst %.svg,%.pdf,$(svgimgs))
@@ -22,6 +22,9 @@ img: $(svgimtargets)
 
 $(FILE).pdf: data $(FILE).tex ../common/emails.tex bibliography.ag.tex titlepage.ag.tex img preamble.fmt
 	$(BUILD) $(FILE).tex
+
+watch: data $(FILE).tex ../common/emails.tex bibliography.ag.tex titlepage.ag.tex img preamble.fmt
+	$(BUILD) -pvc $(FILE).tex
 
 preamble.fmt: preamble.tex
 	pdflatex -ini -jobname="preamble" "&pdflatex preamble.tex\dump"
