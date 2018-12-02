@@ -67,15 +67,15 @@ A solid can be regarded as ininitely many, infinitesimally thin, such layers.
 Solving the differential equation gives a decaying exponential relation between the remaining intensity of light and the penetration depth.
 The absorption coefficient $k$ is highly dependent on the material and the wavelength of light.
 The absorbed light generates charge carriers $\Delta n' = \Delta p' = \beta k I$, where $\beta$ denotes the quantum efficiency, the ratio of produced charge carriers and absorbed photons.
-The quantum efficiency is usually smaller than one, $\beta \gt 1$ is only possible when charge carriers can obtain enough momentum to ionize further electrons from the valence band.
+The quantum efficiency is usually smaller than one, $\beta > 1$ is only possible when charge carriers can obtain enough momentum to ionize further electrons from the valence band.
 In a sufficiently thick solid the total absorbed intensity is independent of $k$, only the local charge carrier density is still affected.
 
 If there were no recombination processes, the charge carrier density would rise indefinitely.
 In reality the charge carrier concentration quickly approaches a steady state, where the rates of generation and recombination of charge carriers are equal.
 The semiconductor's properties in this steady state are denoted by $\Delta n_\text{st}$, $\Delta p_\text{st}$ and $\Delta \sigma_\text{st}$ and it holds
 \begin{align*}
-	\Delta n_\text{st} &= \Delta n' \. \tau_\text{n} \\
-	\Delta p_\text{st} &= \Delta p' \. \tau_\text{p},
+	\Delta n_\text{st} &= \Delta n' \cdot \tau_\text{n} \\
+	\Delta p_\text{st} &= \Delta p' \cdot \tau_\text{p},
 \end{align*}
 where $\tau_i$ denotes the mean lifetime of the charge carriers.
 This linear dependence is only valid for weak light intensity and is dominated by nonlinear effects of recombination at higher intensities.
@@ -110,3 +110,32 @@ The stationary excess charge carrier density and conductance are both proportion
 Also the mean lifetime of charge carries is no longer fixed, but is dependent on the instantaneous charge carrier density.
 
 \section{Frequency Dependence}
+The electron concentration's $N_\text{e}$ change with time can be derived by considering a continuity equation
+\begin{equation}\label{eq:cont_el}
+	\partial_tn_\text{e} = G_\text{e} - R_\text{e},
+\end{equation}
+where $G_\text{e}$ and $R_\text{e}$ denote the rates of generation and recombination respectively.
+
+If one modulates a constant illumination intensity with a sinusoidal oscillation, the rate of generation $G_\text{e}$ is given by
+\begin{equation}\label{eq:genrate}
+	G_\text{e}(t) = G_0 + \Delta G\cdot\e^{\iu\omega t},
+\end{equation}
+$G_0$ denoting a constant rate of generation in equilibrium.
+
+Since the rate of recombination, in general, is nonlinear in $n_\text{e}$, we have to resign ourselves to a linear expansion
+\begin{equation}\label{eq:rerate}
+	R_\text{e}(t)\approx \frac{n_0}{\tau_0} + \frac{\Delta n(t)}{\tau_\text{e}},
+\end{equation}
+where $\Delta n(t)$ denotes the modulation of $n_\text{e}$ resulting from modulation of illumination according to
+\begin{equation}\label{eq:ansatz_n}
+	n_\text{e}(t) = n_0 + \Delta n(t).
+\end{equation}
+Such an approximation can be justified by having chosen a sufficiently small modulation amplitude.
+
+Using \autoref{eq:ansatz_n} as an \textit{ansatz} for \autoref{eq:cont_el} and utilizing Equations \ref{eq:genrate} and \ref{eq:rerate}, yields a complex quantity
+\begin{align*}
+	\Delta n(t) &= \frac{\Delta G\cdot\tau_\text{e}}{1+\omega^2\tau_\text{e}^2}\cdot\left(1 -\iu\omega\tau_\text{e}\right)\e^{\iu\omega t} \\
+	\Rightarrow |\Delta n(t)| &= \frac{\Delta G\cdot\tau_\text{e}}{\sqrt{1+\omega^2\tau_\text{e}^2}}.
+\end{align*}
+
+Plotting $|\Delta n(t)|$ against the frequency allows for determination of the mean electron lifetime $\tau_\text{e}$.
