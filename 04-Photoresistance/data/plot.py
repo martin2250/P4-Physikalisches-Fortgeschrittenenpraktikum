@@ -74,7 +74,7 @@ def atof_comma(s):
 
 
 for trace in traces:
-	X, Y = np.loadtxt(trace.file, unpack=True, converters={
+	X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
 	                  0: atof_comma, 1: atof_comma})
 	plt.plot(X, Y, 'o', label=trace.label)
 	if trace.label:
