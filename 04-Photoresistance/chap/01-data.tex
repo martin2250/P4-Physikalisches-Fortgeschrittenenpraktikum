@@ -1,1 +1,47 @@
 \chapter{Data and Procedure}
+
+\section{Setup}
+
+\section{Data}
+
+\subsection{I-V Characteristic Curves}
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./data/plots/IV-549.pdf}
+		\captiond{I-V curve, $\lambda=\SI{549}{\nm}$}{}
+		\label{fig:iv-549}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./data/plots/IV-647.pdf}
+		\captiond{I-V curve, $\lambda=\SI{647}{\nm}$}{}
+		\label{fig:iv-647}
+	\end{subfigure}
+  \par\bigskip
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./data/plots/IV-all.pdf}
+		\captiond{Overview over I-V curves}{with additional lab background and darkened photoresistor curves}
+		\label{fig:iv-all}
+	\end{subfigure}
+	\captiond{I-V characteristic curves for various wavelengths}{including background measurements}
+  \label{fig:iv}
+\end{figure}
+
+\autoref{fig:iv} shows the recorded I-V characteristics for light wavelengths of \SI{549}{\nm} and \SI{647}{\nm}, as well as lab background/photoresistor noise measurements caused by either additional illumination of the photoresistor with stray lightrays in the setup (which do not originate from the intended light source) or by electronic noise.
+
+It is easy to see that the background is negligably small.
+The observed curves show the intended linear behavior (see Subfigures \ref{fig:iv-549} and \ref{fig:iv-647}).
+The photoresistor's resistance clearly changes with the wavelength of incident light.
+Performing linear regression yields resistances
+\begin{align*}
+  R(\lambda = \SI{549}{\nm}) = \SI{666}{\ohm} \\
+  R(\lambda = \SI{647}{\nm}) = \SI{666}{\ohm}.
+\end{align*}
+\todo{Linear regression --> resistance}
+
+\subsection{Light Wavelength Dependency}
+
+\subsection{Modulation Frequency Dependence}
