@@ -89,13 +89,10 @@ def atof_comma(s):
 
 
 for trace in traces:
-	X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
-	                  0: atof_comma, 1: atof_comma})
-	plt.plot(X, Y, 'o', label=trace.label)
-	if trace.label:
-		legend_used = True
-
 	if trace.fit:
+		X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
+		                  0: atof_comma, 1: atof_comma})
+
 		if args.fit_ignore is not None:
 			X = X[0:-args.fit_ignore]
 			Y = Y[0:-args.fit_ignore]
@@ -111,6 +108,13 @@ for trace in traces:
 		         label=fitlabel if args.fit_label else None)
 		if args.fit_label:
 			legend_used = True
+
+for trace in traces:
+	X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
+	                  0: atof_comma, 1: atof_comma})
+	plt.plot(X, Y, 'o', label=trace.label)
+	if trace.label:
+		legend_used = True
 
 if legend_used:
 	plt.legend()
