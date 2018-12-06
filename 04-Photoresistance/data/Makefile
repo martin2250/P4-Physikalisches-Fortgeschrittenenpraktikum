@@ -6,10 +6,17 @@ plots:
 	mkdir plots
 
 plots/IV-all.pdf: plot.py plots
-	./plot.py --output $@ --grid --xlabel U V --ylabel I mA src/IV-549.dat --label "549 nm" - src/IV-647.dat --label "647 nm" - src/IV-dark-cap.dat --label "with cap" - src/IV-dark-no-cap.dat --label "lab background"
+	./plot.py --output $@ --grid --xlabel U V --ylabel I mA \
+		src/IV-549.dat --label "549 nm" - \
+		src/IV-647.dat --label "647 nm" - \
+		src/IV-dark-cap.dat --label "with cap" - \
+		src/IV-dark-no-cap.dat --label "lab background"
 
 plots/IV-%.pdf: src/IV-%.dat plot.py plots
-	./plot.py $< --output $@ --grid --xlabel U V --ylabel I mA
+	./plot.py $< --output $@ --grid --xlabel U V --ylabel I mA --fit $(if $(filter %549.pdf, $@),--fit-ignore 1)
+
+plots/intensity-current.pdf: src/Intenisity-Current-5V-549.dat plot.py plots
+	./plot.py $< --output $@ --grid --xlabel I/I_0 "" --ylabel I mA
 
 plots/wavelength-current.pdf: src/Wavelength-Current-5V.dat plot.py plots
 	./plot.py $< --output $@ --grid --xlabel \\lambda nm --ylabel I mA
