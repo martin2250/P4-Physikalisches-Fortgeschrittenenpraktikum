@@ -1,6 +1,12 @@
 \chapter{Data and Procedure}
 
 \section{Setup}
+This experiment pursues to characterize a CdS semiconductor as a photoresistor.
+Light from a polychromatic light source is focused on the photoresistor using a lens system.
+Discrete and graduated color filters can be employed to illuminate the photoresistor with light of a specific wavelength only.
+Polarizing filters are used to vary the level of illumination.
+To measure the frequency dependence of photoconductivity, the polychromatic light source is replaced by a blue luminescence diode.
+Its intensity is modulated sinusoidally with variable frequency.
 
 \section{Data}
 
@@ -40,6 +46,18 @@ Performing linear regression yields resistances
   R(\lambda = \SI{549}{\nm}) = \SI{718}{\ohm} \\
   R(\lambda = \SI{647}{\nm}) = \SI{217}{\ohm}.
 \end{align*}
+
+\subsection{Illuminance Dependency}
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\textwidth]{./data/plots/intensity-current.pdf}
+	\captiond{Photocurrent over Illuminance}{}
+	\label{fig:intense-current}
+\end{figure}
+
+\autoref{fig:intense-current} shows the measured photocurrent over illuminance.
+Since the photocurrent is clearly proportional to the square root of illuminance, quadratic recombination of excess charge carriers is observed (as outlined in \autoref{sec:quad-recomb}).
+We therefore conclude, that the concentration of equilibrium charge carriers is negligably small compared to excess carriers.
 
 \subsection{Light Wavelength Dependency}
 
