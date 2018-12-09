@@ -18,6 +18,10 @@ parser_group_common.add_argument('--xlabel', metavar=['name', 'unit'], nargs=2,
                                  help='x axis label')
 parser_group_common.add_argument('--ylabel', metavar=['name', 'unit'], nargs=2,
                                  help='y axis label')
+parser_group_common.add_argument('--logx', action='store_true',
+                                 help='scale x axis logarithmically')
+parser_group_common.add_argument('--logy', action='store_true',
+                                 help='scale y axis logarithmically')
 parser_group_common.add_argument('--output', help='output file')
 parser_group_common.add_argument('-v', '--verbose', action='store_true',
                                  help='output extra information (eg. fit parameters)')
@@ -27,6 +31,8 @@ parser_group_trace.add_argument('file', metavar='file', help='input files')
 parser_group_trace.add_argument('--label', default='', help='trace label')
 parser_group_trace.add_argument('--fit', action='store_true',
                                 help='perform linear regression')
+parser_group_trace.add_argument('--fit-freq', action='store_true',
+                                help='fit frequency dependence to data')
 parser_group_trace.add_argument('--fit-ignore', type=int,
                                 help='ignore last X points for linear fit')
 parser_group_trace.add_argument(
@@ -59,12 +65,19 @@ if True:
 
 	import matplotlib.pyplot as plt
 	import numpy as np
+	import scipy.optimize
 
 ################################################################################
 # plot stuff
 
 if args.title:
 	plt.title(args.title)
+
+if args.logx:
+	plt.gca().set_xscale("log", nonposx='clip')
+
+if args.logy:
+	plt.gca().set_yscale("log", nonposy='clip')
 
 if args.grid:
 	plt.grid()
@@ -89,25 +102,39 @@ def atof_comma(s):
 
 
 for trace in traces:
-	if trace.fit:
+	if trace.fit or trace.fit_freq:
 		X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
 		                  0: atof_comma, 1: atof_comma})
 
 		if args.fit_ignore is not None:
 			X = X[0:-args.fit_ignore]
 			Y = Y[0:-args.fit_ignore]
-		slope, intercept = np.polyfit(X, Y, 1)
+
 		xunit = args.xlabel[1] if args.xlabel else None
 		yunit = args.ylabel[1] if args.ylabel else None
-		if args.verbose:
-			print(f'fit parameters for {trace.label or trace.file}')
-			print(f'  > slope: {slope:0.3e} {xunit}/{yunit}')
-			print(f'  > intercept: {intercept:0.3e} {yunit}')
-		fitlabel = f'linear fit\n${args.ylabel[0] if args.ylabel else "Y"} = {slope:0.3e} {xunit}/{yunit} \\cdot {args.xlabel[0] if args.xlabel else "X"} + {intercept:0.3e} {yunit}$'
-		plt.plot(X, slope * X + intercept, 'r-',
-		         label=fitlabel if args.fit_label else None)
-		if args.fit_label:
-			legend_used = True
+
+		if trace.fit:
+			slope, intercept = np.polyfit(X, Y, 1)
+			if args.verbose:
+				print(f'fit parameters for {trace.label or trace.file}')
+				print(f'  > slope: {slope:0.3e} {xunit}/{yunit}')
+				print(f'  > intercept: {intercept:0.3e} {yunit}')
+			fitlabel = f'linear fit\n${args.ylabel[0] if args.ylabel else "Y"} = {slope:0.3e} {xunit}/{yunit} \\cdot {args.xlabel[0] if args.xlabel else "X"} + {intercept:0.3e} {yunit}$'
+			plt.plot(X, slope * X + intercept, 'r-',
+			         label=fitlabel if args.fit_label else None)
+			if args.fit_label:
+				legend_used = True
+		if trace.fit_freq:
+			def fitfunc_freq(f, A, mean_lifetime):
+				return A / np.sqrt(1 + (2 * np.pi * f * mean_lifetime)**2)
+			(A_fit, mean_lifetime_fit), _ = scipy.optimize.curve_fit(
+				fitfunc_freq, X, Y, (1000, 1e-4))
+			if args.verbose:
+				print(f'fit parameters for {trace.label or trace.file}')
+				print(f'  > A: {A_fit:0.3e}')
+				print(f'  > mean lifetime: {mean_lifetime_fit * 1e6:0.3e} us')
+			X_fit = np.logspace(np.log10(np.min(X)), np.log10(np.max(X)), 50)
+			plt.plot(X_fit, fitfunc_freq(X_fit, A_fit, mean_lifetime_fit), 'r-')
 
 for trace in traces:
 	X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
