@@ -33,6 +33,8 @@ parser_group_trace.add_argument('--fit', action='store_true',
                                 help='perform linear regression')
 parser_group_trace.add_argument('--fit-freq', action='store_true',
                                 help='fit frequency dependence to data')
+parser_group_trace.add_argument('--fit-freq-shitty', nargs=2, type=int, metavar=['index_1', 'index_2'],
+                                help='fit frequency dependence to data ')
 parser_group_trace.add_argument('--fit-ignore', type=int,
                                 help='ignore last X points for linear fit')
 parser_group_trace.add_argument(
@@ -102,9 +104,9 @@ def atof_comma(s):
 
 
 for trace in traces:
-	if trace.fit or trace.fit_freq:
-		X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
-		                  0: atof_comma, 1: atof_comma})
+	if trace.fit or trace.fit_freq or trace.fit_freq_shitty:
+		X, Y = np.loadtxt(trace.file, unpack=True, usecols=(
+			0, 1), converters={0: atof_comma, 1: atof_comma})
 
 		if args.fit_ignore is not None:
 			X = X[0:-args.fit_ignore]
@@ -121,7 +123,7 @@ for trace in traces:
 				print(f'  > intercept: {intercept:0.3e} {yunit}')
 			fitlabel = f'linear fit\n${args.ylabel[0] if args.ylabel else "Y"} = {slope:0.3e} {xunit}/{yunit} \\cdot {args.xlabel[0] if args.xlabel else "X"} + {intercept:0.3e} {yunit}$'
 			plt.plot(X, slope * X + intercept, 'r-',
-			         label=fitlabel if args.fit_label else None)
+                            label=fitlabel if args.fit_label else None)
 			if args.fit_label:
 				legend_used = True
 		if trace.fit_freq:
@@ -135,10 +137,30 @@ for trace in traces:
 				print(f'  > mean lifetime: {mean_lifetime_fit * 1e6:0.3e} us')
 			X_fit = np.logspace(np.log10(np.min(X)), np.log10(np.max(X)), 50)
 			plt.plot(X_fit, fitfunc_freq(X_fit, A_fit, mean_lifetime_fit), 'r-')
+		if trace.fit_freq_shitty:
+			X_fit = np.logspace(np.log10(np.min(X)), np.log10(np.max(X)), 50)
+			X_1 = X[:trace.fit_freq_shitty[0]]
+			Y_1 = Y[:trace.fit_freq_shitty[0]]
+			X_2 = X[trace.fit_freq_shitty[1]:]
+			Y_2 = Y[trace.fit_freq_shitty[1]:]
+			intercept_1 = np.mean(Y_1)
+			slope_2, intercept_2 = np.polyfit(np.log(X_2), np.log(Y_2), 1)
+
+			plt.plot(X_fit, np.ones(len(X_fit)) * intercept_1)
+			plt.plot(X_fit,  np.exp(slope_2 * np.log(X_fit) + intercept_2))
+
+			X_intersect = np.exp((np.log(intercept_1) - intercept_2) / slope_2)
+			plt.axvline(X_intersect, linestyle='--')
+
+			if args.verbose:
+				print(f'intersect X: {X_intersect}')
+
+			plt.ylim(np.min(Y) / 1.1, np.max(Y) * 1.1)  # shitty solution, as promised
+
 
 for trace in traces:
-	X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1), converters={
-	                  0: atof_comma, 1: atof_comma})
+	X, Y = np.loadtxt(trace.file, unpack=True, usecols=(0, 1),
+                   converters={0: atof_comma, 1: atof_comma})
 	plt.plot(X, Y, 'o', label=trace.label)
 	if trace.label:
 		legend_used = True
