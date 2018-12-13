@@ -62,7 +62,14 @@ We therefore conclude, that the concentration of equilibrium charge carriers is 
 \subsection{Light Wavelength Dependency}
 
 \subsection{Modulation Frequency Dependence}
-"Linear" fits intersect at 171 Hz -> ~5.8ms
+The Photoresistor is illuminated by an LED, which is driven by a constant current with a shallow sinusoidal modulation superimposed.
+This results in a very much not-sinusoidal current through the photoresistor.
+A lock-in amplifier is used to measure the amplitude of the fundamental component of the photocurrent and also the phase with respect to the LED drive signal.
+
+The amplitude of the fundamental is measured for multiple frequencies and shown in \autoref{fig:freq-current}.
+Theoretically, the amplitude should be proportional to $|\Delta n(t)|$ (\autoref{eq:freq-dependence}).
+This model does not fit the aquired data very well, so the corner frequency is determined by fitting a horizontal line to the points in log-log-space left of the corner frequency and a linear slope to the points right of the transition region.
+The frequency where these lines intersect is $f_\text{i} = \SI{171}{\hertz}$ and corresponds the inverse of the mean charge carrier lifetime $\tau_\text{e} = \frac{1}{f_\text{i}} = \SI{5.8}{\milli\second}$.
 % todo: adjust cutoff indices
 \begin{figure}
 	\centering
