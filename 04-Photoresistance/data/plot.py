@@ -37,6 +37,8 @@ parser_group_trace.add_argument('--fit-freq-shitty', nargs=2, type=int, metavar=
                                 help='fit frequency dependence to data ')
 parser_group_trace.add_argument('--fit-ignore', type=int,
                                 help='ignore last X points for linear fit')
+parser_group_trace.add_argument('--fit-gaussian', action='store_true',
+                                help='do stuff')
 parser_group_trace.add_argument(
 	'--fit-label', action='store_true', help='add linear fit to legend')
 
@@ -104,7 +106,7 @@ def atof_comma(s):
 
 
 for trace in traces:
-	if trace.fit or trace.fit_freq or trace.fit_freq_shitty:
+	if trace.fit or trace.fit_freq or trace.fit_freq_shitty or trace.fit_gaussian:
 		X, Y = np.loadtxt(trace.file, unpack=True, usecols=(
 			0, 1), converters={0: atof_comma, 1: atof_comma})
 
@@ -126,6 +128,17 @@ for trace in traces:
                             label=fitlabel if args.fit_label else None)
 			if args.fit_label:
 				legend_used = True
+		if trace.fit_gaussian:
+			def fitfunc_wlen(x, A, lambda_0, sigma, b):
+				return b + A * np.exp(-((x - lambda_0)**2) / (2 * sigma**2))
+			(A, lambda_0, sigma, b), _ = scipy.optimize.curve_fit(
+				fitfunc_wlen, X[6:13], Y[6:13], (1, 550, 30, 0.3))
+			X_fit = np.linspace(X[4], X[14], 50)
+			print(X_fit)
+			plt.plot(X_fit, fitfunc_wlen(X_fit, A, lambda_0, sigma, b), 'r-')
+			if args.verbose:
+				print(f'fit parameters for {trace.label or trace.file}')
+				print(f'peak at {lambda_0} nm')
 		if trace.fit_freq:
 			def fitfunc_freq(f, A, mean_lifetime):
 				return A / np.sqrt(1 + (2 * np.pi * f * mean_lifetime)**2)

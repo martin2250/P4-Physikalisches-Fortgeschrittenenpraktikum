@@ -46,6 +46,7 @@ Performing linear regression yields resistances
   R(\lambda = \SI{549}{\nm}) = \SI{718}{\ohm} \\
   R(\lambda = \SI{647}{\nm}) = \SI{217}{\ohm}.
 \end{align*}
+The curve for $\lambda=\SI{549}{\nm}$ shows a point which reproducibly and inexplicably deviates from this linear dependence.
 
 \subsection{Illuminance Dependency}
 \begin{figure}
@@ -54,12 +55,23 @@ Performing linear regression yields resistances
 	\captiond{Photocurrent over Illuminance}{}
 	\label{fig:intense-current}
 \end{figure}
-
+A pair of polarization filters, one of which can be rotated freely, is used to change the illuminance linearly.
 \autoref{fig:intense-current} shows the measured photocurrent over illuminance.
 Since the photocurrent is clearly proportional to the square root of illuminance, quadratic recombination of excess charge carriers is observed (as outlined in \autoref{sec:quad-recomb}).
 We therefore conclude, that the concentration of equilibrium charge carriers is negligably small compared to excess carriers.
 
 \subsection{Light Wavelength Dependency}
+A wedge shaped interference filter on a screw-advance linear carriage is placed at one focal point of the optical train.
+This filter is used to select different wavelengths of light from the halogen lamp used as the light source.
+A pair of polarization filters is used to keep the light intensity constant, accounting for the non-uniform emission spectrum of the lamp.
+The photocurrent shows a clear peak at $\lambda_\text{max} = \SI{540}{\nano\meter}$, which corresponds to a photon energy of $E = \frac{h c}{\lambda_\text{max}} = \SI{2.30}{\electronvolt}$.
+This value is very close to the band gap of cadmium sulfide of \SI{2.42}{\electronvolt}.
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\textwidth]{./data/plots/wavelength-current.pdf}
+	\captiond{Photocurrent over wavelength of incident light}{}
+	\label{fig:freq-current}
+\end{figure}
 
 \subsection{Modulation Frequency Dependence}
 The Photoresistor is illuminated by an LED, which is driven by a constant current with a shallow sinusoidal modulation superimposed.
@@ -70,10 +82,9 @@ The amplitude of the fundamental is measured for multiple frequencies and shown 
 Theoretically, the amplitude should be proportional to $|\Delta n(t)|$ (\autoref{eq:freq-dependence}).
 This model does not fit the aquired data very well, so the corner frequency is determined by fitting a horizontal line to the points in log-log-space left of the corner frequency and a linear slope to the points right of the transition region.
 The frequency where these lines intersect is $f_\text{i} = \SI{171}{\hertz}$ and corresponds the inverse of the mean charge carrier lifetime $\tau_\text{e} = \frac{1}{f_\text{i}} = \SI{5.8}{\milli\second}$.
-% todo: adjust cutoff indices
 \begin{figure}
 	\centering
 	\includegraphics[width=.6\textwidth]{./data/plots/frequency-current.pdf}
-	\captiond{Photocurrent over Frequency}{(RMS of fundamental component)}
+	\captiond{Photocurrent over frequency}{(RMS of fundamental component)}
 	\label{fig:freq-current}
 \end{figure}
