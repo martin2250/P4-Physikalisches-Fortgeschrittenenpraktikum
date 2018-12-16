@@ -19,7 +19,7 @@ plots/intensity-current.pdf: src/Intensity-Current-5V-549.dat plot.py plots
 	./plot.py $< --output $@ --grid --xlabel I/I_0 "" --ylabel I mA
 
 plots/wavelength-current.pdf: src/Wavelength-Current-5V.dat plot.py plots
-	./plot.py $< --output $@ --grid --xlabel \\lambda nm --ylabel I mA
+	./plot.py $< --output $@ --grid --xlabel \\lambda nm --ylabel I mA --fit-gaussian
 
 plots/frequency-current.pdf: src/Frequency-Current.dat plot.py plots
 	./plot.py $< --output $@ --grid --xlabel f Hz --ylabel I "$$\\mu\\mathrm{A_{RMS}}$$" --fit-freq-shitty 10 15 --logx --logy
