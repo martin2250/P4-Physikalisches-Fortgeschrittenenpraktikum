@@ -5,7 +5,7 @@ import re
 import sys
 
 with open(sys.argv[1]) as f:
-	commit_msg = f.read()
+	commit_msg = f.read().split('\n')[0]
 
 if not re.match('^(\\d\\d|all) - ', commit_msg):
 	print("not accepted")
