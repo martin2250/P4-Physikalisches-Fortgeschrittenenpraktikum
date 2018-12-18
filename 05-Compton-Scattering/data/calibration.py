@@ -41,15 +41,18 @@ for isotope in isotopes:
 	del data
 
 for isotope in isotopes:
-	plt.plot(isotope.count, label=isotope.name)
+	if isotope.name == 'Co-57':
+		isotope.count = isotope.count / 3
+	line = plt.plot(isotope.count, label=isotope.name)[0]
 	plt.vlines([energy_to_channel_estimation(e)
-             for e in isotope.energies], 0, 12000)
+             for e in isotope.energies], 0, 5000)
 	for e in isotope.energies:
-		plt.annotate(f'{e/1e3:0.1f}',
-		             (energy_to_channel_estimation(e) + 1, 5000))
+		plt.annotate(f'{e/1e3:0.1f} keV',
+		             (energy_to_channel_estimation(e) + 1, 20), color=line.get_color(), rotation='vertical', fontsize=13)
 
 ################################################################################
-
+plt.gca().set_yscale("log", nonposy='clip')
+plt.ylim(10, 6000)
 plt.legend()
 plt.xlabel('channel')
 plt.ylabel('count')
