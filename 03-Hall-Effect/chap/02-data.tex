@@ -24,7 +24,7 @@ The conductivity $\sigma$ of sample A is calculated as
 and the Hall coefficient $R_\text{H}$ is calculated as
 \begin{equation*}
 	R_\text{H} = \frac{U_\text{H}^+ - U_\text{H}^-}{2 I} \frac{1}{h B},
-\end{equation*}
+\end{equation*}\todo{Her comment: "!! Rh = Uh * d / (IB)" Dunno about that.}
 where $l$ denotes the sample's length along the current flow, $w$ the distance between the hall voltage contacts and $h$ denotes the other dimension.
 
 A plot of $\frac{1}{\left|R_\text{H}\right|}$ and $\sigma$ over $T$ is shown in \autoref{fig:sample-a-conductivity}.
@@ -45,7 +45,7 @@ It is estimated to end at \SI{270}{\kelvin}.
 
 Rearranging Equation (55) from the experiment manual yields the following relation between the charge carrier density $n_\text{i}$ and the hall coefficient $R_\text{H}$:
 \begin{equation*}
-	n_\text{i} \left(R_\text{H}\left( T \right), T \right) = \frac{1}{e \cdot R_\text{H}\left(T\right)} \frac{ 1 - b \left( T \right) }{ 1 + b \left( T \right) },
+	n_\text{i} \left(R_\text{H}\left( T \right), T \right) = \frac{1}{e \cdot \left|R_\text{H}\left(T\right)\right|} \frac{ 1 - b \left( T \right) }{ 1 + b \left( T \right) },
 \end{equation*}
 where the ratio of positive and negative charge carriers' mobilities
 \begin{equation*}
