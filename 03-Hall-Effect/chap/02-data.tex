@@ -23,9 +23,10 @@ The conductivity $\sigma$ of sample A is calculated as
 \end{equation*}
 and the Hall coefficient $R_\text{H}$ is calculated as
 \begin{equation*}
-	R_\text{H} = \frac{U_\text{H}^+ - U_\text{H}^-}{2 I} \frac{1}{h B},
-\end{equation*}\todo{Her comment: "!! Rh = Uh * d / (IB)" Dunno about that.}
-where $l$ denotes the sample's length along the current flow, $w$ the distance between the hall voltage contacts and $h$ denotes the other dimension.
+	R_\text{H} = \frac{E_\text{y}}{J_\text{x} B_\text{z}} = \frac{\frac{U_\text{H}}{l_\text{y}}}{\frac{I}{l_\text{y} \cdot l_\text{z}} B_\text{z}} = \frac{U_\text{H} l_\text{z}}{I B_\text{z}}
+\end{equation*}
+where $l_i$ denotes the sample's length along axis $i$, $E_\text{H}$ denotes the electric field created by the hall effect at a steady state, $B_\text{z}$ is the magnetic field along the z-axis and $I / J_\text{x}$ denote the current and -density along the x-axis.
+$E$, $J$ and $B$ are perpendicular to each other, the coordinate system is chosen so that all quantities only have a component along one axis.
 
 A plot of $\frac{1}{\left|R_\text{H}\right|}$ and $\sigma$ over $T$ is shown in \autoref{fig:sample-a-conductivity}.
 The transition to the intrinsic region is clearly visible and it is estimated to start at \SI{320}{\kelvin}.
