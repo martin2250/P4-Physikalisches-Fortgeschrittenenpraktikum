@@ -183,11 +183,23 @@ It holds
 with the magnetic field perpendicular to the sample $B_\text{v}$ and the difference of resistances $\Updelta R_{13,24}(B = B_\text{v}) - R_{13,24} = R_{13,24}(B = 0)$.
 
 \section{The Hall Effect}
+\subsection{Unipolar Materials}
 Charge carriers flowing through a conductor experience a Lorentz force $F_\mu = qF_{\mu\nu}u^\nu$ in the presence of an external magnetic field, where $u^\mu$ denotes the four-velocity of charge carriers and $F_{\mu\nu}$ denotes the electromagnetic tensor defined by $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$ ($A_\mu = \left(\varphi, \mvec{A}\right)$ in Gaussian units).
 
-Depending on the type of present charge carriers, i.e. holes or electrons, the Lorentz force is pointing in different directions by the right hand rule.
-Different types of materials thus exhibit different effects.
+Defining a current density $j^\mu = nq\cdot u^\mu$, where $n$ denotes the charge carrier density, it follows that the electric field invoked by the Lorentz force
+\begin{equation} \label{eq:hall-field}
+	\mvec{E}_\text{H} = -R_ \text{H}\cdot\mvec{j}\times\mvec{B},
+\end{equation}
+where $R_\text{H} = \frac{1}{nq}$ is called the \textit{hall coefficient}.
 
-\subsection{Metals}
+Depending on the type of present charge carriers, i.e. holes or electrons, the Lorentz force is pointing in different directions by the right hand rule (assuming both velocities are parallel to each other).
 
-\subsection{Semiconductors}
+\subsection{Bipolar Semiconductors}
+If two types of charge carriers (namely electrons and holes) contribute to electrical conduction previous definitions have to be extended. Electrons and holes have opposite charges, however, their velocities within a bipolar semiconductor are antiparallel. Therefore, their Lorentz force points in the same direction.
+However, according to \autoref{eq:hall-field} the respective Hall field points in opposite directions.
+
+Rearranging \autoref{eq:hall-field} yields
+\begin{equation}
+	R_\text{H} = \pm\frac{\left|E_\text{H}\right|}{j_x B_\bot},
+\end{equation}
+where the x-axis is defined to point along the initial current direction along the material without external magnetic field component $B_\bot$. The $+$-sign applies for holes, whereas the $-$-sign applies for electrons. 
