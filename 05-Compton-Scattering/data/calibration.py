@@ -3,7 +3,14 @@ from dataclasses import dataclass
 
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy.odr
 import scipy.optimize
+
+_verbose = False
+if __name__ == "__main__":
+	_verbose = True
+
+################################################################################
 
 
 @dataclass
@@ -36,19 +43,6 @@ isotopes = [
 	Isotope('Na-22', [Peak(511e3), Peak(1274.5e3)])
 ]
 
-
-def energy_to_channel_estimation(energy):
-	# ch 28: 122keV
-	# ch 362: 1132keV
-	return (energy - 122e3) * (362 - 28) / (1332e3 - 122e3) + 28
-
-
-verbose = False
-if __name__ == "__main__":
-	verbose = True
-
-################################################################################
-
 # load spectrum of each isotope
 for isotope in isotopes:
 	data = np.load(f'src/{isotope.name}.npz')
@@ -56,40 +50,121 @@ for isotope in isotopes:
 	data.close()
 	del data
 
-channel = np.arange(len(isotopes[0].count))
+_channel = np.arange(len(isotopes[0].count))
 
 ################################################################################
+# model functions
+
+
+def linear(x, slope, intercept):
+	return intercept + x * slope
 
 
 def gaussian(energy, energy_center, height, width):
-	return height / np.sqrt(2 * np.pi) / width * np.exp(-0.5 * (energy - energy_center)**2 / width**2)
+	return height * np.exp(-0.5 * (energy - energy_center)**2 / width**2)
 
 
+################################################################################
+
+# ch 28: 122keV
+# ch 362: 1132keV
+etc_slope_guess = (362 - 28) / (1332e3 - 122e3)
+etc_intercept_guess = 28 - 122e3 * (362 - 28) / (1332e3 - 122e3)
+
+
+def energy_to_channel_estimation(energy):
+	return linear(energy, etc_slope_guess, etc_intercept_guess)
+
+################################################################################
 # fit gaussian to every known peak
-for isotope in isotopes:
-	# except for Na-22, because Na-22 sucks
-	if isotope.name == 'Na-22':
-		continue
 
-	for peak in isotope.peaks:
-		guess_channel = int(energy_to_channel_estimation(peak.energy))
-		guess = (guess_channel, isotope.count[guess_channel], 2 * peak.fitradius)
 
-		fitrange = slice(guess_channel - peak.fitradius,
-		                 guess_channel + peak.fitradius)
+def fit_gaussians_to_isotopes():
+	for isotope in isotopes:
+		# except for Na-22, because Na-22 sucks
+		if isotope.name == 'Na-22':
+			continue
 
-		peak.channel_fit = channel[fitrange]
-		peak.count_fit = isotope.count[fitrange]
+		for peak in isotope.peaks:
+			guess_channel = int(energy_to_channel_estimation(peak.energy))
+			guess = (guess_channel, isotope.count[guess_channel], peak.fitradius)
 
-		peak.popt, pcov = scipy.optimize.curve_fit(
-			gaussian, peak.channel_fit, peak.count_fit, guess, sigma=np.sqrt(peak.count_fit), absolute_sigma=True)
+			fitrange = slice(guess_channel - peak.fitradius,
+	                    guess_channel + peak.fitradius)
 
-		peak.center = peak.popt[0]
-		peak.error = np.sqrt(pcov[0, 0])
+			peak.channel_fit = _channel[fitrange]
+			peak.count_fit = isotope.count[fitrange]
 
-		if verbose:
-			print(
-				f'{isotope.name}, {peak.energy/1e6:0.3f} MeV, channel guess: {guess_channel} fit: {peak.center:0.2f} uncertainty: {peak.error:0.2f}')
+			data = scipy.odr.RealData(
+				peak.channel_fit, peak.count_fit, sy=np.sqrt(peak.count_fit))
+
+			odr = scipy.odr.ODR(data, scipy.odr.Model(
+				lambda p, x: gaussian(x, *p)), beta0=guess)
+
+			result = odr.run()
+
+			peak.popt = result.beta
+			peak.center = result.beta[0]
+			peak.error = result.sd_beta[0]
+
+			if _verbose:
+				print(
+					f'{isotope.name},\t{peak.energy/1e6:0.3f} MeV,\tchannel guess: {guess_channel}\tfit: {peak.center:0.2f}\tuncertainty: {peak.error:0.2f}')
+
+
+fit_gaussians_to_isotopes()
+
+################################################################################
+# perform linear regression to get energy scale
+
+
+def fit_energy_scale():
+	energies = []
+	channels = []
+	channel_uncertainties = []
+
+	for isotope in isotopes:
+		for peak in isotope.peaks:
+			if peak.center:
+				energies.append(peak.energy)
+				channels.append(peak.center)
+				channel_uncertainties.append(peak.error)
+
+	@scipy.odr.Model
+	def linear_model(p, x):
+		slope, intercept = p
+		return intercept + x * slope
+
+	data = scipy.odr.RealData(channels, energies, sx=channel_uncertainties)
+
+	odr = scipy.odr.ODR(data, scipy.odr.Model(
+		lambda p, x: linear(x, *p)), beta0=[1 / etc_slope_guess, 0])
+
+	out = odr.run()
+
+	return out.beta, out.sd_beta
+
+
+(cte_slope, cte_intercept), (cte_slope_error,
+                             cte_intercept_error) = fit_energy_scale()
+
+if _verbose:
+	print('energy = channel * slope + offset')
+	print(
+		f'slope = ({cte_slope*1e-3:0.3e} +- {cte_slope_error*1e-3:0.3e}) keV/ch')
+	print(
+		f'offset = ({cte_intercept*1e-3:0.3e} +- {cte_intercept_error*1e-3:0.3e}) keV')
+
+################################################################################
+# this function can be imported from other scripts
+
+
+def channel_to_energy(channel, channel_error=0):
+	energy = channel * cte_slope + cte_intercept
+	error = np.sqrt((channel * cte_slope_error)**2
+	                + (channel_error * cte_slope)**2 + (cte_intercept_error)**2)
+	return energy, error
+
 
 ################################################################################
 
@@ -116,5 +191,5 @@ def main():
 	plt.show()
 
 
-if __name__ == "__main__":
+if _verbose:
 	main()
