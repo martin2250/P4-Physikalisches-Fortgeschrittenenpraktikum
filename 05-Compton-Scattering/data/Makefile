@@ -1,5 +1,8 @@
 .PHONY: data
 
+constants.py: ../../common/constants.py
+	cp $< $@
+
 data:
 
 clean:

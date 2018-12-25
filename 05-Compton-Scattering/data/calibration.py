@@ -4,7 +4,6 @@ from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.odr
-import scipy.optimize
 
 _verbose = False
 if __name__ == "__main__":
@@ -50,7 +49,7 @@ for isotope in isotopes:
 	data.close()
 	del data
 
-_channel = np.arange(len(isotopes[0].count))
+channel = np.arange(len(isotopes[0].count))
 
 ################################################################################
 # model functions
@@ -92,7 +91,7 @@ def fit_gaussians_to_isotopes():
 			fitrange = slice(guess_channel - peak.fitradius,
 	                    guess_channel + peak.fitradius)
 
-			peak.channel_fit = _channel[fitrange]
+			peak.channel_fit = channel[fitrange]
 			peak.count_fit = isotope.count[fitrange]
 
 			data = scipy.odr.RealData(
@@ -129,11 +128,6 @@ def fit_energy_scale():
 				energies.append(peak.energy)
 				channels.append(peak.center)
 				channel_uncertainties.append(peak.error)
-
-	@scipy.odr.Model
-	def linear_model(p, x):
-		slope, intercept = p
-		return intercept + x * slope
 
 	data = scipy.odr.RealData(channels, energies, sx=channel_uncertainties)
 
