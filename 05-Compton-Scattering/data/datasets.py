@@ -19,9 +19,9 @@ datasets = [Dataset(angle) for angle in range(25, 106, 10)]
 
 
 def load_count(path):
-	data = np.load(path)
-	count = data['count']
-	data.close()
+	with np.load(path) as data:
+		count = data['count']
+
 	return count.astype(float)
 
 

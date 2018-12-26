@@ -44,9 +44,8 @@ isotopes = [
 
 # load spectrum of each isotope
 for isotope in isotopes:
-	data = np.load(f'src/{isotope.name}.npz')
-	isotope.count = data['count']
-	data.close()
+	with np.load(f'src/{isotope.name}.npz') as data:
+		isotope.count = data['count']
 	del data
 
 channel = np.arange(len(isotopes[0].count))
