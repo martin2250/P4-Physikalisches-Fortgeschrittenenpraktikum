@@ -22,6 +22,7 @@ where $N_0\equiv N(x=0)$.
 As expected, \autoref{eq:Nd} implies that gamma radiation may never be shielded of in its entirety.
 
 \section{The Compton Effect}
+\subsection{Differential Cross-Section}
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.49\textwidth}
@@ -54,10 +55,10 @@ Denoting the respective 4-momenta of the incident photon and resting electron as
 \end{align*}
 and their 4-momenta after the process as primed, using the Feynman rules of QED, we get the two Feynman amplitudes
 
-\begin{align}
-	\mathcal{M}_1 &= \bar{u}^{s'}\left(p'\right)\left(-\iu e\gamma^\nu\right)\epsilon^{*}_\nu\left(k'\right)\left(\frac{\slashed{p}+\slashed{k}+m}{(p+k)^2-m^2}\right)\left(-\iu e\gamma^\mu\right)\epsilon_\mu\left(k\right)u^s(p)\label{eq:M1}\\
-	\mathcal{M}_2 &= \bar{u}^{s'}\left(p'\right)\left(-\iu e\gamma^\nu\right)\epsilon_\nu\left(k\right)\left(\frac{\slashed{p}-\slashed{k}+m}{(p-k')^2-m^2}\right)\left(-\iu e\gamma^\mu\right)\epsilon^{*}_\mu\left(k'\right)u^s(p)\label{eq:M2},
-\end{align}
+\begin{align*}
+	\mathcal{M}_1 &= \bar{u}^{s'}\left(p'\right)\left(-\iu e\gamma^\nu\right)\epsilon^{*}_\nu\left(k'\right)\left(\frac{\slashed{p}+\slashed{k}+m}{(p+k)^2-m^2}\right)\left(-\iu e\gamma^\mu\right)\epsilon_\mu\left(k\right)u^s(p)\\
+	\mathcal{M}_2 &= \bar{u}^{s'}\left(p'\right)\left(-\iu e\gamma^\nu\right)\epsilon_\nu\left(k\right)\left(\frac{\slashed{p}-\slashed{k}+m}{(p-k')^2-m^2}\right)\left(-\iu e\gamma^\mu\right)\epsilon^{*}_\mu\left(k'\right)u^s(p),
+\end{align*}
 where $u^s(p)$ denotes the incoming electron with spin $s$ and momentum $p^\mu$, $\epsilon^\mu$ is the incident photon's polarization vector and $\gamma^\mu$ are the Dirac matrices.
 
 Since in the canonical formulation of QED the Feynman amplitudes represent terms in the Wick expansion of the perturbative scattering matrix, the total transition amplitude is equal to the sum of these matrix elements
@@ -71,3 +72,32 @@ For the sake of simplicity (and brevity!), we refer the reader to their QFT text
 \end{equation}
 where $m\omega' = \frac{1}{2}\left(m^2-u\right)$ and $m\omega = \frac{1}{2}\left(s-m^2\right)$ and $s=\left(p^\mu + k^\mu\right)^2, s=\left(p^\mu + k'^\mu\right)^2$ are the standard Mandelstam variables.
 \autoref{eq:kleinnishina} is known as the \textit{Klein-Nishina formula}.
+
+For electrons bound in an atom, the total cross-section is (in first order) proportional to its atomic number $Z$
+\begin{equation*}
+	\sigma = Z\cdot\sigma_\text{e}.
+\end{equation*}
+\subsection{Kinematics}
+Consider initial
+\begin{align*}
+	p^\mu &= (m\ ,\ \mvec{0}) \text{and}\\
+	k^\mu &= (E_\gamma\ ,\ \mvec{k})
+\end{align*}
+and scattered 4-momenta
+\begin{align*}
+	p'^\mu &= (m\ ,\ \mvec{p}) \text{and}\\
+	k'^\mu &= (E'_\gamma\ ,\ \mvec{k'}).
+\end{align*}
+Using energy
+\begin{equation*}
+	m + E_\gamma = E'_\text{e} + E'_\gamma,
+\end{equation*}
+and momentum conservation
+\begin{equation*}
+	p^2 = E_\text{e}^{'2} - m^2 = \underbrace{E_\gamma^2 + E_\gamma^{'2} - 2E_\gamma E'_\gamma\cos\theta}_\text{law of cosines},
+\end{equation*}
+yields the energy of the scattered gamma ray
+\begin{equation*}
+	E'_\gamma = \frac{E_\gamma}{1 + \frac{E_\gamma}{m}\left(1 - \cos\theta\right)}
+\end{equation*}
+where $E'_\text{e}$ denotes the electron's total energy after the scatter process.
