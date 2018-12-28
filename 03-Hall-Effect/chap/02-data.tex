@@ -13,7 +13,7 @@ In what follows, we will analyze data for sample A and compare hall mobilities f
 \begin{figure}
   \centering
   \includegraphics[width=.6\textwidth]{./data/plots/sample-a-product.pdf}
-  \captiond{Product of conductivity and Hall coefficient over temperature of sample A}{the solid line shows the border between intrinsic and transition regions, the dashed line shows the border between transition and extrinsic regions}
+  \captiond{Product of conductivity and Hall coefficient over temperature of sample A}{the solid line shows the border between intrinsic and transition regions, the dashed line shows the border between transition and extrinsic regions. The two linear fits are not used in the further calculations.}
   \label{fig:sample-a-product}
 \end{figure}
 
@@ -39,7 +39,7 @@ It is estimated to end at \SI{270}{\kelvin}.
 \section{Intrinsic Charge Carrier Density}
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{./data/plots/n.pdf}
+	\includegraphics[width=.6\textwidth]{./data/plots/n.pdf}
 	\captiond{Intrinsic carrier concentration as a function of temperature}{}
 	\label{fig:intr_carrier}
 \end{figure}
@@ -63,7 +63,7 @@ The measured data obviously reflects the theoretical model, since the dependence
 \section{Arrhenius Plot}\label{sec:arrhenius}
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{./data/plots/arrhenius.pdf}
+	\includegraphics[width=.6\textwidth]{./data/plots/arrhenius.pdf}
 	\captiond{Arrhenius plot for sample A}{The expected linear dependence is easy to be seen.}
 	\label{fig:arrhenius}
 \end{figure}
@@ -72,21 +72,23 @@ The measured data obviously reflects the theoretical model, since the dependence
 As indicated by an $R^2$-value of $0.9995$, a good linear dependence is observed for the underlying data, confirming the validness of the theoretical model.
 By identifying the parameters of the performed fit, values
 \begin{align*}
-	E_\text{g,0} = \SI{0.768}{\eV} \\
-	\text{y-intercept} = \num{50.904} % whatever units
+	E_\text{g,0} = \SI{0.769(5)}{\eV} \\
+	\text{y-intercept} = \num{50.909(86)} % whatever units
 \end{align*}
 are acquired.
+The uncertainties are the result of an orthogonal distance regression.
+As the lab manual does not provide error bounds of the instruments, the ODR is run without uncertainties provided.
 
 Using the computed value for $E_\text{g,0}$ and the relation $E_\text{g}(T) = E_\text{g,0} -\upalpha T$ for the band gap energy, where $\upalpha=\SI{4e-4}{\eV\per\kelvin}$ is specified in the experiment manual, the band gap energy at \SI{300}{\kelvin}
 \begin{equation*}
-	E_\text{g}\left(T = \SI{300}{\kelvin}\right) = \SI{0.654}{\eV}
+	E_\text{g}\left(T = \SI{300}{\kelvin}\right) = \SI{0.649(5)}{\eV}
 \end{equation*}
 is obtained.
-This matches closely the literature value of $E_\text{g}\left(T = \SI{300}{\kelvin}\right) = \text{\SIrange{0.66}{0.67}{\eV}}$, as stated in the manual, with an error of approximately \SI{2}{\percent}.
+This is within the range of the literature value of $E_\text{g}\left(T = \SI{300}{\kelvin}\right) = \text{\SIrange{0.66}{0.67}{\eV}}$, as stated in the manual.
 
 The charge carrier density at $T = \SI{300}{\kelvin}$ is found by computing the value of the fit function at $\left(\SI{300}{\kelvin}\right)^{-1}$ and solving for $n_\text{i}$.
 
-This gives an intrinsic charge carrier density of $n_\text{i} (T=\SI{300}{\kelvin}) = \SI{2.33e19}{\per\meter\cubed}$, which deviates from the literature value of $n_\text{i} (T=\SI{300}{\kelvin}) = \SI{2.4e13}{\per\centi\meter\cubed}$ by \SI{3}{\percent}.
+This gives an intrinsic charge carrier density of $n_\text{i} (T=\SI{300}{\kelvin}) = \SI{2.33 (45) e19}{\per\meter\cubed}$, which deviates from the literature value of $n_\text{i} (T=\SI{300}{\kelvin}) = \SI{2.4e13}{\per\centi\meter\cubed}$ by \SI{3}{\percent}, well within the measurement uncertainty.
 
 \section{Comparison of Hall Mobilities}
 \begin{figure}

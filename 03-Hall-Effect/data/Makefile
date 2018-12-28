@@ -12,16 +12,16 @@ plots/mob-comp.pdf: eval-B.py src/data-A.dat src/data-B.dat plots
 	./$< 2 --output $@
 
 plots/sample-a-conductivity.pdf:  eval-A.py src/data-A.dat constants.py plots
-	./$< 2.1 --output $@
+	./$< 2.1 --output $@ --size 5 4
 
 plots/sample-a-product.pdf:  eval-A.py constants.py src/data-A.dat plots
-	./$< 2.2 --output $@
+	./$< 2.2 --output $@  --size 5 4
 
 plots/n.pdf: eval-A.py src/data-A.dat constants.py plots
-	./$< 4 --output $@
+	./$< 4 --output $@  --size 5 4
 
 plots/arrhenius.pdf: eval-A.py src/data-A.dat constants.py plots
-	./$< 5+6 --output $@
+	./$< 5+6 --output $@ --size 4.5 3.5
 
 plots/table-a.agtex: eval-B.py src/data-A.dat plots
 	./$< 1 --table-A $@
