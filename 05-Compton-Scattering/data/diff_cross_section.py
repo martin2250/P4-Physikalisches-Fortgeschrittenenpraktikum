@@ -11,6 +11,8 @@ from datasets import datasets
 
 detector_cal_energy, detector_cal_inv_efficiency = np.loadtxt(
 	'src/detector-efficiency.dat', unpack=True)
+bb_angles, bb_diff_cross = np.loadtxt(
+	'src/bb-diff-cross.dat', usecols=[0, 2], unpack=True)
 
 
 def detector_cal_fitfunc(E, a, b, c):
@@ -65,9 +67,10 @@ solid_angle_scintillator = area_scintillator / \
 	(4 * np.pi * distance_scintillator**2)
 
 differential_cross_section = rate / \
-	(solid_angle_scintillator * gamma_flux_at_target *
-	 number_electrons_target)
+	(solid_angle_scintillator * gamma_flux_at_target
+	 * number_electrons_target)
 
 plt.plot(angles, differential_cross_section * 1e28)
+#plt.scatter(bb_angles, bb_diff_cross)
 plt.ylabel(r'$\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}$ (barn)')
 plt.show()
