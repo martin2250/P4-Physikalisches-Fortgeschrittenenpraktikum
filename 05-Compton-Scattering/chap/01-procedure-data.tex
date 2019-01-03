@@ -16,7 +16,7 @@ To determine the dependency of the differential cross-section on the atomic numb
 
 For the dimensions of all materials used in the experiment, see the lab manual (blue book).
 
-\subsection{Calibration}
+\section{Calibration}
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{example-image}
@@ -40,3 +40,33 @@ Using these values, fit coefficients of
 	b &= \SI{20.23(222)}{\kilo\eV}
 \end{align*}
 are determined.
+
+\section{Corrections}
+For every measurement carried out in this experiment, counts are corrected according to the formula
+\begin{equation*}
+	N_\text{corr.} = N_\text{obs.} - N_\text{base},
+\end{equation*}
+where $N_\text{obs.}$ is the observed count and $N_\text{base}$ denotes the baseline noise count for the measurement.
+
+The value for $N_\text{base}$ is acquired by conducting a measurement while the source is isolated by a lead shield.
+
+\section{Errors}
+The number of decay events from a radioactive source obeys a Poisson distribution.
+For this distribution, a good estimate of its standard deviation is the square root of the count
+\begin{equation*}
+	\sigma = \sqrt{N_\text{obs.} + N_\text{base}}.
+\end{equation*}
+This statistic error is assumed for all count rates in this experiment.
+
+\section{Differential Cross-Section}
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{example-image}
+	\caption{Differential cross-section over scatter angle}
+	\label{fig:diff_cross}
+\end{figure}
+
+\autoref{fig:diff_cross} shows the determined differential cross-section $\frac{\d\sigma}{\d\Omega}$ over the scatter angle $\theta$.
+For comparison, the theoretical model established in \autoref{eq:kleinnishina} is plotted as well.
+It is easy to see that the data is not in accordance with the model.
+However, the general shape of the data remotely resembles the model and suggests that an unknown systemic error has not been taken into account.
