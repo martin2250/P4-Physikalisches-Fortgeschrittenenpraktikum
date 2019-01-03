@@ -104,6 +104,8 @@ def fit_final():
 
 electron_mass_eV = 1 / slope
 electron_mass_eV_err = slope_error / slope**2
+print(
+	f'fit coefficients: a={slope:.4e} +/- {slope_error:.4e} 1/eV, b={intercept:.4e} +/- {intercept_error:.4e} 1/eV')
 print(f'electron mass: {electron_mass_eV*1e-3:0.2f} keV')
 print(f'electron mass error: {electron_mass_eV_err*1e-3:0.2f} keV')
 
