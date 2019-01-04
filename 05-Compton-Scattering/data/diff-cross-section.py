@@ -38,14 +38,17 @@ ratio_remaining = np.exp(
 	(date_inital - date_experiment).days / (30.17 * 365.25))
 
 gamma_flux_at_target_initial = 1.54e6 * 1e4  # per (cm2*s), converted to m2s
+gamma_flux_at_target_initial_err = 0.09e6 * \
+	1e4  # per (cm2*s), converted to m2s
 gamma_flux_at_target = gamma_flux_at_target_initial * ratio_remaining
+gamma_flux_at_target_err = gamma_flux_at_target_initial_err * ratio_remaining
 
 length_target = 1  # cm
 diameter_target = 1  # cm
 size_target_err = 0.1  # cm
 volume_target = length_target * np.pi * (diameter_target / 2)**2  # in cm3
-volume_target_err = np.sqrt((volume_target / length_target) **
-                            2 + (2 * volume_target / diameter_target)**2) * size_target_err
+volume_target_err = np.sqrt((volume_target / length_target)
+                            ** 2 + (2 * volume_target / diameter_target)**2) * size_target_err
 atomic_weight_target = 26.981539  # Al, gram per mole
 atomic_number_target = 13  # Al
 density_target = 2.70  # Al, gram per cm3
@@ -60,18 +63,19 @@ solid_angle_scintillator = area_scintillator / \
 	(4 * np.pi * distance_scintillator**2)
 
 differential_cross_section = rate / \
-	(solid_angle_scintillator * gamma_flux_at_target *
-	 number_electrons_target)
+	(solid_angle_scintillator * gamma_flux_at_target
+	 * number_electrons_target)
 
 differential_cross_section_err = np.sqrt(
-	(differential_cross_section / number_electrons_target * number_electrons_target_err)**2 +
-	(differential_cross_section / rate * rate_err)**2
+	(differential_cross_section / number_electrons_target * number_electrons_target_err)**2
+	+ (differential_cross_section / rate * rate_err)**2
+	+ (differential_cross_section / gamma_flux_at_target * gamma_flux_at_target_err)**2
 )
 
 fig, ax = plt.subplots(constrained_layout=True)
 
-ax.errorbar(angles, differential_cross_section
-            * 1e28, yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')
+ax.errorbar(angles, differential_cross_section *
+            1e28, yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')
 # solid line for theoretical prediction, see https://en.wikipedia.org/wiki/Klein%E2%80%93Nishina_formula
 ax.plot(bb_angles, bb_diff_cross * 1e28,
         label='theoretical prediction (Klein-Nishina)')
