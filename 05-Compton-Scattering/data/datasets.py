@@ -32,5 +32,3 @@ for dataset in datasets:
 	dataset.count_diff_error = np.sqrt(
 		dataset.count_target + dataset.count_baseline)
 	dataset.count_diff_total = np.sum(dataset.count_diff)
-
-del load_count
