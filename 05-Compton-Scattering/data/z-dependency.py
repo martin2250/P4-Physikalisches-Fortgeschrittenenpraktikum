@@ -23,9 +23,9 @@ class Element:
 
 elements = [
 	Element('al', 'aluminum (or aluminium?)', 13, 26.981539, 2.7),
-	Element('fe', 'iron', 26, 55.845, 7.874),
-	Element('cu', 'copper', 29, 63.546, 8.96),
-	Element('pb', 'lead', 82, 207.2, 11.34)
+	Element('fe', 'iron',                     26, 55.845,    7.874),
+	Element('cu', 'copper',                   29, 63.546,    8.96),
+	Element('pb', 'lead',                     82, 207.2,     11.34)
 ]
 
 # keep this?
@@ -39,4 +39,4 @@ for element in elements:
 	element.cross_section_relative = element.count_total * \
 		element.atomic_mass / (element.density * element.atomic_number)
 
-	print(f'{element.symbol} {element.cross_section_relative:0.2f}')
+	print(f'{element.symbol}&\t{element.atomic_number}&\t{element.atomic_mass:0.1f}&\t{element.density:0.2f}&\t{element.count_total:0.0f}&\t{element.cross_section_relative:0.0f}\\\\')

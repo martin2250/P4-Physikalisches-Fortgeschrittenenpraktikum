@@ -48,7 +48,7 @@ For every measurement carried out in this experiment, counts are corrected accor
 \end{equation*}
 where $N_\text{obs.}$ is the observed count and $N_\text{base}$ denotes the baseline noise count for the measurement.
 
-The value for $N_\text{base}$ is acquired by conducting a measurement while the source is isolated by a lead shield.
+The value for $N_\text{base}$ is acquired by conducting a measurement while the target is not present.
 
 \section{Errors}
 The number of decay events from a radioactive source obeys a Poisson distribution.
@@ -102,3 +102,39 @@ The measured value deviates from the standard literature value \cite{pdg} ($\app
 
 It remains unclear as to why our results exhibit such high deviation.
 As discussed earlier in \autoref{sec:diff_cross_res}, one possible explanation could be an unnoticed systemic error in the experiment.
+
+\section{Linearity in Atomic Number}
+\todo{better section header}
+Compton scattering mainly occurs at the electrons inside the target, not the nuclei, as the differential cross section has a $1/m$ dependency on the mass of the charged particle.
+This implies that the total rate of scattered photons should be proportional to the total number of electrons in a target, so the value of
+\begin{equation}\label{eq_const-stuff}
+	\frac{N_\text{corr} A}{\rho Z}
+\end{equation}
+should remain constant.
+
+To verify this, samples of four metals with similar dimensions are used as targets and measurements similar to \autoref{sec:diff_cross_res} are carried out.
+\autoref{tab:z-dep} shows the atomic properties of the samples' elements, the corrected number of photons scattered in \SI{300}{\second} and the value of \autoref{eq_const-stuff}.
+The relation seemingly holds for all tested elements but lead.
+This is possibly due to the high binding energy of some of lead's inner electrons, reaching as high as \SI{88}{\kilo\eV}\footnote{\url{http://xdb.lbl.gov/Section1/Table_1-1.pdf}}.
+Due to the low number of electrons in these tightly bound states, this alone cannot account for the high deviation of $\approx \SI{40}{\percent}$.
+
+\begin{table}
+	\centering
+	\caption{todo: add title}
+	\label{tab:z-dep}
+	\begin{tabular}{cS[table-format=2.0]S[table-format=3.1]S[table-format=2.2]S[table-format=5.0]S[table-format=5.0]}
+		\toprule
+		{Element}&
+		{$Z$}&
+		{$A$ (\si{\gram\per\mole})}&
+		{$\rho$ (\si{\gram\per\cubic\centi\meter})}&
+		{$N_\text{corr}$}&
+		{$\frac{N_\text{corr} A}{\rho Z}$ (\si{\mole\centi\meter\cubed})}\\
+		\midrule
+		Al&	13&	27.0&	2.7&	29378&	22583\\
+		Fe&	26&	55.8&	7.87&	84190&	22965\\
+		Cu&	29&	63.5&	8.96&	87872&	21490\\
+		Pb&	82&	207.2&	11.34&	60648&	13514\\
+		\bottomrule
+	\end{tabular}
+\end{table}
