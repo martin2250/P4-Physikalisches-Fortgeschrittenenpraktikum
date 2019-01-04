@@ -1,9 +1,10 @@
 #!/usr/bin/python
+import sys
+
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.odr
 
-import constants
 from calibration import channel, channel_to_energy, gaussian, linear
 from datasets import datasets
 
@@ -93,8 +94,6 @@ def fit_final():
 
 	out = odr.run()
 
-	out.pprint()
-
 	return out.beta, out.sd_beta
 
 
@@ -104,13 +103,26 @@ def fit_final():
 
 electron_mass_eV = 1 / slope
 electron_mass_eV_err = slope_error / slope**2
-print(
-	f'fit coefficients: a={slope:.4e} +/- {slope_error:.4e} 1/eV, b={intercept:.4e} +/- {intercept_error:.4e} 1/eV')
-print(f'electron mass: {electron_mass_eV*1e-3:0.2f} keV')
-print(f'electron mass error: {electron_mass_eV_err*1e-3:0.2f} keV')
+
+if len(sys.argv) < 2:
+	print(
+		f'fit coefficients: a={slope:.4e} +/- {slope_error:.4e} 1/eV, b={intercept:.4e} +/- {intercept_error:.4e} 1/eV')
+	print(f'electron mass: {electron_mass_eV*1e-3:0.2f} keV')
+	print(f'electron mass error: {electron_mass_eV_err*1e-3:0.2f} keV')
 
 ################################################################################
 
-plt.errorbar(X, Y * 1e3, Y_err * 1e3, fmt='none')
-plt.plot(X, (X * slope + intercept) * 1e3)
-plt.show()
+fig, ax = plt.subplots(constrained_layout=True)
+
+ax.errorbar(X, Y * 1e6, Y_err * 1e6, fmt='none', label='experimental data')
+ax.plot(X, (X * slope + intercept) * 1e6, label='linear fit')
+
+ax.legend()
+ax.set_ylabel('$E^{-1}$ ($E$ in MeV)')
+ax.set_xlabel(r'$(1 - \cos(\Theta))$')
+plt.grid()
+
+if len(sys.argv) < 2:
+	plt.show()
+else:
+	plt.savefig(sys.argv[1])
