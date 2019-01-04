@@ -58,7 +58,7 @@ For this distribution, a good estimate of its standard deviation is the square r
 \end{equation*}
 This statistic error is assumed for all count rates in this experiment.
 
-\section{Differential Cross-Section}
+\section{Differential Cross-Section}\label{sec:diff_cross_res}
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{example-image}
@@ -70,3 +70,35 @@ This statistic error is assumed for all count rates in this experiment.
 For comparison, the theoretical model established in \autoref{eq:kleinnishina} is plotted as well.
 It is easy to see that the data is not in accordance with the model.
 However, the general shape of the data remotely resembles the model and suggests that an unknown systemic error has not been taken into account.
+Next-to-leading-order (NLO) corrections to the process cannot compensate this error, since they should be of order $\mathcal{O}(\alpha^2)$.
+
+\section{Electron Mass Estimation by Compton Energy Shift}
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{example-image}
+	\caption{$E^{'-1}$ over $1-\cos\theta$}
+	\label{fig:energy_shift}
+\end{figure}
+
+\autoref{eq:energy_shift} offers a way of estimating the electron mass by measuring the scattered Compton photon's energy for various angles.
+Rearranging the equation yields
+\begin{equation*}
+	\frac{1}{E'_\gamma} = a\cdot\left(1-\cos\theta\right) + b,
+\end{equation*}
+where according to \autoref{eq:energy_shift} $a=1/m_e$ and $b=\frac{1}{E_\gamma}$.
+Note that in these equations, $c$ is set to 1.
+
+Plotting $E_\gamma^{'-1}$ against $1-\cos\theta$ and applying a linear fit yields fit coefficients
+\begin{align*}
+	a &= \SI{2.151(28)e-6}{\per\eV} \\
+	b &= \SI{1.453(21)e-6}{\per\eV},
+\end{align*}
+which can be used to estimate the electron mass as
+\begin{equation*}
+	m_e = a^{-1} = \SI{464.81(614)}{\keV}.
+\end{equation*}
+% PDG: 0.510 998 9461(31) MeV (http://pdg.lbl.gov/)
+The measured value deviates from the standard literature value \cite{pdg} ($\approx\SI{511}{\keV}$) by $\approx 9\%$.
+
+It remains unclear as to why our results exhibit such high deviation.
+As discussed earlier in \autoref{sec:diff_cross_res}, one possible explanation could be an unnoticed systemic error in the experiment.
