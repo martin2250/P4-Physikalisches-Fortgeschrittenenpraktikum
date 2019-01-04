@@ -8,10 +8,10 @@ constants.py: ../../common/constants.py
 plots:
 	mkdir plots
 
-plots/diff-cross-sec.pdf: diff_cross_section.py constants.py calibration.py datasets.py detector.py plots
+plots/diff-cross-sec.pdf: diff-cross-section.py constants.py calibration.py datasets.py detector.py plots
 	./$< $@
 
-plots/energy-shift.pdf: energy_shift.py calibration.py datasets.py plots
+plots/energy-shift.pdf: energy-shift.py calibration.py datasets.py plots
 	./$< $@
 
 clean:
