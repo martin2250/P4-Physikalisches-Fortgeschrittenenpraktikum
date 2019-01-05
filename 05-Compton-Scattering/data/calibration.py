@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from dataclasses import dataclass
+import sys
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -181,7 +182,11 @@ def main():
 	plt.legend()
 	plt.xlabel('channel')
 	plt.ylabel('count')
-	plt.show()
+
+	if len(sys.argv) < 2:
+		plt.show()
+	else:
+		plt.savefig(sys.argv[1])
 
 
 if _verbose:
