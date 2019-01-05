@@ -22,10 +22,10 @@ class Element:
 
 
 elements = [
-	Element('al', 'aluminum (or aluminium?)', 13, 26.981539, 2.7),
-	Element('fe', 'iron',                     26, 55.845,    7.874),
-	Element('cu', 'copper',                   29, 63.546,    8.96),
-	Element('pb', 'lead',                     82, 207.2,     11.34)
+	Element('al', 'aluminium', 13, 26.981539, 2.7),
+	Element('fe', 'iron', 26, 55.845, 7.874),
+	Element('cu', 'copper', 29, 63.546, 8.96),
+	Element('pb', 'lead', 82, 207.2, 11.34)
 ]
 
 # keep this?
