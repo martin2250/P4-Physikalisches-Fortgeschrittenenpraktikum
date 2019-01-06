@@ -72,7 +72,7 @@ differential_cross_section_err = np.sqrt(
 	+ (differential_cross_section / gamma_flux_at_target * gamma_flux_at_target_err)**2
 )
 
-fig, ax = plt.subplots(constrained_layout=True)
+fig, ax = plt.subplots(constrained_layout=True, figsize=(5, 3))
 
 ax.errorbar(angles, differential_cross_section *
             1e28, yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')

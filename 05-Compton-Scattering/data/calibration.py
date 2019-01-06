@@ -1,6 +1,6 @@
 #!/usr/bin/python
-from dataclasses import dataclass
 import sys
+from dataclasses import dataclass
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -164,29 +164,32 @@ def channel_to_energy(channel, channel_error=0):
 
 
 def main():
+	fig, ax = plt.subplots(constrained_layout=True, figsize=(5, 3))
+
 	for isotope in isotopes:
 		# if isotope.name == 'Co-57':
 			#isotope.count = isotope.count / 3
-		line = plt.plot(isotope.count, label=isotope.name)[0]
-		plt.vlines([energy_to_channel_estimation(peak.energy)
-	             for peak in isotope.peaks], 0, 5000)
+		line = ax.plot(isotope.count, label=isotope.name)[0]
+		ax.vlines([energy_to_channel_estimation(peak.energy)
+                    for peak in isotope.peaks], 0, 5000)
 		for peak in isotope.peaks:
-			plt.annotate(f'{peak.energy/1e3:0.1f} keV',
-			             (energy_to_channel_estimation(peak.energy) + 1, 20), color=line.get_color(), rotation='vertical', fontsize=13)
+			ax.annotate(f'{peak.energy/1e3:0.1f} keV',
+                            (energy_to_channel_estimation(peak.energy) + 1, 10), color=line.get_color(), rotation=90, fontsize=9)
 			if peak.center:
-				plt.plot(peak.channel_fit, gaussian(peak.channel_fit, *peak.popt))
+				ax.plot(peak.channel_fit, gaussian(peak.channel_fit, *peak.popt), '-k')
 
 	################################################################################
-	plt.gca().set_yscale("log", nonposy='clip')
-	plt.ylim(10, 12000)
-	plt.legend()
-	plt.xlabel('channel')
-	plt.ylabel('count')
+	ax.set_yscale("log", nonposy='clip')
+	ax.set_ylim(10, 12000)
+	ax.legend()
+	ax.grid()
+	ax.set_xlabel('channel')
+	ax.set_ylabel('count')
 
 	if len(sys.argv) < 2:
 		plt.show()
 	else:
-		plt.savefig(sys.argv[1])
+		fig.savefig(sys.argv[1])
 
 
 if _verbose:

@@ -112,7 +112,7 @@ if len(sys.argv) < 2:
 
 ################################################################################
 
-fig, ax = plt.subplots(constrained_layout=True)
+fig, ax = plt.subplots(constrained_layout=True, figsize=(5, 3))
 
 ax.errorbar(X, Y * 1e6, Y_err * 1e6, fmt='none', label='experimental data')
 ax.plot(X, (X * slope + intercept) * 1e6, label='linear fit')

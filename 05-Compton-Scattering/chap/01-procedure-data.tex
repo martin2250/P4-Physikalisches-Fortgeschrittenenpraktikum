@@ -10,7 +10,8 @@
 The setup consists of a scintillation detector, consisting of a NaI-scintillator crystal and a sensitive photomultiplier tube (PMT), a small pedestal, the targets are mounted on and the gamma sources themselves.
 Sodium iodide is an inorganic scintillator crystal, giving the advantage of most of the gamma rays being observed through the photoelectric effect.
 
-The angle enclosed by the lines of sight detector-target, target-source can be varied to determine the differential cross-section, as seen in \autoref{fig:setup}.
+The angle enclosed by the lines of sight detector-target, target-source can be varied to observe photons of different scattering angle $\Theta$.
+Measurements are carried out for angles between \num{25} and \SI{105}{\degree}, with a duration of \SI{300}{\second} both with and without the target.
 
 To determine the dependency of the differential cross-section on the atomic number $Z$, four different target materials (Al, Cu, Fe, Pb) are available.
 
@@ -19,8 +20,8 @@ For the dimensions of all materials used in the experiment, see the lab manual (
 \section{Calibration}
 \begin{figure}
 	\centering
-	\includegraphics[width=.6\textwidth]{./data/plots/calibration.pdf}
-	\caption{Energy calibration}
+	\includegraphics[scale=0.8]{./data/plots/calibration.pdf}
+	\captiond{Energy calibration}{. The vertical black lines show the approximation for the peak channel, which is used as initial parameter for each gaussian fit. Successful fits are also shown in black. The initial approximation is based on the peaks of Co-57 and Co-60. Cs-137 matches this approximation very well, while both peaks of Na-22 are significantly shifted to the right. For this reason, Na-22 is not used in the final calibration. }
 	\label{fig:calib}
 \end{figure}
 Every detector channel corresponds to a specific energy.
@@ -61,11 +62,12 @@ This statistic error is assumed for all count rates in this experiment.
 \section{Differential Cross-Section}\label{sec:diff_cross_res}
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{./data/plots/diff-cross-sec.pdf}
+	\includegraphics[scale=0.8]{./data/plots/diff-cross-sec.pdf}
 	\caption{Differential cross-section over scatter angle}
 	\label{fig:diff_cross}
 \end{figure}
 
+The count of every channel is multiplied with the inverse quantum efficiency of the detector (as provided in the experiment manual) and summed up to obtain the total number of scattered photons.
 \autoref{fig:diff_cross} shows the determined differential cross-section $\frac{\d\sigma}{\d\Omega}$ over the scatter angle $\theta$.
 For comparison, the theoretical model established in \autoref{eq:kleinnishina} is plotted as well.
 It is easy to see that the data is not in accordance with the model.
@@ -75,8 +77,8 @@ Next-to-leading-order (NLO) corrections to the process cannot compensate this er
 \section{Electron Mass Estimation by Compton Energy Shift}
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{./data/plots/energy-shift.pdf}
-	\caption{$E^{'-1}$ over $1-\cos\theta$}
+	\includegraphics[scale=0.8]{./data/plots/energy-shift.pdf}
+	\captiond{Inverse energy of scattered photons $E^{'-1}$ over function $\left(1-\cos\theta\right)$}{of scattering angle $\Theta$. The energy is the center of a gaussian fit, similar to \autoref{fig:calib}. Points are not marked with markers, as not to hide the associated error bars. The expected linear dependence is observed.}
 	\label{fig:energy_shift}
 \end{figure}
 
