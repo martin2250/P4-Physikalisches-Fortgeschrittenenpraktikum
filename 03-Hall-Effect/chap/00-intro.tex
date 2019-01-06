@@ -130,10 +130,16 @@ Using the definition of the conductance $j = \sigma E$ yields
 \end{equation}
 
 \section{Charge Carrier Mobility}
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{./img/muverlauf.pdf}
+	\caption{Logarithmic electron mobility over logarithmic temperature}
+	\label{fig:mu}
+\end{figure}
 Expanding on the drude model of electrical conductivity, it has been discovered that electrons do not scatter on a periodic grid of nuclei as the wave functions are superpositions of time-independent bloch waves.
 Scattering only occurs at defects, different kinds of which give different dependencies on temperature.
 
-\subsection{Scattering on Charged Defects}\todo{Bild zum mu-Verlauf}
+\subsection{Scattering on Charged Defects}
 Electrons scatter on the coulomb potential of charged lattice defects, such as atoms introduced for doping semiconductors.
 This process is described in classical Rutherford scattering, where the cross section relates to the velocity of the incoming electron as $\sigma_\text{Ru} \propto v^{-4}$.
 Using the classical velocity distribution $^1/_2 m v^2 = {^3}/_2 k T$ gives the relations $\sigma_\text{Ru} \propto T^{-2}$ and $\tau \propto \frac{1}{\sigma_\text{Ru} v} \propto T^{{^3}/_2}$.
@@ -150,7 +156,7 @@ It holds $\tau \propto \e^\frac{\hbar \omega}{k T} - 1$, where $\omega$ denotes 
 
 \subsection{Total Mobility}
 The scattering rates of the individual processes add up, so the relaxation times $\tau_i$ combine as $\tau_\text{total}^{-1} = \tau_1^{-1} + \tau_2^{-1} + \dots$.
-As $\tau \propto \mu$, this also applies to the total mobility.
+As $\tau \propto \mu$, this also applies to the total mobility, as can be seen in \autoref{fig:mu}
 
 Only the total mobility can be determined experimentally, but the different dependencies on temperature allow the quantification of the contributions of the individual processes.
 
