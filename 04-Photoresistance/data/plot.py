@@ -118,11 +118,20 @@ for trace in traces:
 		yunit = args.ylabel[1] if args.ylabel else None
 
 		if trace.fit:
-			slope, intercept = np.polyfit(X, Y, 1)
+			import scipy.odr
+			data = scipy.odr.RealData(X, Y)
+
+			def linear(p, x):
+				return p[0] * x + p[1]
+
+			result = scipy.odr.ODR(data, scipy.odr.Model(linear), beta0=(1, 1)).run()
+			slope, intercept = result.beta
+			slp_err, inter_err = result.sd_beta
+
 			if args.verbose:
 				print(f'fit parameters for {trace.label or trace.file}')
-				print(f'  > slope: {slope:0.3e} {xunit}/{yunit}')
-				print(f'  > intercept: {intercept:0.3e} {yunit}')
+				print(f'  > slope: ({slope:0.3e} +/- {slp_err:0.3e} {yunit}/{xunit})')
+				print(f'  > intercept: {intercept:0.3e} +- {inter_err:0.3e} {yunit}')
 			fitlabel = f'linear fit\n${args.ylabel[0] if args.ylabel else "Y"} = {slope:0.3e} {xunit}/{yunit} \\cdot {args.xlabel[0] if args.xlabel else "X"} + {intercept:0.3e} {yunit}$'
 			plt.plot(X, slope * X + intercept, 'r-',
                             label=fitlabel if args.fit_label else None)

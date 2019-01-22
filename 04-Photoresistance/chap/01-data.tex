@@ -43,12 +43,17 @@ The observed curves show the intended linear behavior (see Subfigures \ref{fig:i
 The photoresistor's resistance clearly changes with the wavelength of incident light.
 Performing linear regression yields resistances
 \begin{align*}
-  R(\lambda = \SI{549}{\nm}) = \SI{718}{\ohm} \\
-  R(\lambda = \SI{647}{\nm}) = \SI{217}{\ohm}.
+  R(\lambda = \SI{549}{\nm}) = \SI{1390(44)}{\ohm} \\
+  R(\lambda = \SI{647}{\nm}) = \SI{4602(12)}{\ohm} \\
+  R(\text{background}) = \SI{118.4(4)}{\kilo\ohm} \\
+  R(\text{dark}) = \SI{3.55(44)}{\mega\ohm}.
 \end{align*}
+The uncertainties are the result of orthogonal distance regressions.
+The dataset is assumed to have no uncertainties for $I$ and $U$, as the error bounds of the used instruments are not specified.
+The uncertainties are likely much higer than that.
 The curve for $\lambda=\SI{549}{\nm}$ shows a point which reproducibly and inexplicably deviates from this linear dependence.
 
-\subsection{Illuminance Dependency}
+\subsection{Light Intensity Dependency}
 \begin{figure}
 	\centering
 	\includegraphics[width=.6\textwidth]{./data/plots/intensity-current.pdf}
