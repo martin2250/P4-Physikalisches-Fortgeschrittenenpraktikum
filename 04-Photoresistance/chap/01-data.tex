@@ -88,9 +88,11 @@ We conclude, that the concentration of equilibrium charge carriers is negligably
 A wedge shaped interference filter on a screw-advance linear carriage is placed at one focal point of the optical train.
 This filter is used to select different wavelengths of light from the halogen lamp used as the light source.
 A pair of polarization filters is used to keep the light intensity constant, accounting for the non-uniform emission spectrum of the lamp.
-The photocurrent shows a clear peak and a gaussian fit is used to find the exact center, as it doesn't seem to coincide exactly with a point.
-The peak lies at $\lambda_\text{max} = \SI{540}{\nano\meter}$, which corresponds to a photon energy of $E = \frac{h c}{\lambda_\text{max}} = \SI{2.30}{\electronvolt}$.
+The photocurrent shows a clear peak as can be seen in \autoref{fig:freq-current} and a Gaussian fit is used to find the exact center, as it doesn't seem to coincide exactly with a point.
+The peak lies at $\lambda_\text{max} = \SI{540.6(3)}{\nano\meter}$, which corresponds to a photon energy of $E = \frac{h c}{\lambda_\text{max}} = \SI{2.30}{\electronvolt}$.
 This value is very close to the band gap of cadmium sulfide of \SI{2.42}{\electronvolt} at a relative deviation of \SI{5}{\percent}.
+The error on $\lambda_\text{max}$ is only a result of the gaussian fit, no systematic errors are included as the error bounds of the setup are not known.
+Possible additional error sources are the calibration of the interference filter or the angle of the polarization filters.
 \begin{figure}
 	\centering
 	\includegraphics[width=.6\textwidth]{./data/plots/wavelength-current.pdf}
@@ -99,17 +101,17 @@ This value is very close to the band gap of cadmium sulfide of \SI{2.42}{\electr
 \end{figure}
 
 \subsection{Modulation Frequency Dependence}
-The Photoresistor is illuminated by an LED, which is driven by a constant current with a shallow sinusoidal modulation superimposed.
-This results in a very much not-sinusoidal current through the photoresistor.
+The photoresistor is illuminated by an LED, which is driven by a current which has a shallow sinusoidal modulation superimposed.
+This results in a current through the photoresistor, which does not resemble the input current much.
 A lock-in amplifier is used to measure the amplitude of the fundamental component of the photocurrent and also the phase with respect to the LED drive signal.
 
 The amplitude of the fundamental is measured for multiple frequencies and shown in \autoref{fig:freq-current}.
 Theoretically, the amplitude should be proportional to $|\Delta n(t)|$ (\autoref{eq:freq-dependence}).
-This model does not fit the aquired data very well, so the corner frequency is determined by fitting a horizontal line to the points in log-log-space left of the corner frequency and a linear slope to the points right of the transition region.
-The frequency where these lines intersect is $f_\text{i} = \SI{171}{\hertz}$ and corresponds the inverse of the mean charge carrier lifetime $\tau_\text{e} = \frac{1}{f_\text{i}} = \SI{5.8}{\milli\second}$.
+This model does not fit the aquired data very well, so the mean charge carrier lifetime $\tau_\text{e}$ is determined by fitting a horizontal line to the points in log-log-space left of the corner frequency and a linear slope to the points right of the transition region.
+The frequency where these lines intersect is $f_\text{i} = \SI{284}{\hertz}$ and corresponds the inverse of the mean charge carrier lifetime $\tau_\text{e} = \frac{1}{f_\text{i}} = \SI{3.5}{\milli\second}$.
 \begin{figure}
 	\centering
 	\includegraphics[width=.6\textwidth]{./data/plots/frequency-current.pdf}
-	\captiond{Photocurrent over frequency}{(RMS of fundamental component)}
+	\captiond{Photocurrent over frequency}{(Amplitude of fundamental component)}
 	\label{fig:freq-current}
 \end{figure}

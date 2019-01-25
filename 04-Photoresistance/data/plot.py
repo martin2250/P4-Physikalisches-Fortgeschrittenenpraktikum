@@ -142,16 +142,25 @@ for trace in traces:
 				legend_used = True
 
 		if trace.fit_gaussian:
-			def fitfunc_wlen(x, A, lambda_0, sigma, b):
+			def fitfunc_wlen(p, x):
+				A, lambda_0, sigma, b = p
 				return b + A * np.exp(-((x - lambda_0)**2) / (2 * sigma**2))
-			(A, lambda_0, sigma, b), _ = scipy.optimize.curve_fit(
-				fitfunc_wlen, X[6:13], Y[6:13], (1, 550, 30, 0.3))
+
+			import scipy.odr
+			data = scipy.odr.RealData(X[6:13], Y[6:13])
+
+			result = scipy.odr.ODR(data, scipy.odr.Model(
+				fitfunc_wlen), beta0=(1, 550, 30, 0.3)).run()
+			A, lambda_0, sigma, b = result.beta
+			A_err, lambda_0_err, sigma_err, b_err = result.sd_beta
+
+			# (A, lambda_0, sigma, b), _ = scipy.optimize.curve_fit(
+			# 	fitfunc_wlen, X[6:13], Y[6:13], (1, 550, 30, 0.3))
 			X_fit = np.linspace(X[4], X[14], 50)
-			print(X_fit)
-			plt.plot(X_fit, fitfunc_wlen(X_fit, A, lambda_0, sigma, b), 'r-')
+			plt.plot(X_fit, fitfunc_wlen((A, lambda_0, sigma, b), X_fit), 'r-')
 			if args.verbose:
 				print(f'fit parameters for {trace.label or trace.file}')
-				print(f'peak at {lambda_0} nm')
+				print(f'peak at {lambda_0} +/- {lambda_0_err} nm')
 
 		if trace.fit_sqrt:
 			def fitfunc_sqrt(x, a, b):
