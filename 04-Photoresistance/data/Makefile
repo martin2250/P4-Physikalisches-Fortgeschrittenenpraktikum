@@ -16,7 +16,7 @@ plots/IV-%.pdf: src/IV-%.dat plot.py plots
 	./plot.py $< --output $@ --grid --xlabel U V --ylabel I mA --fit $(if $(filter %549.pdf, $@),--fit-ignore 1)
 
 plots/intensity-current.pdf: src/Intensity-Current-5V-549.dat plot.py plots
-	./plot.py $< --output $@ --grid --xlabel I/I_0 "" --ylabel I mA
+	./plot.py $< --output $@ --grid --xlabel I/I_0 "" --ylabel I mA --fit-sqrt
 
 plots/wavelength-current.pdf: src/Wavelength-Current-5V.dat plot.py plots
 	./plot.py $< --output $@ --grid --xlabel \\lambda nm --ylabel I mA --fit-gaussian

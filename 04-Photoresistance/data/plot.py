@@ -39,6 +39,9 @@ parser_group_trace.add_argument('--fit-ignore', type=int,
                                 help='ignore last X points for linear fit')
 parser_group_trace.add_argument('--fit-gaussian', action='store_true',
                                 help='do stuff')
+parser_group_trace.add_argument('--fit-sqrt', action='store_true',
+                                help='do sqrty stuff')
+
 parser_group_trace.add_argument(
 	'--fit-label', action='store_true', help='add linear fit to legend')
 
@@ -106,7 +109,7 @@ def atof_comma(s):
 
 
 for trace in traces:
-	if trace.fit or trace.fit_freq or trace.fit_freq_shitty or trace.fit_gaussian:
+	if trace.fit or trace.fit_freq or trace.fit_freq_shitty or trace.fit_gaussian or trace.fit_sqrt:
 		X, Y = np.loadtxt(trace.file, unpack=True, usecols=(
 			0, 1), converters={0: atof_comma, 1: atof_comma})
 
@@ -137,6 +140,7 @@ for trace in traces:
                             label=fitlabel if args.fit_label else None)
 			if args.fit_label:
 				legend_used = True
+
 		if trace.fit_gaussian:
 			def fitfunc_wlen(x, A, lambda_0, sigma, b):
 				return b + A * np.exp(-((x - lambda_0)**2) / (2 * sigma**2))
@@ -148,6 +152,31 @@ for trace in traces:
 			if args.verbose:
 				print(f'fit parameters for {trace.label or trace.file}')
 				print(f'peak at {lambda_0} nm')
+
+		if trace.fit_sqrt:
+			def fitfunc_sqrt(x, a, b):
+				return a * np.sqrt(x) + b
+
+			(a, b), pcov = scipy.optimize.curve_fit(
+				fitfunc_sqrt, X, Y, (1, 0))
+			perr = np.sqrt(np.diag(pcov))
+
+			# GOODNESS OF FIT
+			# residual sum of squares
+			ss_res = np.sum((Y - fitfunc_sqrt(X, a, b)) ** 2)
+			# total sum of squares
+			ss_tot = np.sum((Y - np.mean(Y)) ** 2)
+			# r-squared
+			r2 = 1 - (ss_res / ss_tot)
+
+			X_fit = np.linspace(X[0], X[-1], 50)
+			print(X_fit)
+			plt.plot(X_fit, fitfunc_sqrt(X_fit, a, b), 'r-')
+			if args.verbose:
+				print(f'fit parameters for {trace.label or trace.file}')
+				print(f'a = {a} +/- {perr[0]} mA, b = {b} +/- {perr[1]} mA')
+				print(f'goodness of fit:R^2 = {r2}')
+
 		if trace.fit_freq:
 			def fitfunc_freq(f, A, mean_lifetime):
 				return A / np.sqrt(1 + (2 * np.pi * f * mean_lifetime)**2)
@@ -159,6 +188,7 @@ for trace in traces:
 				print(f'  > mean lifetime: {mean_lifetime_fit * 1e6:0.3e} us')
 			X_fit = np.logspace(np.log10(np.min(X)), np.log10(np.max(X)), 50)
 			plt.plot(X_fit, fitfunc_freq(X_fit, A_fit, mean_lifetime_fit), 'r-')
+
 		if trace.fit_freq_shitty:
 			X_fit = np.logspace(np.log10(np.min(X)), np.log10(np.max(X)), 50)
 			X_1 = X[:trace.fit_freq_shitty[0]]

@@ -62,8 +62,27 @@ The curve for $\lambda=\SI{549}{\nm}$ shows a point which reproducibly and inexp
 \end{figure}
 A pair of polarization filters, one of which can be rotated freely, is used to change the illuminance linearly.
 \autoref{fig:intense-current} shows the measured photocurrent over illuminance.
-Since the photocurrent is clearly proportional to the square root of illuminance, quadratic recombination of excess charge carriers is observed (as outlined in \autoref{sec:quad-recomb}).
-We therefore conclude, that the concentration of equilibrium charge carriers is negligably small compared to excess carriers.
+Using
+\begin{equation}\label{eq:quad_fit}
+	I_\text{ph}\left(\frac{I}{I_0}\right) = a\cdot\frac{I}{I_0} + b,
+\end{equation}
+as a fit model, as outlined in \autoref{sec:quad-recomb}, fit coefficients
+\begin{align*}
+	a &= \SI{1.188(23)}{\mA}	\\
+	b &= \SI{-0.055(16)}{\mA},
+\end{align*}
+are determined, where uncertainties are the result of fitting the model in \autoref{eq:quad_fit} to the data.
+
+To determine goodness of fit, the coefficient of determination is calculated according to
+\begin{equation*}
+	R^2 = 1 - \frac{S_\text{res}}{S_\text{tot}},
+\end{equation*}
+where $S_\text{res}=\sum_i\left(y_i - I_{\text{ph},i}\left(\frac{I}{I_0}\right)\right)^2$ and $S_\text{tot}=\sum_i\left(y_i - \overline{I_{\text{ph},i}}\left(\frac{I}{I_0}\right)\right)^2$ denote the sum of residuals and squares respectively.
+
+This yields a coefficient of determination $R^2 = 99.3\%$.
+Therefore, it is safe to assume that the photocurrent is proportional to the square root of light intensity.
+Thus, quadratic recombination of excess charge carriers is observed.
+We conclude, that the concentration of equilibrium charge carriers is negligably small compared to excess carriers.
 
 \subsection{Light Wavelength Dependency}
 A wedge shaped interference filter on a screw-advance linear carriage is placed at one focal point of the optical train.
