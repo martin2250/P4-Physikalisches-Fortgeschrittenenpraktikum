@@ -13,7 +13,6 @@ from detector import detector_inv_efficiency
 
 bb_angles, bb_diff_cross = np.loadtxt(
 	'src/bb-diff-cross.dat', usecols=[0, 2], unpack=True)
-bb_diff_cross = bb_diff_cross * 1e-25 * 1e-4
 
 angles = []
 counts = []
@@ -32,7 +31,7 @@ rate = counts / time
 rate_err = rate / counts * counts_err
 
 # day not given, assume middle of july
-date_inital = datetime.date(1970, 7, 15)
+date_inital = datetime.date(1971, 7, 15)
 date_experiment = datetime.date(2018, 12, 17)
 ratio_remaining = np.exp(
 	(date_inital - date_experiment).days / (30.17 * 365.25))
@@ -77,8 +76,11 @@ fig, ax = plt.subplots(constrained_layout=True, figsize=(5, 3))
 ax.errorbar(angles, differential_cross_section *
             1e28, yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')
 # solid line for theoretical prediction, see https://en.wikipedia.org/wiki/Klein%E2%80%93Nishina_formula
-ax.plot(bb_angles, bb_diff_cross * 1e28,
+ax.plot(bb_angles, bb_diff_cross * 10,
         label='theoretical prediction (Klein-Nishina)')
+
+print((bb_diff_cross[4] * 10) / (differential_cross_section[4] * 1e28))
+
 ax.set_ylabel(
 	r'differential cross section $\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}$ (barn)')
 ax.set_xlabel(r'scattering angle $\Theta$ (°)')
