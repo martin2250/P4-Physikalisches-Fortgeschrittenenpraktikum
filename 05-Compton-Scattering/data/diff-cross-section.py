@@ -42,6 +42,8 @@ gamma_flux_at_target_initial_err = 0.09e6 * \
 gamma_flux_at_target = gamma_flux_at_target_initial * ratio_remaining
 gamma_flux_at_target_err = gamma_flux_at_target_initial_err * ratio_remaining
 
+print(f'gamma flux at target: {gamma_flux_at_target:0.3e} 1/(s*m^2)')
+
 length_target = 1  # cm
 diameter_target = 1  # cm
 size_target_err = 0.1  # cm
@@ -56,10 +58,14 @@ number_electrons_target = constants.avogadro_constant / \
 number_electrons_target_err = number_electrons_target / \
 	volume_target * volume_target_err
 
+print(f'number of electrons: {number_electrons_target:0.3e}')
+
 area_scintillator = np.pi * (2.55e-2 / 2)**2
 distance_scintillator = 21.5e-2
 solid_angle_scintillator = area_scintillator / \
-	(4 * np.pi * distance_scintillator**2)
+	(distance_scintillator**2)
+
+print(f'solid angle: {solid_angle_scintillator:0.3e}')
 
 differential_cross_section = rate / \
 	(solid_angle_scintillator * gamma_flux_at_target
@@ -71,15 +77,17 @@ differential_cross_section_err = np.sqrt(
 	+ (differential_cross_section / gamma_flux_at_target * gamma_flux_at_target_err)**2
 )
 
+print('angle (°)	rate (1/s)	crosssec (10^-28 m^2)')
+for (a, r, d) in zip(angles, rate, differential_cross_section):
+	print(f'{a}	{r:0.2e}	{d*1e28:0.2e}')
+
 fig, ax = plt.subplots(constrained_layout=True, figsize=(5, 3))
 
-ax.errorbar(angles, differential_cross_section *
-            1e28, yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')
+ax.errorbar(angles, differential_cross_section * 1e28,
+            yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')
 # solid line for theoretical prediction, see https://en.wikipedia.org/wiki/Klein%E2%80%93Nishina_formula
 ax.plot(bb_angles, bb_diff_cross * 10,
         label='theoretical prediction (Klein-Nishina)')
-
-print((bb_diff_cross[4] * 10) / (differential_cross_section[4] * 1e28))
 
 ax.set_ylabel(
 	r'differential cross section $\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}$ (barn)')
