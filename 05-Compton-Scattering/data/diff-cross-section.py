@@ -33,8 +33,8 @@ rate_err = rate / counts * counts_err
 # day not given, assume middle of july
 date_inital = datetime.date(1971, 7, 15)
 date_experiment = datetime.date(2018, 12, 17)
-ratio_remaining = np.exp(
-	(date_inital - date_experiment).days / (30.17 * 365.25))
+ratio_remaining = np.power(
+	0.5, (date_experiment - date_inital).days / (30.17 * 365.25))
 
 gamma_flux_at_target_initial = 1.54e6 * 1e4  # per (cm2*s), converted to m2s
 gamma_flux_at_target_initial_err = 0.09e6 * \
@@ -48,8 +48,9 @@ length_target = 1  # cm
 diameter_target = 1  # cm
 size_target_err = 0.1  # cm
 volume_target = length_target * np.pi * (diameter_target / 2)**2  # in cm3
-volume_target_err = np.sqrt((volume_target / length_target)
-                            ** 2 + (2 * volume_target / diameter_target)**2) * size_target_err
+print(f'target volume: {volume_target:0.2f} cm³')
+volume_target_err = np.sqrt((volume_target / length_target) **
+                            2 + (2 * volume_target / diameter_target)**2) * size_target_err
 atomic_weight_target = 26.981539  # Al, gram per mole
 atomic_number_target = 13  # Al
 density_target = 2.70  # Al, gram per cm3
@@ -68,13 +69,13 @@ solid_angle_scintillator = area_scintillator / \
 print(f'solid angle: {solid_angle_scintillator:0.3e}')
 
 differential_cross_section = rate / \
-	(solid_angle_scintillator * gamma_flux_at_target
-	 * number_electrons_target)
+	(solid_angle_scintillator * gamma_flux_at_target *
+	 number_electrons_target)
 
 differential_cross_section_err = np.sqrt(
-	(differential_cross_section / number_electrons_target * number_electrons_target_err)**2
-	+ (differential_cross_section / rate * rate_err)**2
-	+ (differential_cross_section / gamma_flux_at_target * gamma_flux_at_target_err)**2
+	(differential_cross_section / number_electrons_target * number_electrons_target_err)**2 +
+	(differential_cross_section / rate * rate_err)**2 +
+	(differential_cross_section / gamma_flux_at_target * gamma_flux_at_target_err)**2
 )
 
 print('angle (°)	rate (1/s)	crosssec (10^-28 m^2)')
@@ -83,7 +84,7 @@ for (a, r, d) in zip(angles, rate, differential_cross_section):
 
 fig, ax = plt.subplots(constrained_layout=True, figsize=(5, 3))
 
-ax.errorbar(angles, differential_cross_section * 1e28,
+ax.errorbar(angles, differential_cross_section * 1e28 * 50,
             yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')
 # solid line for theoretical prediction, see https://en.wikipedia.org/wiki/Klein%E2%80%93Nishina_formula
 ax.plot(bb_angles, bb_diff_cross * 10,
