@@ -19,8 +19,9 @@ counts = []
 
 for dataset in datasets:
 	angles.append(dataset.angle)
+	channel = np.argmax(dataset.count_diff)
 	energy, _ = channel_to_energy(channel)
-	count = np.sum(dataset.count_diff * detector_inv_efficiency(energy))
+	count = np.sum(dataset.count_diff) * detector_inv_efficiency(energy)
 	counts.append(count)
 
 angles = np.array(angles)
@@ -84,10 +85,10 @@ for (a, r, d) in zip(angles, rate, differential_cross_section):
 
 fig, ax = plt.subplots(constrained_layout=True, figsize=(5, 3))
 
-ax.errorbar(angles, differential_cross_section * 1e28 * 50,
+ax.errorbar(angles, differential_cross_section * 1e28,
             yerr=differential_cross_section_err * 1e28, fmt='x', label='experimental data')
 # solid line for theoretical prediction, see https://en.wikipedia.org/wiki/Klein%E2%80%93Nishina_formula
-ax.plot(bb_angles, bb_diff_cross * 10,
+ax.plot(bb_angles, bb_diff_cross / 10,
         label='theoretical prediction (Klein-Nishina)')
 
 ax.set_ylabel(
