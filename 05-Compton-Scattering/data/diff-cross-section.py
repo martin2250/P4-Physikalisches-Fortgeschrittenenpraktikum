@@ -43,15 +43,16 @@ gamma_flux_at_target_initial_err = 0.09e6 * \
 gamma_flux_at_target = gamma_flux_at_target_initial * ratio_remaining
 gamma_flux_at_target_err = gamma_flux_at_target_initial_err * ratio_remaining
 
-print(f'gamma flux at target: {gamma_flux_at_target:0.3e} 1/(s*m^2)')
+print(
+	f'gamma flux at target: {gamma_flux_at_target:0.3e} +/- {gamma_flux_at_target_err:0.3e} 1/(s*m^2)')
 
 length_target = 1  # cm
 diameter_target = 1  # cm
 size_target_err = 0.1  # cm
 volume_target = length_target * np.pi * (diameter_target / 2)**2  # in cm3
-print(f'target volume: {volume_target:0.2f} cm³')
 volume_target_err = np.sqrt((volume_target / length_target) **
                             2 + (2 * volume_target / diameter_target)**2) * size_target_err
+print(f'target volume: {volume_target:0.2f} +/- {volume_target_err:.2f} cm³')
 atomic_weight_target = 26.981539  # Al, gram per mole
 atomic_number_target = 13  # Al
 density_target = 2.70  # Al, gram per cm3
@@ -60,7 +61,8 @@ number_electrons_target = constants.avogadro_constant / \
 number_electrons_target_err = number_electrons_target / \
 	volume_target * volume_target_err
 
-print(f'number of electrons: {number_electrons_target:0.3e}')
+print(
+	f'number of electrons: {number_electrons_target:0.3e} +/- {number_electrons_target_err:.3e}')
 
 area_scintillator = np.pi * (2.55e-2 / 2)**2
 distance_scintillator = 21.5e-2

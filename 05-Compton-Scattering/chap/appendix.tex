@@ -1,7 +1,7 @@
 \Appendix
 \configureappendix
 
-\section{Calculation of Differential Cross-Section}\label{appendix:cross}\todo{Add calculated values to their respective paragraphs.}
+\section{Calculation of Differential Cross-Section}\label{appendix:cross}
 
 To obtain the differential cross-section depicted in \autoref{fig:diff_cross}, first, the remaining gamma ray flux at the target has to be calculated since the activity of the source decays over time.
 The lab manual specifies a gamma ray flux of $\phi_0 = \SI{1.54(9)e6}{\per\cm\squared\per\second}$ for the $^{137}$Cs source.
@@ -10,18 +10,18 @@ Since no day was specified, the middle of July is assumed.
 
 Under these assumptions, the remaining gamma ray flux is
 \begin{equation*}
-	\phi_\text{rem} = \phi_0\cdot\exp\left(\frac{t_\text{init}-t_\text{exp}}{t_{\nicefrac{1}{2}}}\right),
+	\phi_\text{rem} = \phi_0\cdot 0.5^{\left(\frac{t_\text{init}-t_\text{exp}}{t_{\nicefrac{1}{2}}}\right)} = \SI{5.18(30)e9}{\per\meter\squared\per\second},
 \end{equation*}
 where $t_\text{init}-t_\text{exp}$ denotes the timespan (in days) between the reference and the experiment conducted in this lab report.
 $t_{\nicefrac{1}{2}}$ is the half-life of the $^{137}$Cs source in days.
 The specified error is propagated like
 \begin{equation*}
-	\sigma_{\phi\text{, rem}} = \sigma_{\phi,0}\cdot\exp\left(\frac{t_\text{init}-t_\text{exp}}{t_{\nicefrac{1}{2}}}\right).
+	\sigma_{\phi\text{, rem}} = \sigma_{\phi,0}\cdot\frac{\phi_\text{rem}}{\phi_0}.
 \end{equation*}
 
 The volume of the Al target is
 \begin{equation*}
-	V = \ell\cdot\pi\cdot\left(\frac{d}{2}\right)^2,
+	V = \ell\cdot\pi\cdot\left(\frac{d}{2}\right)^2 = \SI{0.79(18)}{\cm\cubed},
 \end{equation*}
 where $\ell=\SI{1.0(1)}{\cm}$ and $d=\SI{1.0(1)}{\cm}$ denote the length and diameter of the target, respectively.
 Errors on these quantities are propagated like
@@ -32,16 +32,15 @@ since $\sigma_\ell=\sigma_d$.
 
 Using the formula from the lab manual, the number of electrons is
 \begin{equation*}
-	n = \frac{N_\text{A}}{A}\cdot Z\cdot\rho\cdot V,
+	n = \frac{N_\text{A}}{A}\cdot Z\cdot\rho\cdot V = \num{6.153(1376)e23},
 \end{equation*}
 where the error on $V$ is propagated via Gaussian error propagation (see above).
 
 The solid angle correction regarding the scinitillation detector is
 \begin{equation*}
-	\Delta_\Omega = \frac{A}{d_\text{sci}^2},
+	\Delta_\Omega = \frac{A}{d_\text{sci}^2} = \num{1.105e-2},
 \end{equation*}
-where $A=\pi\cdot\left(\SI{1.275}{\cm}\right)^2$ is the area of the scintillator and $d_\text{sci}$ is the distance between the target and the scitillation crystal.
-Errors are, once more, propagated via Gaussian error propagation.
+where $A=\pi\cdot\left(\SI{1.275}{\cm}\right)^2$ is the area of the scintillator and $d_\text{sci}$ is the distance between the target and the scintillation crystal.
 
 Having calculated all of these quantities, we are now able to calculate the differential cross-section $\frac{\d\sigma}{\d\Omega}\left(\theta\right)$ for a given value of $\theta$
 \begin{equation*}
